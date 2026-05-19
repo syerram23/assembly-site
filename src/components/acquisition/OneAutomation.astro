@@ -20,17 +20,17 @@ const steps = [
   { phase: "02 · Data",      i: "File & document storage",     t: "1 wk",  v: "S3 + parsing pipeline",          cost: "compute + ENG" },
   { phase: "02 · Data",      i: "Encrypted DB + backups",      t: "1 wk",  v: "RDS/Aurora + KMS + backups",    cost: "ops overhead" },
   { phase: "03 · Comms",     i: "Email provider integration",  t: "3 days", v: "SendGrid · SES · Postmark",     cost: "$12k+/yr" },
-  { phase: "03 · Comms",     i: "SMS &amp; voice",                 t: "1 wk",  v: "Twilio",                         cost: "$18k+/yr + per-msg" },
+  { phase: "03 · Comms",     i: "SMS & voice",                 t: "1 wk",  v: "Twilio",                         cost: "$18k+/yr + per-msg" },
   { phase: "03 · Comms",     i: "Multi-modal conversation",    t: "4 wks", v: "<b>not available off-shelf</b>",   cost: "build from scratch" },
   { phase: "03 · Comms",     i: "In-app notification UI",      t: "1 wk",  v: "in-house",                       cost: "engineering hours" },
   { phase: "04 · Build",     i: "UI component library",        t: "3 wks", v: "in-house · per app",             cost: "engineering hours" },
   { phase: "04 · Build",     i: "Scheduled job / cron",        t: "1 wk",  v: "Temporal · in-house · Sidekiq",  cost: "ops overhead" },
   { phase: "04 · Build",     i: "Document generation",         t: "2 wks", v: "in-house templating + PDFs",     cost: "engineering hours" },
   { phase: "04 · Build",     i: "Secrets handling",            t: "3 days", v: "Vault · AWS Secrets",            cost: "ops overhead" },
-  { phase: "05 · Run",       i: "Hosting &amp; backups",           t: "1 wk",  v: "AWS / GCP / Azure",              cost: "compute + ops" },
+  { phase: "05 · Run",       i: "Hosting & backups",           t: "1 wk",  v: "AWS / GCP / Azure",              cost: "compute + ops" },
   { phase: "05 · Run",       i: "Error monitoring",            t: "2 days", v: "Sentry · Datadog",               cost: "$15k+/yr" },
   { phase: "05 · Run",       i: "Durable workflows",           t: "3 wks", v: "Temporal · <b>not vibe-codeable</b>", cost: "engineering hours" },
-  { phase: "05 · Run",       i: "Admin &amp; governance console",   t: "2 wks", v: "in-house",                       cost: "engineering hours" },
+  { phase: "05 · Run",       i: "Admin & governance console",   t: "2 wks", v: "in-house",                       cost: "engineering hours" },
 ];
 
 // Totals at the bottom
@@ -47,7 +47,7 @@ const totals = {
 <section class="oa" id="one-automation">
   <div class="wrap">
     <div class="s-head">
-      <span class="eyebrow"><span class="dot"></span>Section 05 &middot; The customer-side math</span>
+      <span class="eyebrow"><span class="dot"></span>Section 05 · The customer-side math</span>
       <h2>
         What it takes to ship <em>one</em><br/>
         enterprise-grade automation.
@@ -62,7 +62,7 @@ const totals = {
       <header class="w-head">
         <span class="w-tag">Without a platform</span>
         <h3>21 separate decisions, before any business logic</h3>
-        <span class="w-meta">{totals.decisions} rows &middot; ~{totals.weeks} weeks &middot; {totals.teamFunctions}+ team functions</span>
+        <span class="w-meta">{totals.decisions} rows · ~{totals.weeks} weeks · {totals.teamFunctions}+ team functions</span>
       </header>
 
       <ol class="steps">
@@ -95,12 +95,12 @@ const totals = {
       </header>
       <div class="ws-body">
         <p>
-          The same twenty-one capabilities &mdash; identity, audit, governed data, comms, build primitives, run-with-confidence &mdash; are wired once during onboarding. Every app the customer's team builds from that point forward <b>inherits the entire substrate automatically</b>. No vendor sign-ups. No per-app rebuilds. No skip-the-audit-log-until-it-bites.
+          The same twenty-one capabilities — identity, audit, governed data, comms, build primitives, run-with-confidence — are wired once during onboarding. Every app the customer's team builds from that point forward <b>inherits the entire substrate automatically</b>. No vendor sign-ups. No per-app rebuilds. No skip-the-audit-log-until-it-bites.
         </p>
         <div class="ws-stats">
           <div class="ws-stat">
             <span class="ws-v">1</span>
-            <span class="ws-k">platform setup &middot; ~10 days</span>
+            <span class="ws-k">platform setup · ~10 days</span>
           </div>
           <div class="ws-stat">
             <span class="ws-v">∞</span>

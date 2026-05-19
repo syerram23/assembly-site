@@ -25,7 +25,7 @@ const { variant = "full", showHeader = true } = Astro.props;
           <div class="left">
             <span class="eyebrow"><span class="dot"></span>The three primitives</span>
             <h2>
-              Data substrate. Workflows. Tools &amp; agents.<br />
+              Data substrate. Workflows. Tools & agents.<br />
               <em>That's the whole platform.</em>
             </h2>
           </div>
@@ -43,7 +43,7 @@ const { variant = "full", showHeader = true } = Astro.props;
       <article class="prim-card data">
         <header>
           <span class="num">01</span>
-          <span class="lbl">Data ingest, audit &amp; provisioning</span>
+          <span class="lbl">Data ingest, audit & provisioning</span>
           <span class="impl">
             <span class="impl-k">substrate</span>
             <span class="impl-v">47 connectors</span>
@@ -52,14 +52,14 @@ const { variant = "full", showHeader = true } = Astro.props;
 
         <h3>The governed substrate.<br/>Sources in. Lineage on. VPC-isolated.</h3>
         <p class="lede">
-          Connectors pull from your systems of record on schedule, write back through typed contracts, and record every read and write in a tamper-evident audit log. Identity, secrets, and tenancy are provisioned by the platform &mdash; never wired by the app.
+          Connectors pull from your systems of record on schedule, write back through typed contracts, and record every read and write in a tamper-evident audit log. Identity, secrets, and tenancy are provisioned by the platform — never wired by the app.
         </p>
 
         <!-- substrate artifact: source rows + audit log -->
         <div class="art art-data">
           <div class="art-chrome">
             <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
-            <span class="ct">platform &middot; <b>tenant.governance</b></span>
+            <span class="ct">platform · <b>tenant.governance</b></span>
           </div>
           <div class="art-body data-body">
             <div class="data-sub">
@@ -71,7 +71,7 @@ const { variant = "full", showHeader = true } = Astro.props;
               </ul>
             </div>
             <div class="data-sub">
-              <span class="data-sub-k">Audit log &middot; last 90s</span>
+              <span class="data-sub-k">Audit log · last 90s</span>
               <div class="audit-rows">
                 <div class="aud"><span class="aud-t">14:02</span><span class="aud-e">read workday.bands · maria@</span><span class="aud-s ok">ok</span></div>
                 <div class="aud"><span class="aud-t">14:02</span><span class="aud-e">policy.pii_redact · pass</span><span class="aud-s ok">ok</span></div>
@@ -89,7 +89,7 @@ const { variant = "full", showHeader = true } = Astro.props;
             </div>
           </div>
           <div class="art-foot">
-            <span><b>47 connectors</b> · OAuth · read &amp; write · audit on every call</span>
+            <span><b>47 connectors</b> · OAuth · read & write · audit on every call</span>
           </div>
         </div>
 
@@ -113,31 +113,31 @@ const { variant = "full", showHeader = true } = Astro.props;
 
         <h3>Durable orchestration.<br/>Multi-step. HITL-gated.</h3>
         <p class="lede">
-          The engine on top of the substrate. Multi-step, long-running, retry-safe orchestration with explicit human-in-the-loop gates. Every step writes a row to the audit log &mdash; replayable end-to-end.
+          The engine on top of the substrate. Multi-step, long-running, retry-safe orchestration with explicit human-in-the-loop gates. Every step writes a row to the audit log — replayable end-to-end.
         </p>
 
         <!-- workflow state-machine artifact -->
         <div class="art art-wf">
           <div class="art-chrome">
             <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
-            <span class="ct">workflow &middot; <b>reg-e-quarterly-run</b></span>
+            <span class="ct">workflow · <b>reg-e-quarterly-run</b></span>
           </div>
           <div class="art-body">
             <ol class="wf-steps">
               <li class="done">
                 <span class="bullet"></span>
                 <span class="step-name">sample.population</span>
-                <span class="step-meta">5,855 claims &middot; 42ms</span>
+                <span class="step-meta">5,855 claims · 42ms</span>
               </li>
               <li class="done">
                 <span class="bullet"></span>
                 <span class="step-name">controls.evaluate</span>
-                <span class="step-meta">11 controls &middot; CFPB pack v2.1</span>
+                <span class="step-meta">11 controls · CFPB pack v2.1</span>
               </li>
               <li class="hitl">
                 <span class="bullet"></span>
                 <span class="step-name">hitl.disposition</span>
-                <span class="step-meta">maria@compliance &middot; 7 pending</span>
+                <span class="step-meta">maria@compliance · 7 pending</span>
               </li>
               <li>
                 <span class="bullet"></span>
@@ -157,9 +157,9 @@ const { variant = "full", showHeader = true } = Astro.props;
         </div>
 
         <ul class="bullets">
-          <li><span class="b-k">Durable</span><span class="b-v">Survives infra failure, retries automatically, replays on demand &mdash; not vibe-codeable.</span></li>
+          <li><span class="b-k">Durable</span><span class="b-v">Survives infra failure, retries automatically, replays on demand — not vibe-codeable.</span></li>
           <li><span class="b-k">HITL gates</span><span class="b-v">Any step routes to a named reviewer queue with SLA. No silent autonomous decisioning.</span></li>
-          <li><span class="b-k">Audit lineage</span><span class="b-v">Source record · rule fired · model call · reviewer &mdash; all linked, replayable.</span></li>
+          <li><span class="b-k">Audit lineage</span><span class="b-v">Source record · rule fired · model call · reviewer — all linked, replayable.</span></li>
         </ul>
       </article>
 
@@ -167,7 +167,7 @@ const { variant = "full", showHeader = true } = Astro.props;
       <article class="prim-card tools">
         <header>
           <span class="num">03</span>
-          <span class="lbl">Tools &amp; Agents</span>
+          <span class="lbl">Tools & Agents</span>
           <span class="impl">
             <span class="impl-k">library</span>
             <span class="impl-v">6 tools · 8 agents</span>
@@ -176,20 +176,20 @@ const { variant = "full", showHeader = true } = Astro.props;
 
         <h3>The capabilities library.<br/>Atomic tools. Pre-built agents.</h3>
         <p class="lede">
-          What workflows compose from. <b>Tools</b> are the atomic capabilities &mdash; conversational, search, browser, API, docgen, workflows themselves. <b>Agents</b> are pre-built, vertical-tuned compositions of those tools that ship in days, not quarters.
+          What workflows compose from. <b>Tools</b> are the atomic capabilities — conversational, search, browser, API, docgen, workflows themselves. <b>Agents</b> are pre-built, vertical-tuned compositions of those tools that ship in days, not quarters.
         </p>
 
         <!-- tools + agents artifact -->
         <div class="art art-ta">
           <div class="art-chrome">
             <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
-            <span class="ct">library &middot; <b>tools + agents</b></span>
+            <span class="ct">library · <b>tools + agents</b></span>
           </div>
           <div class="art-body ta-body">
             <!-- Tools row -->
             <div class="ta-sub">
               <div class="ta-sub-head">
-                <span class="ta-sub-k">Tools &middot; 6 atomic</span>
+                <span class="ta-sub-k">Tools · 6 atomic</span>
                 <span class="ta-sub-meta">typed I/O · audit on every call</span>
               </div>
               <div class="tl-grid">
@@ -205,7 +205,7 @@ const { variant = "full", showHeader = true } = Astro.props;
             <!-- Agents row -->
             <div class="ta-sub">
               <div class="ta-sub-head">
-                <span class="ta-sub-k">Agents &middot; 8 pre-built</span>
+                <span class="ta-sub-k">Agents · 8 pre-built</span>
                 <span class="ta-sub-meta">vertical-tuned · composable</span>
               </div>
               <div class="ag-list">
@@ -221,7 +221,7 @@ const { variant = "full", showHeader = true } = Astro.props;
             </div>
           </div>
           <div class="art-foot">
-            <span><b>Workflows compose freely</b> · use one tool, ten tools, or a pre-built agent &mdash; same audit, same governance.</span>
+            <span><b>Workflows compose freely</b> · use one tool, ten tools, or a pre-built agent — same audit, same governance.</span>
           </div>
         </div>
 

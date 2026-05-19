@@ -16,13 +16,13 @@ const rows = [
       { cap: "Single sign-on",         dyi: "Choose an auth provider, configure SAML/OIDC, wire it into every app" },
       { cap: "Roles & permissions",    dyi: "Hand-build a permission model and enforce it in app code yourself" },
       { cap: "User & team management", dyi: "Build user and org tables, plus a management UI, from scratch" },
-      { cap: "Audit trail",            dyi: "Build your own action logging &mdash; usually skipped until an audit demands it" },
+      { cap: "Audit trail",            dyi: "Build your own action logging — usually skipped until an audit demands it" },
     ],
   },
   {
     group: "Your data, ready to use",
     items: [
-      { cap: "Governed data plane",     dyi: "No data layer &mdash; wire up each source yourself, with no governance" },
+      { cap: "Governed data plane",     dyi: "No data layer — wire up each source yourself, with no governance" },
       { cap: "Live connectors",         dyi: "Build and maintain each integration: OAuth, rate limits, API changes" },
       { cap: "Search across everything", dyi: "Stand up a vector database and build an embedding + indexing pipeline" },
       { cap: "Files & documents",       dyi: "Wire up file storage and a document-parsing pipeline yourself" },
@@ -34,7 +34,7 @@ const rows = [
     items: [
       { cap: "Email",              dyi: "Sign up for SendGrid, get IT approval, wire the API into each app" },
       { cap: "SMS & phone",        dyi: "Sign up for Twilio, provision numbers, configure messaging" },
-      { cap: "Comms conversations", dyi: "Not available &mdash; build a multi-modal conversation engine yourself" },
+      { cap: "Comms conversations", dyi: "Not available — build a multi-modal conversation engine yourself" },
       { cap: "In-app notifications", dyi: "Build your own notification system and UI" },
     ],
   },
@@ -44,7 +44,7 @@ const rows = [
       { cap: "Ready-made components", dyi: "Build every table, form, and dashboard component from scratch, per app" },
       { cap: "Scheduled jobs",        dyi: "Set up your own cron and scheduling infrastructure" },
       { cap: "Document generation",   dyi: "Build a templating and PDF-rendering pipeline yourself" },
-      { cap: "Secrets handling",      dyi: "Manage .env files or a secrets manager yourself &mdash; easy to leak" },
+      { cap: "Secrets handling",      dyi: "Manage .env files or a secrets manager yourself — easy to leak" },
     ],
   },
   {
@@ -52,8 +52,8 @@ const rows = [
     items: [
       { cap: "Hosting & backups",    dyi: "Choose a host, configure deployments, set up backups yourself" },
       { cap: "Error monitoring",     dyi: "Sign up for Sentry or Datadog and instrument every app" },
-      { cap: "Production workflows", dyi: "Build durable workflow infrastructure &mdash; retries, state &mdash; not vibe-codeable" },
-      { cap: "Admin & governance",   dyi: "No central admin &mdash; manage each app separately, or not at all" },
+      { cap: "Production workflows", dyi: "Build durable workflow infrastructure — retries, state — not vibe-codeable" },
+      { cap: "Admin & governance",   dyi: "No central admin — manage each app separately, or not at all" },
     ],
   },
 ];
@@ -67,13 +67,13 @@ const total = rows.reduce((acc, g) => acc + g.items.length, 0);
       <div class="left">
         <span class="eyebrow"><span class="dot"></span>Why not vanilla Claude Code?</span>
         <h2>
-          Every capability &mdash; Assembly<br />
+          Every capability — Assembly<br />
           vs. <em>do-it-yourself</em>.
         </h2>
       </div>
       <div class="right">
         <p>
-          AI coding tools generate code; they don't ship enterprise infrastructure. Every capability the platform hands your team, re-cut as a cost you'd carry alone &mdash; the integrations, the auth, the audit, the durable workflow engine, all twenty-one of them. <b>None of which is the app you actually wanted to build.</b>
+          AI coding tools generate code; they don't ship enterprise infrastructure. Every capability the platform hands your team, re-cut as a cost you'd carry alone — the integrations, the auth, the audit, the durable workflow engine, all twenty-one of them. <b>None of which is the app you actually wanted to build.</b>
         </p>
       </div>
     </div>
@@ -121,7 +121,7 @@ const total = rows.reduce((acc, g) => acc + g.items.length, 0);
         <b>Day one with Assembly</b>: all {total}, included.
       </span>
       <span class="vf-r">
-        Day one with vanilla Claude Code: {total} separate things to evaluate, sign up for, wire in, secure, and maintain &mdash; none of which is the app you actually wanted to build.
+        Day one with vanilla Claude Code: {total} separate things to evaluate, sign up for, wire in, secure, and maintain — none of which is the app you actually wanted to build.
       </span>
     </div>
   </div>
