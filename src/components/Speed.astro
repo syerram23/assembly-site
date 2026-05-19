@@ -1,0 +1,282 @@
+---
+const without = [
+  { d: "WEEK 01", e: "Brief approved by IT", s: "scoped" },
+  { d: "WEEK 02", e: "Provision dev environment", s: "blocked · vendor risk review" },
+  { d: "WEEK 04", e: "Get SSO connector working", s: "in progress" },
+  { d: "WEEK 06", e: "Data access pipeline", s: "in progress" },
+  { d: "WEEK 08", e: "First working prototype", s: "demo only" },
+  { d: "WEEK 12+", e: "Security review · audit hooks", s: "open" },
+];
+const withAssembly = [
+  { d: "DAY 01", e: "Brief approved by IT", s: "scoped" },
+  { d: "DAY 01", e: "Sign-on · audit · data layer", s: "already on" },
+  { d: "DAY 02", e: "Sources connected", s: "workday, greenhouse" },
+  { d: "DAY 04", e: "First working app", s: "on real data" },
+  { d: "DAY 07", e: "Reviewer queue + audit", s: "live" },
+  { d: "DAY 10", e: "Shipped to production", s: "yours" },
+];
+---
+
+<section class="speed" id="speed">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Why it's different</span>
+        <h2>It comes down to one thing &mdash;<br />how fast your team <em>ships</em>.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Without the right foundation, building one internal app means weeks of wiring up data access, accounts, logins, and security &mdash; and most apps never make it past a prototype. With the foundation already in place, the same idea ships in about a week. <b>Same team, same idea. The infrastructure underneath is the whole difference.</b>
+        </p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <!-- Without -->
+      <div class="lane lane-without">
+        <div class="lane-head">
+          <span class="lbl">Without a governed foundation</span>
+          <span class="meta">avg. mid-market enterprise</span>
+        </div>
+        <div class="events">
+          {
+            without.map(({ d, e, s }) => (
+              <div class="ev">
+                <span class="d">{d}</span>
+                <span class="e">{e}</span>
+                <span class="s">{s}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="lane-foot">
+          <span class="foot-l">
+            <span class="dur">12&plus; weeks</span>
+            to one working app
+          </span>
+          <span class="foot-r">
+            <span class="cohort">~1 app / quarter</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- With -->
+      <div class="lane lane-with">
+        <div class="lane-head">
+          <span class="lbl">With Assembly</span>
+          <span class="meta">same team, same idea</span>
+        </div>
+        <div class="events">
+          {
+            withAssembly.map(({ d, e, s }) => (
+              <div class="ev ev-on">
+                <span class="d">{d}</span>
+                <span class="e">{e}</span>
+                <span class="s">{s}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="lane-foot">
+          <span class="foot-l">
+            <span class="dur on">~10 days</span>
+            to one working app
+          </span>
+          <span class="foot-r">
+            <span class="cohort on">~1 app / week</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <span class="sum-tag">The math</span>
+      <p>
+        One app a quarter becomes <b>one app a week</b>. Twelve apps a year becomes <b>fifty.</b> Same headcount.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .speed {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+  .s-head .right p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 980px) { .compare { grid-template-columns: 1fr; } }
+
+  .lane {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .lane-with {
+    border-color: var(--color-indigo-600);
+    box-shadow: 0 1px 0 rgba(15,17,42,.04), 0 20px 56px -28px rgba(79, 70, 229, 0.4);
+    position: relative;
+  }
+  .lane-with::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--color-indigo-600);
+  }
+
+  .lane-head {
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-ink-50);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .lane-with .lane-head {
+    background: var(--color-indigo-50);
+    border-bottom-color: var(--color-indigo-100);
+  }
+  .lane-head .lbl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+  }
+  .lane-head .meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+
+  .events {
+    padding: 8px 0;
+  }
+  .ev {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 11px 22px;
+    border-top: 1px solid var(--color-ink-100);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .ev:first-child { border-top: 0; }
+  .ev .d {
+    font-weight: 600;
+    color: var(--color-ink-400);
+    letter-spacing: 0.08em;
+    font-size: 10.5px;
+  }
+  .ev .e {
+    color: var(--color-ink-950);
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: -0.005em;
+  }
+  .ev .s {
+    color: var(--color-ink-500);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+  }
+  .lane-without .ev .e { color: var(--color-ink-500); text-decoration: line-through; text-decoration-color: var(--color-ink-300); }
+  .ev-on .d { color: var(--color-indigo-600); }
+  .ev-on .s {
+    color: var(--color-sage-fg);
+    background: var(--color-sage-bg);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .lane-foot {
+    margin-top: auto;
+    padding: 18px 22px;
+    border-top: 1px solid var(--color-ink-200);
+    background: var(--color-ink-950);
+    color: rgba(255,255,255,.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .lane-foot .dur,
+  .lane-foot .cohort {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.012em;
+    color: #fff;
+    margin-right: 8px;
+  }
+  .lane-foot .dur.on,
+  .lane-foot .cohort.on {
+    color: #fff;
+  }
+
+  .summary {
+    margin-top: 28px;
+    padding: 24px 28px;
+    background: var(--color-ink-950);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .sum-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+    background: rgba(255,255,255,.06);
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .summary p {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(18px, 1.6vw, 22px);
+    letter-spacing: -0.012em;
+    line-height: 1.4;
+    color: rgba(255,255,255,.85);
+  }
+  .summary p b {
+    color: #fff;
+    font-weight: 600;
+  }
+</style>

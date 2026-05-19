@@ -1,0 +1,331 @@
+---
+/*
+ * "The clock is ticking" — the timely strategic threat.
+ *
+ * Cites real 2025-2026 news: Anthropic's enterprise services firm with
+ * Blackstone/H&F/Goldman, OpenAI's $4B Deployment Company, McKinsey/Bain/
+ * Capgemini as OpenAI investors, TCS layoffs, FDE jobs up 5,230%.
+ *
+ * Numbered references render as Stripe-Press-style superscripts that
+ * link to a footnotes list at the bottom of the section.
+ */
+
+const evidence = [
+  {
+    n: "01",
+    when: "May 2026",
+    who: "Anthropic + Blackstone + H&F + Goldman",
+    what: "Anthropic, Blackstone, Hellman & Friedman, and Goldman Sachs co-launch an AI-native enterprise services firm with <b>~$1.5B</b> in committed capital, targeting the mid-market and PE portfolios. Anthropic Applied AI engineers embed directly with the new firm's FDEs — explicit forward-deployed model.",
+    ref: 1,
+  },
+  {
+    n: "02",
+    when: "Dec 2025",
+    who: "Anthropic + Accenture",
+    what: "Anthropic and Accenture announce a multi-year partnership. A dedicated Anthropic Business Group inside Accenture, <b>~30,000 Accenture professionals trained on Claude</b>, joint vertical solutions for financial services, life sciences, healthcare, and the public sector.",
+    ref: 2,
+  },
+  {
+    n: "03",
+    when: "May 2026",
+    who: "OpenAI Deployment Company",
+    what: "OpenAI launches a standalone deployment company. <b>$4B raised at a $14B valuation</b>, led by TPG with Brookfield, Advent, Bain Capital, and SoftBank. Founding acquisition: Tomoro (Edinburgh/London applied-AI firm, ~150 FDEs from day one, clients include Virgin Atlantic, Tesco, Fidelity International, NBA).",
+    ref: 3,
+  },
+  {
+    n: "04",
+    when: "May 2026",
+    who: "McKinsey · Bain · Capgemini",
+    what: "Three of the world's largest strategy consultancies <b>invest in the OpenAI Deployment Company</b>. Incumbents are paying to ride the model rather than fight it &mdash; an unprecedented inversion of the partner-vendor relationship.",
+    ref: 4,
+  },
+  {
+    n: "05",
+    when: "Q3 2025",
+    who: "TCS",
+    what: "TCS announces layoffs of <b>~12,000 employees</b> &mdash; roughly 2% of global workforce, concentrated in mid- and senior-level staff &mdash; explicitly citing AI-driven disruption. The first structural break in the Indian body-shop model.",
+    ref: 5,
+  },
+  {
+    n: "06",
+    when: "Jan 2025 → Apr 2026",
+    who: "Labor market",
+    what: "Forward-deployed engineer job postings on Indeed <b>up 5,230%</b>. Measurable migration of the labor pool from billable-hour SI firms to AI-native FDE roles at Anthropic, OpenAI, Google, Palantir, and Stripe.",
+    ref: 6,
+  },
+];
+
+const refs = [
+  {
+    n: 1,
+    text: 'Anthropic, "Enterprise AI services company" (press release, May 4, 2026).',
+    url: "https://www.anthropic.com/news/enterprise-ai-services-company",
+  },
+  {
+    n: 2,
+    text: 'Anthropic, "Anthropic-Accenture partnership" (press release, December 9, 2025).',
+    url: "https://www.anthropic.com/news/anthropic-accenture-partnership",
+  },
+  {
+    n: 3,
+    text: 'OpenAI, "OpenAI launches the Deployment Company" (announcement, May 11, 2026).',
+    url: "https://openai.com/index/openai-launches-the-deployment-company/",
+  },
+  {
+    n: 4,
+    text: 'SiliconANGLE, "OpenAI launches professional services business with $4B investment" (May 11, 2026).',
+    url: "https://siliconangle.com/2026/05/11/openai-launches-professional-services-business-4b-investment/",
+  },
+  {
+    n: 5,
+    text: 'Deccan Herald, "Year-ender 2025: thousands laid off as India\'s IT sector undergoes structural shift."',
+    url: "https://www.deccanherald.com/business/year-ender-2025-thousands-laid-off-as-indias-it-sector-undergoes-structural-shift-3835505",
+  },
+  {
+    n: 6,
+    text: 'Computerworld, "Here\'s one career emerging from the AI shift: forward-deployed engineers."',
+    url: "https://www.computerworld.com/article/4171867/heres-one-career-emerging-from-the-ai-shift-forward-deployed-engineers.html",
+  },
+];
+---
+
+<section class="clock" id="the-clock">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 01 &middot; The clock</span>
+      <h2>The foundation-model companies are<br/><em>building delivery</em> &mdash; not partnering with it.</h2>
+      <p class="lede">
+        For ten years, IT-services and consulting firms were the channel that <em>made</em> hyperscale model companies real to the enterprise. In the last twelve months, that relationship inverted. Anthropic and OpenAI have <b>vertically integrated into delivery</b> &mdash; with $1.5B and $4B of fresh capital, captive forward-deployed engineering orgs, and packaged vertical agents that productize what consultancies used to bill bespoke. McKinsey, Bain, and Capgemini have already chosen to buy a seat at OpenAI's table rather than compete with it. <b>The window to convert from a body-shop SI into an AI-native platform firm is open now &mdash; and will not stay open through 2027.</b>
+      </p>
+    </div>
+
+    <ol class="evidence">
+      {
+        evidence.map(({ n, when, who, what, ref }) => (
+          <li>
+            <div class="ev-num">{n}</div>
+            <div class="ev-body">
+              <div class="ev-meta">
+                <span class="ev-when">{when}</span>
+                <span class="ev-sep">·</span>
+                <span class="ev-who">{who}</span>
+              </div>
+              <p class="ev-what" set:html={what + ' <sup class="ev-ref"><a href="#ref-' + ref + '">' + ref + '</a></sup>'} />
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="window">
+      <span class="w-lbl">The window</span>
+      <p>
+        Mid-tier SIs have, on a conservative read, <b>12&ndash;24 months</b> before the differentiators they sell today &mdash; people in seats, methodology IP, vertical playbooks &mdash; become a free productized layer sold by the model vendor itself. <b>The defensible move is to acquire an AI-native delivery + platform company while valuations still allow it.</b> One that already operates an FDE-style delivery model, owns proprietary orchestration and agent IP, and has a customer base that proves time-to-value rather than headcount-to-value.
+      </p>
+    </div>
+
+    <ol class="refs" id="refs">
+      <li class="refs-head">References</li>
+      {
+        refs.map(({ n, text, url }) => (
+          <li id={`ref-${n}`}>
+            <span class="r-n">{n}</span>
+            <span class="r-text">{text}</span>
+            <a class="r-url" href={url} target="_blank" rel="noopener">{url.replace(/^https?:\/\//, "")}</a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .clock {
+    padding: 120px 0 96px;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    max-width: 880px;
+    margin-bottom: 48px;
+  }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 22px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.65;
+    max-width: 780px;
+  }
+  .s-head .lede b { color: var(--color-ink-950); font-weight: 600; }
+  .s-head .lede em {
+    font-style: italic;
+    color: var(--color-ink-950);
+  }
+
+  /* ── Evidence list ─────────────────────────────────────── */
+  .evidence {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 1080px;
+  }
+  @media (max-width: 800px) { .evidence { grid-template-columns: 1fr; } }
+
+  .evidence li {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .ev-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--color-indigo-600);
+    padding-top: 2px;
+  }
+  .ev-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+  }
+  .ev-when {
+    color: var(--color-ink-700);
+    background: var(--color-ink-100);
+    padding: 2px 7px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .ev-sep { color: var(--color-ink-300); }
+  .ev-who {
+    color: var(--color-ink-950);
+    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    letter-spacing: -0.005em;
+  }
+  .ev-what {
+    color: var(--color-ink-700);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .ev-what :global(b) { color: var(--color-ink-950); font-weight: 600; }
+  .ev-ref {
+    font-size: 9.5px;
+    vertical-align: top;
+    margin-left: 2px;
+  }
+  .ev-ref a {
+    color: var(--color-indigo-600);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .ev-ref a:hover { text-decoration: underline; }
+
+  /* ── The window ───────────────────────────────────────── */
+  .window {
+    margin-top: 36px;
+    padding: 28px 32px;
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.82);
+    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: start;
+    max-width: 1080px;
+  }
+  @media (max-width: 720px) { .window { grid-template-columns: 1fr; gap: 14px; } }
+  .w-lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+  .window p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .window p b { color: #fff; font-weight: 600; }
+
+  /* ── References ───────────────────────────────────────── */
+  .refs {
+    list-style: none;
+    margin: 56px 0 0;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--color-ink-200);
+    max-width: 920px;
+  }
+  .refs-head {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    margin-bottom: 16px;
+  }
+  .refs li:not(.refs-head) {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .r-n {
+    color: var(--color-indigo-600);
+    font-weight: 600;
+  }
+  .r-text {
+    color: var(--color-ink-700);
+    grid-column: 2;
+  }
+  .r-url {
+    grid-column: 2;
+    color: var(--color-ink-500);
+    text-decoration: none;
+    font-size: 10.5px;
+    word-break: break-all;
+    margin-top: 2px;
+  }
+  .r-url:hover {
+    color: var(--color-indigo-600);
+    text-decoration: underline;
+  }
+</style>

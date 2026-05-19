@@ -1,0 +1,199 @@
+---
+/*
+ * Experience timeline · Day 0 → Day 90+.
+ *
+ * Six-step horizontal timeline. Solid indigo dots for done states (the
+ * first four), ring dots for the last two ("upcoming" / still to happen).
+ * The axis fill reflects the same ~75% progress so the visual reads as
+ * a real engagement in flight.
+ */
+
+const steps = [
+  {
+    day: "Day 0",
+    title: "Sixty minutes with Studio.",
+    blurb:
+      "You leave the call with a tailored proposal, a live demo, and a signable SOW. Not a meeting recap.",
+    arti: "Artifact · PRD + SOW",
+    done: true,
+  },
+  {
+    day: "Day 7",
+    title: "We're already in your stack.",
+    blurb:
+      "FDE, QA, and TPM provisioned. Project board live. Daily Slack updates visible to your team from day one.",
+    arti: "Artifact · project board",
+    done: true,
+  },
+  {
+    day: "Day 30",
+    title: "Your engineers see how we work.",
+    blurb:
+      "Staging app live on your data. Your team joins reviews. They watch AI-generated code get shipped against a real framework.",
+    arti: "Artifact · staging app",
+    done: true,
+  },
+  {
+    day: "Day 60",
+    title: "UAT with real users.",
+    blurb:
+      "Your operators — not your IT team — are running the application. Edge cases get filed and resolved in the same week.",
+    arti: "Artifact · UAT sign-off",
+    done: true,
+  },
+  {
+    day: "Day 90",
+    title: "Live in production.",
+    blurb:
+      "Software runs in your environment. Usage-based invoicing starts. Audit lineage and HITL gates are operational.",
+    arti: "Artifact · live application",
+    done: false,
+  },
+  {
+    day: "Day 90+",
+    title: "Your team is AI-native.",
+    blurb:
+      "They've watched it happen end-to-end. They have the muscle memory and the framework. We hand off, step back, stay on call.",
+    arti: "Outcome · capability",
+    done: false,
+  },
+];
+---
+
+<section class="tl-sec" id="experience">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>The experience, in days</span>
+        <h2>By day ninety, your team is AI-native.</h2>
+      </div>
+      <div class="right">
+        <p>The software is the deliverable. But the way we ship it &mdash; on your data, with your engineers in our reviews, using the same tools we use internally &mdash; is the change management. Your team doesn't sit through an AI training program. They live one.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-axis"><div class="fill"></div></div>
+      <div class="tl-row">
+        {
+          steps.map((s) => (
+            <div class={`tl-step${s.done ? " done" : ""}`}>
+              <div class="day">{s.day}</div>
+              <h4>{s.title}</h4>
+              <p>{s.blurb}</p>
+              <div class="arti">{s.arti}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tl-sec {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head .left h2 { margin-top: 18px; }
+  .s-head .right p {
+    color: var(--color-ink-500);
+    font-size: 18px;
+    max-width: 680px;
+  }
+
+  .timeline { margin-top: 24px; }
+  .tl-axis {
+    position: relative;
+    height: 2px;
+    background: var(--color-ink-200);
+    margin: 24px 0 0;
+    border-radius: 2px;
+    overflow: visible;
+  }
+  .tl-axis .fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 66%;
+    background: var(--color-indigo-600);
+    border-radius: 2px;
+  }
+  .tl-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+    position: relative;
+  }
+  @media (max-width: 1000px) {
+    .tl-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  }
+  @media (max-width: 560px) {
+    .tl-row { grid-template-columns: 1fr; }
+  }
+  .tl-step {
+    position: relative;
+    padding-top: 16px;
+  }
+  .tl-step::before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 3px solid var(--color-indigo-600);
+    border-radius: 50%;
+  }
+  .tl-step.done::before {
+    background: var(--color-indigo-600);
+  }
+  .tl-step .day {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-indigo-600);
+    margin-bottom: 10px;
+  }
+  .tl-step h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.012em;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    color: var(--color-ink-950);
+  }
+  .tl-step p {
+    color: var(--color-ink-500);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .tl-step .arti {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>

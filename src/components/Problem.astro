@@ -1,0 +1,203 @@
+---
+const cards = [
+  {
+    n: "01",
+    tag: "No orchestration layer",
+    h: "Foundation models are not applications.",
+    body: "Anthropic, OpenAI, your data warehouse, your identity provider &mdash; you have all of them. What you don't have is the substrate that composes durable, audited, mission-critical workflows on top of them. Without it, every AI initiative starts at zero.",
+    stat: { v: "0", k: "Production AI apps shipped", sub: "median F500, past 18 months" },
+  },
+  {
+    n: "02",
+    tag: "Shadow AI",
+    h: "Without sanctioned rails, work routes around IT.",
+    body: "Employees paste customer data, comp tables, source code, and contracts into consumer accounts because there is no governed alternative. IT has no log of it. Legal has no consent. Compliance has no audit. The risk is real; the build velocity is zero.",
+    stat: { v: "1,847", k: "Outbound prompts to public LLMs", sub: "median enterprise, last 30 days" },
+  },
+  {
+    n: "03",
+    tag: "Build vs. buy fails both ways",
+    h: "AI coding tooling won't ship. Vertical SaaS won't fit.",
+    body: "Coding copilots speed up engineers; they don't deliver an application. Vertical SaaS configures up to the eighty percent that's standard, then breaks at your edge cases. The board is asking for a contractable answer. \"Hire AI engineers and try\" is not it.",
+    stat: { v: "Q4", k: "Board AI update due", sub: "no defensible plan in hand" },
+  },
+];
+---
+
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>The problem</span>
+        <h2>Enterprise AI is stuck at <em>prototype</em>.<br />The orchestration layer is what's missing.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Three failures, one root cause. Every enterprise we talk to has all of them. Each is a tax on the people doing the actual work &mdash; and each is the symptom of the same gap: <b>no production-grade substrate between the foundation and the apps.</b>
+        </p>
+      </div>
+    </div>
+
+    <div class="grid">
+      {
+        cards.map(({ n, tag, h, body, stat }) => (
+          <article class="card lift">
+            <header>
+              <span class="num">{n}</span>
+              <span class="tag">{tag}</span>
+            </header>
+            <h3>{h}</h3>
+            <p>{body}</p>
+            <div class="stat">
+              <div class="v">{stat.v}</div>
+              <div class="k">
+                {stat.k}
+                <small>{stat.sub}</small>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+  .s-head .left .eyebrow {
+    margin-bottom: 14px;
+    display: block;
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .right p {
+    color: var(--color-ink-500);
+    font-size: 18px;
+    max-width: 680px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 980px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 40px;
+    background: var(--color-indigo-600);
+  }
+
+  .card header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .card .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-400);
+  }
+  .card .tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+  }
+  .card p {
+    color: var(--color-ink-500);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .stat {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px dashed var(--color-ink-200);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: end;
+  }
+  .stat .v {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--color-ink-950);
+  }
+  .stat .k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    line-height: 1.4;
+  }
+  .stat .k small {
+    display: block;
+    font-family: var(--font-body);
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--color-ink-400);
+    font-size: 11.5px;
+    margin-top: 4px;
+  }
+</style>

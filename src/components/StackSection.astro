@@ -1,0 +1,115 @@
+---
+/*
+ * Homepage section that wraps the StackDiagram with editorial framing.
+ * Headline: "Where Assembly sits in your stack."
+ * Below: the StackDiagram component in compact variant.
+ */
+import StackDiagram from "./StackDiagram.astro";
+---
+
+<section class="stack-section" id="stack">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>The architecture</span>
+        <h2>Between your foundation<br/>and your apps. <em>That's the orchestration layer.</em></h2>
+      </div>
+      <div class="right">
+        <p>
+          Foundation models, your data warehouse, your systems of record, your identity provider &mdash; these you already have. Production-grade apps your operators actually use &mdash; these you need. <b>Assembly is the orchestration layer in between.</b> Durable workflows, vertical-tuned agents, atomic tools &mdash; with the enterprise infrastructure (identity, audit, HITL, hosting, SLA) every mission-critical app requires.
+        </p>
+      </div>
+    </div>
+
+    <div class="diag-wrap">
+      <StackDiagram variant="compact" />
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <span class="lg-num">03</span>
+        <span class="lg-k">What you ship</span>
+        <span class="lg-v">Apps your operators use. Forty-one running on Assembly today.</span>
+      </div>
+      <div class="legend-item assembly">
+        <span class="lg-num">02</span>
+        <span class="lg-k">Assembly orchestration</span>
+        <span class="lg-v">Workflows · Agents · Tools, on a runtime that ships identity, audit, HITL, hosting, and SLA by default.</span>
+      </div>
+      <div class="legend-item">
+        <span class="lg-num">01</span>
+        <span class="lg-k">What you already have</span>
+        <span class="lg-v">Models, data, identity, systems of record. We don't replace these &mdash; we orchestrate against them.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-section {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 17px; max-width: 680px; line-height: 1.55; }
+  .s-head .right p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .diag-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .legend {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 920px) { .legend { grid-template-columns: 1fr; } }
+
+  .legend-item {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .legend-item.assembly {
+    background: #fff;
+    border-color: var(--color-indigo-600);
+    border-left-width: 3px;
+  }
+  .lg-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-400);
+  }
+  .legend-item.assembly .lg-num { color: var(--color-indigo-600); }
+  .lg-k {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+  }
+  .lg-v {
+    color: var(--color-ink-500);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+</style>

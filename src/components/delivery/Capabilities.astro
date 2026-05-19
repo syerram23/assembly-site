@@ -1,0 +1,256 @@
+---
+/*
+ * Six capability primitives.
+ *
+ * The "lego block" cards from v1. The 3px indigo top border is the tell:
+ * everything we ship composes from these six primitives. Configuration
+ * changes per vertical; capabilities don't.
+ */
+
+const caps = [
+  {
+    code: "CV",
+    tag: "CAP-CONV",
+    name: "Conversational AI",
+    blurb:
+      "Handles voice, text, and screen interactions with humans. Powers HITL gates, reviewer notifications, clarifying questions, confirmations.",
+    examples:
+      "Reviewer panel · 4-channel notifications · clarifying questions to control owner · final attestation",
+  },
+  {
+    code: "SR",
+    tag: "CAP-SEARCH",
+    name: "Search · RAG / Deep Agentic",
+    blurb:
+      "Retrieves relevant content from large, unstructured corpora — documents, regulations, prior cases, source systems. Both keyword/semantic and multi-step agentic.",
+    examples:
+      "Regulatory lookup · prior-case retrieval · cross-system evidence search",
+  },
+  {
+    code: "BA",
+    tag: "CAP-BROWSE",
+    name: "Browser Automation",
+    blurb:
+      "Operates web applications the way a human would. Used when a partner system has no API but does have a portal.",
+    examples:
+      "Carrier dispute filing · portal-only system of record · partner extranet operations",
+  },
+  {
+    code: "AI",
+    tag: "CAP-API",
+    name: "API Integrations",
+    blurb:
+      "First-class integration to systems of record — Salesforce, Guidewire, Duck Creek, Workday, SAP, your data warehouse. Read, write, reconcile.",
+    examples:
+      "SFDC contact sync · SOR file open · DW reconciliation · webhook handlers",
+  },
+  {
+    code: "DG",
+    tag: "CAP-DOCGEN",
+    name: "Document & Report Generation",
+    blurb:
+      "Generates structured artifacts: reports, summaries, narratives, finding records, audit-trail entries, ticket descriptions, customer letters.",
+    examples:
+      "CMP report in customer audit format · finding records with rationale · remediation tickets",
+  },
+  {
+    code: "WF",
+    tag: "CAP-WORK",
+    name: "Workflows",
+    blurb:
+      "Long-running orchestration: durable state, retries, parallelism, human-in-the-loop gates, audit lineage. The fabric every other capability runs on.",
+    examples:
+      "Reg E quarterly run · FNOL state machine · multi-step recruiting follow-up",
+  },
+];
+---
+
+<section class="caps-sec" id="capabilities">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Six primitives, every engagement</span>
+        <h2>Capabilities, <em>not features.</em></h2>
+      </div>
+      <div class="right">
+        <p>Everything we ship composes from the same six primitives. They're the leverage that makes the second door possible: we don't rebuild from scratch for each customer &mdash; we compose. Configuration changes per vertical. The capabilities don't.</p>
+      </div>
+    </div>
+
+    <div class="caps">
+      {
+        caps.map((c) => (
+          <div class="cap">
+            <div class="ch">
+              <div class="ic">{c.code}</div>
+              <span class="tag">{c.tag}</span>
+            </div>
+            <h4>{c.name}</h4>
+            <p>{c.blurb}</p>
+            <div class="ex">
+              <b>Examples</b>
+              {c.examples}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="cap-note">
+      <div class="l">
+        The same six primitives ship every engagement.
+        <em>The configuration changes by vertical &mdash; the capabilities don't.</em>
+        That's why a three-person team can deliver in ninety days.
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .caps-sec {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head .left h2 { margin-top: 18px; }
+  .s-head .left h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .right p {
+    color: var(--color-ink-500);
+    font-size: 18px;
+    max-width: 680px;
+  }
+
+  .caps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 980px) {
+    .caps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .caps { grid-template-columns: 1fr; }
+  }
+
+  .cap {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    min-height: 240px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border-top: 3px solid var(--color-indigo-600);
+  }
+  .cap:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+  .cap .ch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cap .ic {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+  }
+  .cap .tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .cap h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+  }
+  .cap p {
+    color: var(--color-ink-500);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .cap .ex {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+  .cap .ex b {
+    color: var(--color-ink-700);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cap-note {
+    margin-top: 24px;
+    padding: 24px 32px;
+    background: var(--color-lavender-50);
+    border: 1px solid var(--color-lavender-200);
+    border-radius: var(--radius-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cap-note .l {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    max-width: 64ch;
+    line-height: 1.4;
+  }
+  .cap-note .l em {
+    font-style: normal;
+    color: var(--color-indigo-700);
+    font-weight: 600;
+  }
+</style>

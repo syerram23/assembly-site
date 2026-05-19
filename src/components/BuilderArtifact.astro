@@ -1,0 +1,643 @@
+---
+/*
+ * Hero artifact — a *real-feeling* product surface.
+ *
+ * All classes prefixed `.ba-` to guarantee no collision with anything
+ * else on the page and to bust any browser-cached old styles.
+ */
+---
+
+<div class="ba">
+  <!-- ─── CHROME ─── -->
+  <div class="ba-chrome">
+    <div class="ba-dots">
+      <span class="ba-d ba-r"></span>
+      <span class="ba-d ba-y"></span>
+      <span class="ba-d ba-g"></span>
+    </div>
+    <div class="ba-urlbar">
+      <span class="ba-lock" aria-hidden>
+        <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M4 5V4a2 2 0 1 1 4 0v1" stroke-linecap="round" />
+          <rect x="3" y="5" width="6" height="5" rx="1" />
+        </svg>
+      </span>
+      <span class="ba-url">
+        <span class="ba-url-dim">assembly.io</span><span class="ba-url-sep">/</span><span class="ba-url-dim">builder</span><span class="ba-url-sep">/</span><span class="ba-url-bold">hr-comp-band-bot</span>
+      </span>
+    </div>
+    <div class="ba-version">
+      <span class="ba-ver-tag">v0.14</span>
+      <span class="ba-ver-state">
+        <span class="ba-vs-dot"></span>
+        live
+      </span>
+    </div>
+  </div>
+
+  <!-- ─── TAB STRIP ─── -->
+  <div class="ba-tabs">
+    <span class="ba-tab ba-on">Build</span>
+    <span class="ba-tab">Logic</span>
+    <span class="ba-tab">Surfaces</span>
+    <span class="ba-tab">Logs</span>
+    <span class="ba-tab">Audit</span>
+    <span class="ba-tabs-spacer"></span>
+    <span class="ba-tab-meta">main &middot; <b>maria@</b></span>
+  </div>
+
+  <!-- ─── COLUMNS ─── -->
+  <div class="ba-cols">
+    <!-- SOURCES -->
+    <div class="ba-col">
+      <div class="ba-col-head">
+        <span class="ba-ch-lbl">Sources</span>
+        <span class="ba-ch-count">3</span>
+      </div>
+      <div class="ba-rows">
+        <div class="ba-src">
+          <span class="ba-ic">W</span>
+          <div class="ba-src-body">
+            <div class="ba-src-name">workday.employees</div>
+            <div class="ba-src-meta">
+              <code class="ba-src-id">src_W7n2</code>
+              <span class="ba-src-rows">8,402 rows</span>
+            </div>
+          </div>
+          <span class="ba-src-sync">12s</span>
+        </div>
+        <div class="ba-src">
+          <span class="ba-ic">G</span>
+          <div class="ba-src-body">
+            <div class="ba-src-name">greenhouse.offers</div>
+            <div class="ba-src-meta">
+              <code class="ba-src-id">src_G3kf</code>
+              <span class="ba-src-rows">1,247 rows</span>
+            </div>
+          </div>
+          <span class="ba-src-sync">4m</span>
+        </div>
+        <div class="ba-src">
+          <span class="ba-ic">L</span>
+          <div class="ba-src-body">
+            <div class="ba-src-name">lever.candidates</div>
+            <div class="ba-src-meta">
+              <code class="ba-src-id">src_L9pq</code>
+              <span class="ba-src-rows">11,083 rows</span>
+            </div>
+          </div>
+          <span class="ba-src-sync">9m</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIC -->
+    <div class="ba-col">
+      <div class="ba-col-head">
+        <span class="ba-ch-lbl">Logic</span>
+        <span class="ba-ch-count">2 nodes</span>
+      </div>
+      <div class="ba-rows">
+        <div class="ba-node">
+          <div class="ba-node-head">
+            <span class="ba-kind">transform</span>
+            <span class="ba-node-name">level_band_lookup</span>
+            <span class="ba-node-perf">38ms</span>
+          </div>
+          <div class="ba-io">
+            <span class="ba-chip">Employee</span>
+            <span class="ba-io-arr">→</span>
+            <span class="ba-chip">BandRange</span>
+          </div>
+        </div>
+        <div class="ba-node ba-policy">
+          <div class="ba-node-head">
+            <span class="ba-kind ba-kind-policy">policy</span>
+            <span class="ba-node-name">pii_redact</span>
+            <span class="ba-node-perf">2ms</span>
+          </div>
+          <div class="ba-io">
+            <span class="ba-chip">BandRange</span>
+            <span class="ba-io-arr">→</span>
+            <span class="ba-chip ba-chip-safe">Redacted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SURFACES -->
+    <div class="ba-col">
+      <div class="ba-col-head">
+        <span class="ba-ch-lbl">Surfaces</span>
+        <span class="ba-ch-count">3</span>
+      </div>
+      <div class="ba-rows">
+        <div class="ba-surf">
+          <div class="ba-surf-head">
+            <span class="ba-surf-ic">/</span>
+            <span class="ba-surf-name">slack</span>
+            <span class="ba-surf-endp">/comp</span>
+          </div>
+          <div class="ba-surf-stat">
+            <b>142</b> calls/d
+            <span class="ba-surf-sep">·</span>
+            p99 <b>89ms</b>
+          </div>
+        </div>
+        <div class="ba-surf">
+          <div class="ba-surf-head">
+            <span class="ba-surf-ic">▢</span>
+            <span class="ba-surf-name">web</span>
+            <span class="ba-surf-endp">/bands</span>
+          </div>
+          <div class="ba-surf-stat">
+            <b>38</b> sessions/d
+          </div>
+        </div>
+        <div class="ba-surf">
+          <div class="ba-surf-head">
+            <span class="ba-surf-ic ba-surf-ic-api">{ }</span>
+            <span class="ba-surf-name">REST</span>
+            <span class="ba-surf-endp">GET&nbsp;/v1/bands</span>
+          </div>
+          <div class="ba-surf-stat">
+            <b>1.2k</b> req/d
+            <span class="ba-surf-sep">·</span>
+            0 err
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── DEPLOY STRIP ─── -->
+  <div class="ba-deploy">
+    <div class="ba-dp-l">
+      <span class="ba-dp-k">deploy</span>
+      <code class="ba-dp-sha">a3f7c2e</code>
+      <span class="ba-dp-meta">2 days ago &middot; <b>maria@</b></span>
+    </div>
+    <div class="ba-dp-r">
+      <span class="ba-dp-stat"><span class="ba-dp-stat-k">rps</span><b>0.42</b></span>
+      <span class="ba-dp-stat"><span class="ba-dp-stat-k">p99</span><b>89ms</b></span>
+      <span class="ba-dp-stat"><span class="ba-dp-stat-k">err</span><b>0</b></span>
+      <span class="ba-dp-pill">audit&nbsp;✓</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ════════════════════════════════════════════════════════════
+     BUILDER ARTIFACT — prefixed `.ba-*` to avoid collisions
+     ════════════════════════════════════════════════════════════ */
+
+  .ba {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ─── Chrome bar ─── */
+  .ba-chrome {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    background: #e9ebf0;
+    border-bottom: 1px solid #d6d9e2;
+  }
+  .ba-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .ba-d {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+  }
+  .ba-r { background: #ff5f57; }
+  .ba-y { background: #febc2e; }
+  .ba-g { background: #28c840; }
+
+  .ba-urlbar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-self: center;
+    padding: 4px 14px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #d6d9e2;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .ba-lock {
+    color: var(--color-sage-fg);
+    display: inline-flex;
+  }
+  .ba-url {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--color-ink-700);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ba-url-dim { color: var(--color-ink-400); }
+  .ba-url-sep { color: var(--color-ink-300); margin: 0 5px; }
+  .ba-url-bold { color: var(--color-ink-950); font-weight: 600; }
+
+  .ba-version { display: inline-flex; align-items: center; gap: 8px; }
+  .ba-ver-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-ink-500);
+    background: #fff;
+    border: 1px solid #d6d9e2;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .ba-ver-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-sage-fg);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ba-vs-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+    animation: baLivePulse 2.4s ease-in-out infinite;
+  }
+  @keyframes baLivePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(47, 107, 64, 0.45); }
+    50%      { box-shadow: 0 0 0 4px rgba(47, 107, 64, 0); }
+  }
+
+  /* ─── Tab strip ─── */
+  .ba-tabs {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: #fafbfd;
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .ba-tab {
+    padding: 9px 12px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-ink-500);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .ba-tab.ba-on {
+    color: var(--color-ink-950);
+    border-bottom-color: var(--color-indigo-600);
+    font-weight: 600;
+  }
+  .ba-tabs-spacer { flex: 1; }
+  .ba-tab-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+  }
+  .ba-tab-meta b { color: var(--color-ink-950); font-weight: 600; }
+
+  /* ─── Columns ─── */
+  .ba-cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .ba-col {
+    padding: 14px 12px;
+    background: #fff;
+    border-right: 1px solid var(--color-ink-100);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+  .ba-col:last-child { border-right: 0; }
+
+  .ba-col-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .ba-ch-lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-950);
+  }
+  .ba-ch-count {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-400);
+    letter-spacing: 0.04em;
+  }
+
+  .ba-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* ─── Source rows ─── */
+  .ba-src {
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 7px 8px;
+    background: #fff;
+    border: 1px solid var(--color-ink-100);
+    border-radius: 6px;
+  }
+  .ba-ic {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 10.5px;
+  }
+  .ba-src-body { min-width: 0; }
+  .ba-src-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .ba-src-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-500);
+  }
+  .ba-src-id {
+    background: var(--color-ink-100);
+    color: var(--color-ink-700);
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-family: var(--font-mono);
+  }
+  .ba-src-sync {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-sage-fg);
+    font-weight: 600;
+  }
+
+  /* ─── Logic nodes ─── */
+  .ba-node {
+    border: 1px solid var(--color-ink-200);
+    border-radius: 6px;
+    background: #fff;
+    padding: 8px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .ba-policy {
+    background: rgba(252, 230, 194, 0.16);
+    border-color: rgba(122, 81, 26, 0.22);
+  }
+  .ba-node-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 6px;
+  }
+  .ba-kind {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+  .ba-kind-policy {
+    color: var(--color-amber-fg);
+    background: var(--color-amber-bg);
+  }
+  .ba-node-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ba-node-perf {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-500);
+  }
+  .ba-io {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .ba-chip {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--color-ink-50);
+    color: var(--color-ink-700);
+    border: 1px solid var(--color-ink-200);
+  }
+  .ba-chip-safe {
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+    border-color: transparent;
+  }
+  .ba-io-arr {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-400);
+  }
+
+  /* ─── Surface rows ─── */
+  .ba-surf {
+    border: 1px solid var(--color-ink-200);
+    border-radius: 6px;
+    background: #fff;
+    padding: 8px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ba-surf-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .ba-surf-ic {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: var(--color-ink-950);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .ba-surf-ic-api { font-size: 8.5px; letter-spacing: -0.05em; }
+  .ba-surf-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+  }
+  .ba-surf-endp {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-500);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ba-surf-stat {
+    padding-top: 6px;
+    border-top: 1px dashed var(--color-ink-100);
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-500);
+  }
+  .ba-surf-stat b { color: var(--color-ink-950); font-weight: 600; }
+  .ba-surf-sep { color: var(--color-ink-300); margin: 0 4px; }
+
+  /* ─── Deploy strip ─── */
+  .ba-deploy {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.72);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    flex-wrap: wrap;
+  }
+  .ba-dp-l {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  .ba-dp-k {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+  }
+  .ba-dp-sha {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+  }
+  .ba-dp-meta { color: rgba(255, 255, 255, 0.6); }
+  .ba-dp-meta b { color: #fff; font-weight: 600; }
+
+  .ba-dp-r {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ba-dp-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  .ba-dp-stat-k {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ba-dp-stat b {
+    color: #fff;
+    font-weight: 600;
+  }
+  .ba-dp-pill {
+    padding: 3px 8px;
+    background: rgba(155, 212, 169, 0.16);
+    color: #9bd4a9;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 720px) {
+    .ba-cols { grid-template-columns: 1fr; }
+    .ba-col {
+      border-right: 0;
+      border-bottom: 1px solid var(--color-ink-100);
+    }
+    .ba-col:last-child { border-bottom: 0; }
+    .ba-deploy {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .ba-tabs { padding: 0 10px; overflow-x: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ba-vs-dot { animation: none; }
+  }
+</style>

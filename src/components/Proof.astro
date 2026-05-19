@@ -1,0 +1,367 @@
+---
+const cases = [
+  {
+    spine: "comp-band-bot",
+    vertical: "Regional bank · ~$28B AUM",
+    stack: ["workday", "greenhouse", "slack"],
+    outcome: "Turned a multi-day compliance reporting process into something a non-technical compliance lead now runs in twelve minutes.",
+    metric: { v: "12 min", k: "vs. 3 days · same posture, same lineage" },
+    cutover: "Day 9",
+    delta: "+$420k/yr in analyst hours recovered",
+    quote: "We replaced the workflow nobody wanted to own with an app the team actually maintains. The thing has never broken in production.",
+    who: "VP, Compliance Engineering",
+  },
+  {
+    spine: "post-placement-followup",
+    vertical: "National staffing firm · ~10k placements/yr",
+    stack: ["bullhorn", "twilio", "openai"],
+    outcome: "Gave a talent operations team a way to build their own follow-up tooling on their own candidate data &mdash; safely, with PII redaction enforced by policy.",
+    metric: { v: "+5%", k: "redeployment rate vs. baseline" },
+    cutover: "Day 14",
+    delta: "+$2.0M/yr gross profit · $4k margin / redeploy",
+    quote: "Our recruiters used to run check-ins by hand for the first week, then drop them. Now the app runs them and the team only steps in when it matters.",
+    who: "Director, Talent Operations",
+  },
+  {
+    spine: "vendor-onboarding-v3",
+    vertical: "Enterprise procurement · Fortune 200",
+    stack: ["ariba", "snowflake", "docusign"],
+    outcome: "Replaced a stalled, manual vendor onboarding workflow with an app the procurement team built, owns, and improved twice in the first month.",
+    metric: { v: "8 days → 2 hrs", k: "median cycle time, ~600 vendors / yr" },
+    cutover: "Day 11",
+    delta: "1,800+ analyst hours / yr returned to category management",
+    quote: "The team that uses it built it. That's the part our IT council needed to see to say yes.",
+    who: "Sr. Director, Indirect Procurement",
+  },
+];
+---
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Proof</span>
+        <h2>Teams already building on <em>Assembly</em>.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Three apps, three industries, three teams that didn't have a sanctioned way to build before. Each shipped on real data, with audit on from day one, by a team that now owns the thing.
+        </p>
+        <p class="aside-note">
+          <span class="aside-tag">A note on the names</span>
+          Customer names are anonymized while contracts settle. Outcomes, metrics, and stack details are real and verifiable in reference.
+        </p>
+      </div>
+    </div>
+
+    <div class="cases">
+      {
+        cases.map(({ spine, vertical, stack, outcome, metric, cutover, delta, quote, who }, i) => (
+          <article class="case lift">
+            <header class="case-head">
+              <span class="idx">CASE {String(i + 1).padStart(2, "0")}</span>
+              <span class="state-dot"></span>
+              <span class="state-lbl">live</span>
+            </header>
+
+            <div class="spine">
+              <div class="spine-frame">
+                <div class="spine-row spine-r1">
+                  <span class="block s1"></span>
+                  <span class="block s2"></span>
+                  <span class="block s3"></span>
+                </div>
+                <div class="spine-row spine-r2">
+                  <span class="block s4"></span>
+                  <span class="block s5"></span>
+                  <span class="block s6"></span>
+                  <span class="block s7"></span>
+                </div>
+                <div class="spine-row spine-r3">
+                  <span class="block s8"></span>
+                  <span class="block s9"></span>
+                </div>
+                <div class="spine-label">{spine}</div>
+              </div>
+              <div class="stack">
+                {stack.map((s) => (
+                  <span class="stack-pill">{s}</span>
+                ))}
+              </div>
+            </div>
+
+            <div class="vert">
+              <span class="vert-tag">Vertical</span>
+              <span>{vertical}</span>
+            </div>
+
+            <p class="outcome">{outcome}</p>
+
+            <div class="metric">
+              <span class="metric-v">{metric.v}</span>
+              <span class="metric-k">{metric.k}</span>
+            </div>
+
+            <div class="quote">
+              <p>&ldquo;{quote}&rdquo;</p>
+              <div class="who">&mdash; {who}</div>
+            </div>
+
+            <footer class="case-foot">
+              <span class="foot-k"><b>Cutover</b> {cutover}</span>
+              <span class="foot-k"><b>Delta</b> {delta}</span>
+            </footer>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+  .aside-note {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px dashed var(--color-ink-300);
+    border-radius: var(--radius-md);
+    font-size: 13.5px !important;
+    color: var(--color-ink-500) !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .aside-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background: var(--color-ink-100);
+    color: var(--color-ink-700);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .cases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 1100px) { .cases { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 720px) { .cases { grid-template-columns: 1fr; } }
+
+  .case {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .case-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .idx {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    margin-right: auto;
+  }
+  .state-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+    box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.15);
+  }
+  .state-lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-sage-fg);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── Spine artifact (Stripe-Press-style "named object") ───────── */
+  .spine {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    background:
+      linear-gradient(180deg, #fcfcfd 0%, var(--color-ink-50) 100%);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .spine-frame {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+  .spine-row {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .block {
+    height: 8px;
+    border-radius: 2px;
+    background: var(--color-indigo-100);
+  }
+  .spine-r1 .s1 { width: 30%; background: var(--color-indigo-600); }
+  .spine-r1 .s2 { width: 20%; }
+  .spine-r1 .s3 { width: 18%; }
+  .spine-r2 .s4 { width: 18%; background: var(--color-indigo-500); opacity: 0.6; }
+  .spine-r2 .s5 { width: 14%; }
+  .spine-r2 .s6 { width: 26%; background: var(--color-indigo-600); }
+  .spine-r2 .s7 { width: 14%; }
+  .spine-r3 .s8 { width: 22%; }
+  .spine-r3 .s9 { width: 36%; background: var(--color-indigo-500); opacity: 0.5; }
+  .spine-label {
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    letter-spacing: -0.005em;
+    border-top: 1px dashed var(--color-ink-200);
+    padding-top: 8px;
+  }
+  .stack {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .stack-pill {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-700);
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-200);
+    padding: 2px 7px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+
+  .vert {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 13px;
+    color: var(--color-ink-700);
+    line-height: 1.4;
+  }
+  .vert-tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-400);
+  }
+
+  .outcome {
+    color: var(--color-ink-950);
+    font-size: 15px;
+    line-height: 1.55;
+    font-family: var(--font-body);
+  }
+
+  .metric {
+    padding: 14px 16px;
+    background: var(--color-ink-950);
+    color: #fff;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .metric-v {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1;
+  }
+  .metric-k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
+  }
+
+  .quote {
+    padding: 14px 0 0;
+    border-top: 1px dashed var(--color-ink-200);
+  }
+  .quote p {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 14.5px;
+    color: var(--color-ink-700);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .quote .who {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-500);
+  }
+
+  .case-foot {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-ink-100);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+  }
+  .foot-k b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 9.5px;
+    margin-right: 6px;
+  }
+</style>

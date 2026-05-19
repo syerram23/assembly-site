@@ -1,0 +1,477 @@
+---
+/*
+ * Studio · the 60-minute engagement
+ *
+ * The opening section of the delivery page. Sets up the second-door pitch:
+ * if you want us to build it for you, the engagement starts with a 60-minute
+ * conversation with Studio that ends in a signable SOW.
+ *
+ * Faux chat artifact on the right — not an interactive thing. Just a
+ * windowed surface with two messages, a typing input, and a few
+ * metadata chips embedded in the Studio reply.
+ */
+---
+
+<section class="studio" id="studio">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Studio &middot; the engagement</span>
+        <h2>Sixty minutes <em>is</em> the scoping process.</h2>
+      </div>
+      <div class="right">
+        <p>If you'd rather we build it for you, the engagement starts with one conversation. Studio &mdash; the AI partner that runs every Assembly engagement &mdash; replaces the discovery phase, the deck, and the qualification call with a single hour that ends in a signable SOW.</p>
+      </div>
+    </div>
+
+    <div class="studio-grid">
+      <div class="studio-copy">
+        <h3>From your first sentence, to a signable SOW.</h3>
+        <p class="lede">Describe the operational headache you'd hire help for &mdash; in plain language. Studio drafts the pitch, the demo, the PRD, and the contract. You decide whether to sign before the meeting ends.</p>
+
+        <div class="pts">
+          <div class="pt">
+            <div class="ic">01</div>
+            <div>
+              <b>Studio scopes</b>
+              <p>Plain-language input becomes a PRD with an explicit AI / human work split. No questionnaire. No 40-page SOW template.</p>
+            </div>
+          </div>
+          <div class="pt">
+            <div class="ic">02</div>
+            <div>
+              <b>Studio demos</b>
+              <p>A working preview of the proposed application, on your own data shape, before you've signed anything. So you know what you're buying.</p>
+            </div>
+          </div>
+          <div class="pt">
+            <div class="ic">03</div>
+            <div>
+              <b>Studio prices</b>
+              <p>Usage-based contract priced on the unit of work the application will do &mdash; per conversation, per workflow, per document. Signable in the same hour.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card lift">
+          <div class="h"><span>The old way</span><span>With Studio</span></div>
+          <div class="r"><span>RFI, RFP, vendor selection</span><span>One conversation</span></div>
+          <div class="r"><span>Discovery phase &mdash; 4 to 8 weeks</span><span>~60 minutes</span></div>
+          <div class="r"><span>Statement of qualification</span><span>Live demo on your data</span></div>
+          <div class="r"><span>T&amp;M staff-aug pricing</span><span>Usage-based on shipped work</span></div>
+          <div class="r"><span>Project plan in slideware</span><span>Working app, ~90 days</span></div>
+        </div>
+      </div>
+
+      <div class="studio-art-wrap">
+        <div class="art-tag">
+          <span class="art-tag-dot"></span>
+          Faux chat &middot; for illustration
+        </div>
+        <div class="studio-art lift">
+          <div class="bar">
+            <div class="l">
+              <span class="pill">STUDIO</span>
+              <span class="name">First conversation &middot; live</span>
+            </div>
+            <span class="status">&#9679; connected</span>
+          </div>
+          <div class="convo">
+            <div class="msg you">
+              <span class="who">You</span>
+              <div class="bubble">We place ~10,000 contractors a year. We never get to the post-placement check-ins; recruiters move on to the next req. What could AI actually do here?</div>
+            </div>
+            <div class="msg them">
+              <span class="who">Studio</span>
+              <div class="bubble">
+                <em>Drafting your engagement &middot; 11s</em>
+                Looks like a fit for conversational follow-up at scale &mdash; week-1, monthly engagement, end-of-assignment redeployment. Here's what we'd ship in ninety days, what your team owns afterwards, and what it costs.
+                <div class="gen">
+                  <div class="g"><span class="k">Time to live</span><span class="v">~90 days</span></div>
+                  <div class="g"><span class="k">Sign SOW in</span><span class="v">~60 min</span></div>
+                  <div class="g"><span class="k">Est. value</span><span class="v">$2M / yr</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="typing"><i></i><i></i><i></i></span>
+            <span class="input">Ask Studio to draft the SOW&hellip;</span>
+            <span class="send">Send &#x21B5;</span>
+          </div>
+        </div>
+        <div class="art-caption">
+          <span>Real Studio sessions run on voice &middot; chat is for the page</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .studio {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head .left h2 { margin-top: 18px; }
+  .s-head .left h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .right p {
+    color: var(--color-ink-500);
+    font-size: 18px;
+    max-width: 680px;
+  }
+
+  /* ── Studio grid ─────────────────────────────────────────────── */
+  .studio-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 1000px) {
+    .studio-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .studio-copy h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    letter-spacing: -0.022em;
+  }
+  .studio-copy .lede {
+    color: var(--color-ink-500);
+    font-size: 16px;
+    max-width: 52ch;
+  }
+
+  .pts {
+    margin-top: 24px;
+    display: grid;
+    gap: 18px;
+  }
+  .pt {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed var(--color-ink-200);
+  }
+  .pt:last-child { border-bottom: 0; }
+  .pt .ic {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .pt b {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+  }
+  .pt p {
+    color: var(--color-ink-500);
+    font-size: 14.5px;
+  }
+
+  /* ── Old way vs Studio table ─────────────────────────────────── */
+  .vs-card {
+    margin-top: 28px;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #fff;
+  }
+  .vs-card .h {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--color-ink-50);
+    border-bottom: 1px solid var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vs-card .h > span {
+    padding: 12px 16px;
+    color: var(--color-ink-500);
+  }
+  .vs-card .h > span:last-child {
+    color: var(--color-indigo-700);
+    border-left: 1px solid var(--color-ink-200);
+  }
+  .vs-card .r {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .vs-card .r:last-child { border-bottom: 0; }
+  .vs-card .r > span {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--color-ink-500);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-ink-300);
+  }
+  .vs-card .r > span:last-child {
+    color: var(--color-ink-950);
+    border-left: 1px solid var(--color-ink-100);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .vs-card .r > span:last-child::before {
+    content: "› ";
+    color: var(--color-indigo-600);
+    font-weight: 600;
+  }
+
+  /* ── Studio art frame ────────────────────────────────────────── */
+  .studio-art-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 96px;
+  }
+  @media (max-width: 1000px) {
+    .studio-art-wrap { position: static; }
+  }
+
+  .art-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .art-tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+    box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.15);
+  }
+  .art-caption {
+    padding: 10px 14px;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    background: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Studio chat artifact ────────────────────────────────────── */
+  .studio-art {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+  .studio-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .studio-art .bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-ink-100);
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    justify-content: space-between;
+  }
+  .studio-art .bar .l {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .studio-art .bar .pill {
+    padding: 4px 9px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .studio-art .bar .name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: -0.005em;
+  }
+  .studio-art .bar .status {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-sage-fg);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .studio-art .convo {
+    padding: 20px;
+    display: grid;
+    gap: 14px;
+  }
+  .msg {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 14px;
+  }
+  .msg .who {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 6px;
+  }
+  .msg.them .who { color: var(--color-indigo-600); }
+  .msg.you .bubble {
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-100);
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 14.5px;
+    color: var(--color-ink-950);
+  }
+  .msg.them .bubble {
+    background: #fff;
+    border: 1px solid var(--color-indigo-100);
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 14.5px;
+    color: var(--color-ink-950);
+  }
+  .msg.them .bubble em {
+    display: block;
+    color: var(--color-indigo-700);
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .msg .gen {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .msg .gen .g {
+    padding: 10px;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #fff;
+  }
+  .msg .gen .g .k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .msg .gen .g .v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+  }
+
+  .studio-art .foot {
+    padding: 14px 18px;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .studio-art .foot .typing {
+    display: flex;
+    gap: 4px;
+  }
+  .studio-art .foot .typing i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--color-indigo-600);
+    border-radius: 50%;
+    animation: blink 1.2s ease-in-out infinite;
+  }
+  .studio-art .foot .typing i:nth-child(2) { animation-delay: 0.15s; }
+  .studio-art .foot .typing i:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes blink {
+    0%, 80%, 100% { opacity: 0.3; }
+    40% { opacity: 1; }
+  }
+  .studio-art .foot .input {
+    flex: 1;
+    margin: 0 12px;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-ink-400);
+  }
+  .studio-art .foot .send {
+    padding: 8px 12px;
+    background: var(--color-ink-950);
+    color: #fff;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .studio-art .foot .typing i { animation: none; }
+  }
+</style>

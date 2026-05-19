@@ -1,0 +1,120 @@
+---
+/*
+ * Editorial · "What the work looks like" — long-form prose section,
+ * Anthropic-Applied-AI style. Sits between Studio and ThreePersonTeam.
+ *
+ * Single-column, generous leading, light cream background to distinguish
+ * from the surrounding sections.
+ */
+---
+
+<section class="es">
+  <div class="wrap">
+    <div class="es-inner">
+      <header class="es-head">
+        <span class="es-eyebrow">What the work looks like</span>
+        <h2>A small team. Deep customer access. Production-grade outcomes.</h2>
+      </header>
+
+      <div class="es-body">
+        <p>
+          A typical Assembly engagement starts with a three-person team working closely with the customer to understand where AI can have the biggest impact. From there, our forward-deployed engineer &mdash; alongside the customer's operators and IT staff &mdash; develops the orchestrated application, tailored to the specific shape of that operation. The output is software, not strategy: a production app running on the customer's data, in the customer's environment, with audit lineage and human-in-the-loop gates wired in by default.
+        </p>
+
+        <p>
+          Consider a regional bank running a quarterly Reg E compliance program. The compliance team spends days each cycle sampling claims, evaluating controls against the CFPB rule pack, dispositioning findings, and assembling the CMP report &mdash; most of it on spreadsheets that no one has version-controlled. An Assembly engagement begins with our FDE sitting down with the compliance lead and the IT team to build the workflow around how the team already does the work &mdash; not around a vendor's PRD. The compliance lead knows where the time disappears and what an examiner will actually ask for. Our team builds around that knowledge, so the audit lineage is honest and the compliance team spends its hours on the judgment calls, not the sampling math.
+        </p>
+
+        <p>
+          Engagements like this run across mid-sized enterprises in banking, staffing, insurance operations, logistics, procurement, and HR &mdash; each shaped by the people closest to the work. The pattern repeats: <b>operator describes the headache, FDE composes the application from the orchestration platform, customer's team owns it after handoff.</b> Three months in, the customer is running production AI software that an auditor would sign off on. Six months in, their own engineers are extending it. <b>That's the deliverable.</b>
+        </p>
+      </div>
+
+      <div class="es-foot">
+        <div class="ef-stat">
+          <span class="efv">3</span>
+          <span class="efk">people · the team</span>
+        </div>
+        <div class="ef-stat">
+          <span class="efv">~90 days</span>
+          <span class="efk">to production</span>
+        </div>
+        <div class="ef-stat">
+          <span class="efv">100%</span>
+          <span class="efk">audit lineage from day one</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .es {
+    padding: 96px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fbfaf6;
+  }
+  .es-inner {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .es-head {
+    margin-bottom: 28px;
+  }
+  .es-eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    margin-bottom: 14px;
+  }
+  .es-head h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(26px, 2.8vw, 34px);
+    letter-spacing: -0.018em;
+    line-height: 1.2;
+    color: var(--color-ink-950);
+  }
+
+  .es-body p {
+    margin-top: 22px;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-ink-700);
+  }
+  .es-body p:first-child { margin-top: 0; }
+  .es-body p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .es-foot {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-ink-200);
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .ef-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .efv {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.022em;
+    color: var(--color-ink-950);
+    line-height: 1;
+  }
+  .efk {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>

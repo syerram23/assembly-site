@@ -1,0 +1,636 @@
+---
+/*
+ * Illustration 3 — IT services with AI delivery, the future operating model.
+ *
+ * Three visual moments stacked:
+ *   A. Team composition · old (15-person SI) vs new (3-person AI-native + platform)
+ *   B. The 90/10 split · AI-generated vs expert-human
+ *   C. Compounding curve · cost per project drops as platform leverage accumulates
+ */
+---
+
+<section class="df" id="delivery-future">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 05 &middot; The future operating model</span>
+      <h2>Three-person teams.<br/><em>90% AI-generated</em>. Platform leverage that compounds.</h2>
+      <p class="lede">
+        The operating model an SI walks into on day one of the acquisition. Smaller delivery teams, higher AI-generation ratio, and a cost curve that bends down on every engagement &mdash; not up.
+      </p>
+    </div>
+
+    <!-- A. Team composition · old vs new -->
+    <div class="moment">
+      <div class="m-head">
+        <span class="m-tag">A</span>
+        <h3>Team composition &mdash; per 90-day engagement</h3>
+      </div>
+
+      <div class="teams">
+        <article class="team team-old">
+          <header>
+            <span class="team-tag">Body-shop SI</span>
+            <span class="team-count">15 people</span>
+          </header>
+          <div class="team-grid">
+            <div class="tg-row"><span class="tg-k">PM</span><span class="dots-old"><span></span></span></div>
+            <div class="tg-row"><span class="tg-k">Architects</span><span class="dots-old"><span></span><span></span></span></div>
+            <div class="tg-row"><span class="tg-k">Engineers</span><span class="dots-old"><span></span><span></span><span></span><span></span><span></span><span></span></span></div>
+            <div class="tg-row"><span class="tg-k">QA</span><span class="dots-old"><span></span><span></span></span></div>
+            <div class="tg-row"><span class="tg-k">DevOps</span><span class="dots-old"><span></span><span></span></span></div>
+            <div class="tg-row"><span class="tg-k">Security</span><span class="dots-old"><span></span></span></div>
+            <div class="tg-row"><span class="tg-k">Compliance</span><span class="dots-old"><span></span></span></div>
+          </div>
+          <footer>
+            <div class="t-stat">
+              <span class="ts-v">~70%</span>
+              <span class="ts-k">of effort rebuilding plumbing per engagement</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="team team-new">
+          <header>
+            <span class="team-tag on">AI-native (Assembly)</span>
+            <span class="team-count on">3 people</span>
+          </header>
+          <div class="team-grid">
+            <div class="tg-row on">
+              <span class="tg-k on">FDE</span>
+              <span class="dots-new"><span class="fde">1</span></span>
+              <span class="tg-meta">scopes · composes · ships</span>
+            </div>
+            <div class="tg-row on">
+              <span class="tg-k on">QA</span>
+              <span class="dots-new"><span class="qa">1</span></span>
+              <span class="tg-meta">framework conformance · audits</span>
+            </div>
+            <div class="tg-row on">
+              <span class="tg-k on">TPM</span>
+              <span class="dots-new"><span class="tpm">1</span></span>
+              <span class="tg-meta">customer surface · change requests</span>
+            </div>
+          </div>
+          <div class="platform-bar">
+            <div class="pb-label">
+              <span class="pb-tag">Platform substrate</span>
+              <span>handles the other 70% of effort, every time</span>
+            </div>
+            <div class="pb-list">
+              <span>identity</span><span>audit</span><span>HITL</span><span>hosting</span><span>obs.</span><span>connectors</span><span>docgen</span><span>comms</span><span>search</span>
+            </div>
+          </div>
+          <footer>
+            <div class="t-stat on">
+              <span class="ts-v on">~5×</span>
+              <span class="ts-k on">throughput per engineer vs body-shop baseline</span>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </div>
+
+    <!-- B. The 90/10 split -->
+    <div class="moment">
+      <div class="m-head">
+        <span class="m-tag">B</span>
+        <h3>The 90/10 split &mdash; AI vs expert human</h3>
+      </div>
+
+      <div class="split-card">
+        <div class="split-bar">
+          <div class="sb-ai">
+            <span class="sb-pct">90%</span>
+            <span class="sb-lbl">AI-generated against framework</span>
+          </div>
+          <div class="sb-hu">
+            <span class="sb-pct">10%</span>
+            <span class="sb-lbl">Expert human · the edges</span>
+          </div>
+        </div>
+        <ul class="split-where">
+          <li><span class="sw-k">AI handles</span><span class="sw-v">workflow scaffolding · connector wiring · UI components · documentation · daily status · ticket grooming · routine PRs</span></li>
+          <li><span class="sw-k">Humans handle</span><span class="sw-v">data migrations · gnarly integrations · compliance edge cases · architecture decisions · the call when the model is wrong</span></li>
+        </ul>
+        <p class="split-note">
+          The split is the moat. AI generates against a <b>constrained framework</b> Assembly built over two years before shipping to a customer &mdash; not free-text codegen. The 10% is what makes the 90% trustworthy.
+        </p>
+      </div>
+    </div>
+
+    <!-- C. Compounding curve -->
+    <div class="moment">
+      <div class="m-head">
+        <span class="m-tag">C</span>
+        <h3>Cost per engagement &mdash; over time</h3>
+      </div>
+
+      <div class="curve-card">
+        <div class="curve-chart">
+          <!-- Axis -->
+          <div class="axis-y">
+            <span>Cost / engagement</span>
+          </div>
+
+          <!-- Body-shop line: flat, high -->
+          <div class="line line-old">
+            <span class="dot-old" style="left: 0%"></span>
+            <span class="dot-old" style="left: 16%"></span>
+            <span class="dot-old" style="left: 32%"></span>
+            <span class="dot-old" style="left: 48%"></span>
+            <span class="dot-old" style="left: 64%"></span>
+            <span class="dot-old" style="left: 80%"></span>
+            <span class="dot-old" style="left: 96%"></span>
+            <span class="line-label old">Body-shop SI &mdash; cost is flat (every engagement starts at zero)</span>
+          </div>
+
+          <!-- Platform-leverage line: descending -->
+          <svg class="curve-svg" viewBox="0 0 100 60" preserveAspectRatio="none">
+            <path d="M 0 10 Q 25 30, 50 40 T 100 52" fill="none" stroke="var(--color-indigo-600)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="line-label new">Platform leverage &mdash; cost drops as the substrate amortizes</div>
+
+          <div class="axis-x">
+            <span>P1</span><span>P2</span><span>P3</span><span>P4</span><span>P5</span><span>P6</span><span>P7</span>
+            <span class="axis-x-label">→ engagements over time</span>
+          </div>
+        </div>
+
+        <div class="curve-takeaways">
+          <div class="ct">
+            <span class="ct-v">P1</span>
+            <span class="ct-k">First engagement: parity with body-shop cost</span>
+          </div>
+          <div class="ct">
+            <span class="ct-v">P3</span>
+            <span class="ct-k">Platform already replays sources, agents, connectors</span>
+          </div>
+          <div class="ct">
+            <span class="ct-v">P7+</span>
+            <span class="ct-k"><b>Marginal cost per engagement approaches zero</b></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .df {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head { max-width: 880px; margin-bottom: 56px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 760px;
+  }
+
+  .moment {
+    margin-bottom: 48px;
+  }
+  .moment:last-child { margin-bottom: 0; }
+
+  .m-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .m-tag {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-ink-950);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+  }
+  .m-head h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.018em;
+    color: var(--color-ink-950);
+  }
+
+  /* ── A · Team composition ──────────────────────────────── */
+  .teams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 980px) { .teams { grid-template-columns: 1fr; } }
+
+  .team {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-new {
+    border-color: var(--color-indigo-600);
+    box-shadow: 0 1px 0 rgba(15,17,42,.04), 0 16px 40px -24px rgba(79, 70, 229, 0.32);
+  }
+  .team header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--color-ink-50);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .team-new header {
+    background: var(--color-indigo-50);
+    border-bottom-color: var(--color-indigo-100);
+  }
+  .team-tag {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-ink-950);
+  }
+  .team-tag.on { color: var(--color-indigo-700); }
+  .team-count {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-ink-700);
+    background: var(--color-ink-100);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .team-count.on {
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+  }
+
+  .team-grid {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tg-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--color-ink-100);
+  }
+  .tg-row:last-child { border-bottom: 0; }
+  .tg-row.on { grid-template-columns: 60px auto 1fr; }
+  .tg-k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .tg-k.on { color: var(--color-indigo-700); }
+  .tg-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+  }
+
+  .dots-old {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .dots-old span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-ink-300);
+    border: 1px solid var(--color-ink-400);
+  }
+  .dots-new {
+    display: flex;
+    gap: 4px;
+  }
+  .dots-new span {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-indigo-600);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .platform-bar {
+    margin: 4px 20px 12px;
+    padding: 12px 14px;
+    background: var(--color-ink-950);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .pb-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    margin-bottom: 8px;
+  }
+  .pb-tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 7px;
+    border-radius: 4px;
+  }
+  .pb-list {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .pb-list span {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+
+  .team footer {
+    padding: 14px 20px;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+  .team-new footer { background: #fff; }
+  .t-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .ts-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-700);
+  }
+  .ts-v.on { color: var(--color-indigo-700); }
+  .ts-k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+  }
+  .ts-k.on { color: var(--color-ink-700); }
+
+  /* ── B · 90/10 split ───────────────────────────────────── */
+  .split-card {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+  }
+  .split-bar {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    gap: 4px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .sb-ai,
+  .sb-hu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 12px;
+  }
+  .sb-ai {
+    background: var(--color-indigo-600);
+    color: #fff;
+  }
+  .sb-hu {
+    background: var(--color-ink-950);
+    color: #fff;
+  }
+  .sb-pct {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.018em;
+    line-height: 1;
+  }
+  .sb-lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    text-align: center;
+  }
+
+  .split-where {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 720px) { .split-where { grid-template-columns: 1fr; } }
+  .split-where li {
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-100);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .sw-k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+  }
+  .sw-v {
+    font-size: 13px;
+    color: var(--color-ink-700);
+    line-height: 1.5;
+  }
+  .split-note {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--color-ink-200);
+    font-size: 14px;
+    color: var(--color-ink-500);
+    line-height: 1.55;
+  }
+  .split-note b { color: var(--color-ink-950); font-weight: 600; }
+
+  /* ── C · Compounding curve ─────────────────────────────── */
+  .curve-card {
+    background: var(--color-ink-950);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 32px 32px 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .curve-chart {
+    position: relative;
+    height: 220px;
+    padding: 14px 0 28px 60px;
+  }
+  .axis-y {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 28px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .line {
+    position: absolute;
+    left: 60px;
+    right: 0;
+    height: 2px;
+  }
+  .line-old {
+    top: 30px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .dot-old {
+    position: absolute;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translateX(-50%);
+  }
+  .line-label {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+  .line-label.old {
+    top: -22px;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .line-label.new {
+    bottom: 8px;
+    right: 0;
+    color: var(--color-indigo-500);
+    font-weight: 600;
+  }
+  .curve-svg {
+    position: absolute;
+    left: 60px;
+    right: 0;
+    top: 18px;
+    height: 160px;
+    width: calc(100% - 60px);
+  }
+  .axis-x {
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .axis-x-label {
+    position: absolute;
+    right: 0;
+    bottom: -18px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .curve-takeaways {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  @media (max-width: 720px) { .curve-takeaways { grid-template-columns: 1fr; } }
+  .ct {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ct-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.022em;
+    color: #fff;
+    line-height: 1;
+  }
+  .ct-k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+  .ct-k b { color: #fff; font-weight: 600; }
+</style>

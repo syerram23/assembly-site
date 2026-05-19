@@ -1,0 +1,295 @@
+---
+---
+
+<section class="two-doors" id="doors">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Two ways to work with us</span>
+        <h2>
+          Two doors. <em>Same orchestration platform.</em>
+        </h2>
+      </div>
+      <div class="right">
+        <p>
+          Whether your team wants to build on Assembly, or wants Assembly to build for you &mdash; both doors land on the same orchestration substrate. The choice is about how much your team wants to ship themselves.
+        </p>
+      </div>
+    </div>
+
+    <div class="doors">
+      <!-- Door A · featured: platform -->
+      <article class="door door-a lift">
+        <div class="door-tag">
+          <span class="dot"></span>
+          Most teams start here
+        </div>
+        <div class="door-head">
+          <span class="lbl">Platform &middot; the first door</span>
+          <h3>Build on the orchestration platform.<br/><em>Your team ships.</em></h3>
+        </div>
+        <ul class="bullets">
+          <li>
+            <span class="bn">01</span>
+            <span>We stand up the orchestration substrate &mdash; sources, workflows runtime, agents library, identity, audit &mdash; in your environment.</span>
+          </li>
+          <li>
+            <span class="bn">02</span>
+            <span>Your team composes apps from pre-built agents and tools, on real data, with no scaffolding to wire up.</span>
+          </li>
+          <li>
+            <span class="bn">03</span>
+            <span>We keep the platform current, supported, and SLA-backed as you grow.</span>
+          </li>
+        </ul>
+        <div class="footnote">
+          <span class="kpi-row">
+            <span><b>~10 days</b> to first orchestrated app</span>
+            <span><b>Single-tenant</b> deploy in your VPC</span>
+            <span><b>Per-app</b> usage pricing</span>
+          </span>
+        </div>
+        <a href="/platform" class="btn btn-primary door-cta">
+          Explore the platform <span class="arr">→</span>
+        </a>
+      </article>
+
+      <!-- Door B · services -->
+      <article class="door door-b lift">
+        <div class="door-tag b">
+          <span class="dot"></span>
+          For teams who'd rather we build it
+        </div>
+        <div class="door-head">
+          <span class="lbl">Delivery &middot; the second door</span>
+          <h3>We build on the platform <em>for you</em>.</h3>
+        </div>
+        <ul class="bullets">
+          <li>
+            <span class="bn">01</span>
+            <span>Studio scopes the use case in sixty minutes &mdash; PRD, live demo, signable SOW.</span>
+          </li>
+          <li>
+            <span class="bn">02</span>
+            <span>A three-person AI-native team (FDE · QA · TPM) ships the app on Temporal + open-source Claude in about ninety days.</span>
+          </li>
+          <li>
+            <span class="bn">03</span>
+            <span>Delivered on the same orchestration platform &mdash; your team takes over, or we operate it.</span>
+          </li>
+        </ul>
+        <div class="footnote">
+          <span class="kpi-row">
+            <span><b>~90 days</b> to live</span>
+            <span><b>Three-person</b> team</span>
+            <span><b>Usage-based</b> pricing</span>
+          </span>
+        </div>
+        <a href="/delivery" class="btn btn-secondary door-cta">
+          See our delivery process <span class="arr">→</span>
+        </a>
+      </article>
+    </div>
+
+    <p class="aside">
+      <span class="aside-tag">Either door</span>
+      Same orchestration platform underneath: workflows on Temporal, the agents library, the tools catalog, identity, audit, hosting, SLA. You don't have to choose forever &mdash; teams move between doors as their build muscle grows.
+    </p>
+  </div>
+</section>
+
+<style>
+  .two-doors {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+
+  .doors {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  @media (max-width: 1000px) {
+    .doors { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  .door {
+    background: #fff;
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .door-a {
+    border: 1px solid var(--color-indigo-600);
+    box-shadow:
+      0 1px 0 rgba(15, 17, 42, 0.04),
+      0 20px 48px -24px rgba(79, 70, 229, 0.32);
+  }
+  .door-a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-indigo-600) 0%, var(--color-indigo-500) 100%);
+  }
+  .door-b {
+    border: 1px solid var(--color-ink-200);
+    background:
+      linear-gradient(180deg, #fff 0%, var(--color-ink-50) 100%);
+  }
+
+  .door-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 8px;
+    background: var(--color-indigo-600);
+    color: #fff;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+  .door-tag .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .door-tag.b {
+    background: var(--color-ink-100);
+    color: var(--color-ink-700);
+  }
+  .door-tag.b .dot { background: var(--color-ink-500); }
+
+  .door-head .lbl {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    margin-bottom: 14px;
+  }
+  .door-head h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(26px, 2.4vw, 34px);
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+  }
+  .door-head h3 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .door-b .door-head h3 em { color: var(--color-ink-700); }
+
+  .bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bullets li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--color-ink-200);
+    color: var(--color-ink-700);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .bullets li:last-child { border-bottom: 0; }
+  .bn {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--color-indigo-600);
+    letter-spacing: 0.12em;
+    padding-top: 3px;
+  }
+  .door-b .bn { color: var(--color-ink-500); }
+
+  .footnote {
+    padding-top: 14px;
+    border-top: 1px solid var(--color-ink-200);
+  }
+  .kpi-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+  }
+  .kpi-row b {
+    color: var(--color-ink-950);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: -0.005em;
+  }
+
+  .door-cta {
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .aside {
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: var(--color-lavender-50);
+    border: 1px solid var(--color-lavender-200);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--color-ink-700);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .aside-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--color-indigo-100);
+    white-space: nowrap;
+  }
+</style>

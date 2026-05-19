@@ -1,0 +1,289 @@
+---
+const steps = [
+  {
+    n: "01",
+    when: "Week 0",
+    title: "Confidential introduction call",
+    body: "A 60-minute conversation between principals. We walk you through the platform live, the eight pre-built agents, the customer base, and the FDE org structure. No deck. NDA available on request.",
+  },
+  {
+    n: "02",
+    when: "Week 1&ndash;2",
+    title: "Memorandum",
+    body: "We provide a tailored confidential memo: detailed financials (ARR, revenue mix, gross margin trajectory, customer concentration, NRR), platform architecture, agent IP inventory, FDE roster with retention assumptions, and Anthropic / Temporal relationship terms.",
+  },
+  {
+    n: "03",
+    when: "Week 3&ndash;6",
+    title: "Working diligence",
+    body: "Mutual diligence. Acquirer's teams meet with our FDE leads, customer references, platform engineers. We meet with your existing-client lead to design the post-close re-platforming motion. No data-room theatre &mdash; this is co-designed integration.",
+  },
+  {
+    n: "04",
+    when: "Week 6&ndash;10",
+    title: "Letter of Intent",
+    body: "Headline economics, retention design for the FDE core, brand strategy (Assembly as a sub-brand, or wholly absorbed), and an explicit 18-month integration plan with platform ARR milestones. We expect the LOI to read more like a joint-venture agreement than a typical SI roll-up.",
+  },
+  {
+    n: "05",
+    when: "Week 10&ndash;16",
+    title: "Closing &amp; announcement",
+    body: "Confirmatory diligence, definitive agreement, regulatory approvals as applicable, close. Day-zero announcement positioned as a strategic transformation, not a tuck-in.",
+  },
+];
+---
+
+<section class="proc" id="process">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 08 &middot; Process</span>
+      <h2>This is not a public process.<br/><em>Five steps, one tightly-held conversation.</em></h2>
+      <p class="lede">
+        We are not running an auction. We are talking to a small number of IT-services and consulting principals where the strategic fit is obvious and where the retention and integration design can be co-authored, not imposed.
+      </p>
+    </div>
+
+    <ol class="steps">
+      {
+        steps.map(({ n, when, title, body }) => (
+          <li>
+            <div class="step-num">
+              <span class="sn-n">{n}</span>
+              <span class="sn-when" set:html={when} />
+            </div>
+            <div class="step-body">
+              <h3 set:html={title} />
+              <p>{body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="cta-card">
+      <div class="cta-l">
+        <span class="cta-eb">Request the confidential overview</span>
+        <h3>Start with a 60-minute call.</h3>
+        <p>If you're a principal at an IT-services or consulting firm and the thesis lands, we'd rather talk in the next two weeks than in a year. The window the foundation-model companies have opened is finite.</p>
+      </div>
+      <div class="cta-r">
+        <a href="mailto:founders@assembly-industries.com?subject=Confidential%20overview%20%E2%80%94%20acquisition" class="btn btn-primary">
+          Request the overview <span class="arr">→</span>
+        </a>
+        <div class="cta-contact">
+          <div class="cc-row">
+            <span class="cc-k">Email</span>
+            <a href="mailto:founders@assembly-industries.com">founders@assembly-industries.com</a>
+          </div>
+          <div class="cc-row">
+            <span class="cc-k">Subject line</span>
+            <code>Confidential — acquisition overview</code>
+          </div>
+          <div class="cc-row">
+            <span class="cc-k">Response</span>
+            <span>Within 48 hours, under NDA on request.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="footnote">
+      Doc-A24 &middot; rev 0.1 &middot; revised 2026-05-18. This page contains forward-looking statements and illustrative scenarios. No representation is made that any particular outcome will be realized. Distribution is restricted to recipients identified by Assembly Industries, Inc.
+    </p>
+  </div>
+</section>
+
+<style>
+  .proc {
+    padding: 120px 0 80px;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+  .s-head { max-width: 880px; margin-bottom: 48px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 780px;
+  }
+
+  /* ── Steps ────────────────────────────────────────────── */
+  .steps {
+    list-style: none;
+    margin: 0 0 56px;
+    padding: 0;
+    counter-reset: step;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--color-ink-200);
+    align-items: start;
+  }
+  .steps li:first-child { border-top: 0; padding-top: 0; }
+  @media (max-width: 720px) {
+    .steps li { grid-template-columns: 1fr; gap: 8px; }
+  }
+  .step-num {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sn-n {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: var(--color-indigo-600);
+  }
+  .sn-when {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .step-body h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.012em;
+    line-height: 1.25;
+    color: var(--color-ink-950);
+    margin-bottom: 8px;
+  }
+  .step-body p {
+    font-size: 14.5px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 780px;
+  }
+
+  /* ── CTA card ─────────────────────────────────────────── */
+  .cta-card {
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: var(--radius-xl);
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card::after {
+    content: "";
+    position: absolute;
+    right: -120px;
+    bottom: -120px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(79, 70, 229, 0.32), transparent 70%);
+    pointer-events: none;
+  }
+  @media (max-width: 920px) {
+    .cta-card { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+  }
+
+  .cta-l { position: relative; z-index: 1; }
+  .cta-eb {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+  }
+  .cta-l h3 {
+    margin-top: 14px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(26px, 2.8vw, 36px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: #fff;
+  }
+  .cta-l p {
+    margin-top: 14px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 480px;
+  }
+
+  .cta-r {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .cta-contact {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cc-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .cc-k {
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 9.5px;
+    font-weight: 600;
+    padding-top: 1px;
+  }
+  .cc-row a {
+    color: var(--color-lavender-300);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(197, 200, 232, 0.3);
+  }
+  .cc-row a:hover { color: #fff; }
+  .cc-row code {
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .footnote {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-400);
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
+</style>

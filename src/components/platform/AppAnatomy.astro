@@ -1,0 +1,565 @@
+---
+/*
+ * Anatomy of a built app — the Plaid-style directed graph.
+ *
+ * Left → right flow:
+ *   Source nodes  →  Logic nodes  →  Policy nodes  →  Surface endpoints
+ *
+ * Uses real DOM nodes + an absolutely-positioned SVG overlay for the
+ * hairline edges with labels (OAuth, webhook, RBAC gate, ...).
+ *
+ * Example app: hr-comp-band-bot (same as the hero, expanded).
+ */
+---
+
+<section class="anat" id="anatomy">
+  <div class="wrap">
+    <div class="anat-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Anatomy of a built app</span>
+        <h2 style="margin-top:18px">
+          Every Assembly app is a <em>typed graph</em> &mdash;<br />
+          sources, logic, policy, surface.
+        </h2>
+      </div>
+      <div class="right">
+        <p>
+          The same shape repeats across every app your team will build
+          on the platform. Data flows in through audited connectors,
+          passes through typed transforms and policy nodes, and arrives
+          at the surface your users see. Everything in between is
+          inspectable, replayable, and locked down by RBAC. This is
+          <code>hr-comp-band-bot</code> &mdash; one of the real apps
+          shipped on Assembly &mdash; expanded out as a graph.
+        </p>
+      </div>
+    </div>
+
+    <figure class="graph lift" aria-label="Directed-graph anatomy of an Assembly-built application">
+      <!-- Chrome bar -->
+      <div class="g-chrome">
+        <div class="g-dots"><span></span><span></span><span></span></div>
+        <div class="g-title">
+          <span class="seg">assembly</span>
+          <span class="sep">·</span>
+          <span class="seg">graph</span>
+          <span class="sep">·</span>
+          <span class="seg name">hr-comp-band-bot</span>
+          <span class="sep">·</span>
+          <span class="seg dim">v0.14</span>
+        </div>
+        <div class="g-state">
+          <span class="g-state-dot"></span>
+          deployed
+        </div>
+      </div>
+
+      <!-- Graph body: 4 columns of nodes -->
+      <div class="g-body">
+        <!-- SVG edge overlay -->
+        <svg class="g-edges" viewBox="0 0 1000 480" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--color-ink-300)" />
+            </marker>
+            <marker id="arr-i" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--color-indigo-500)" />
+            </marker>
+          </defs>
+
+          <!-- Sources → Logic -->
+          <path class="edge" d="M 235 70 C 320 70, 320 145, 405 145" />
+          <path class="edge" d="M 235 175 C 320 175, 320 145, 405 145" />
+          <path class="edge" d="M 235 280 C 320 280, 320 245, 405 245" />
+          <path class="edge" d="M 235 385 C 320 385, 320 245, 405 245" />
+
+          <!-- Logic → Policy -->
+          <path class="edge hot" d="M 595 145 C 660 145, 660 175, 715 175" marker-end="url(#arr-i)" />
+          <path class="edge" d="M 595 245 C 660 245, 660 305, 715 305" marker-end="url(#arr)" />
+
+          <!-- Policy → Surface -->
+          <path class="edge" d="M 845 175 C 890 175, 890 90, 935 90" />
+          <path class="edge" d="M 845 175 C 890 175, 890 175, 935 175" />
+          <path class="edge" d="M 845 305 C 890 305, 890 260, 935 260" />
+          <path class="edge" d="M 845 305 C 890 305, 890 345, 935 345" />
+        </svg>
+
+        <!-- Column labels -->
+        <div class="g-collabels">
+          <div class="g-cl"><span class="num">01</span><span class="lbl">Sources</span></div>
+          <div class="g-cl"><span class="num">02</span><span class="lbl">Logic</span></div>
+          <div class="g-cl"><span class="num">03</span><span class="lbl">Policy</span></div>
+          <div class="g-cl"><span class="num">04</span><span class="lbl">Surface</span></div>
+        </div>
+
+        <!-- Columns -->
+        <div class="g-cols">
+          <!-- Sources -->
+          <div class="g-col col-sources">
+            <div class="gnode src">
+              <div class="gnode-h">
+                <span class="gnode-ic">W</span>
+                <span class="gnode-name">workday.employees</span>
+              </div>
+              <div class="gnode-meta">OAuth · 12s ago</div>
+            </div>
+            <div class="gnode src">
+              <div class="gnode-h">
+                <span class="gnode-ic">G</span>
+                <span class="gnode-name">greenhouse.offers</span>
+              </div>
+              <div class="gnode-meta">webhook · 4m ago</div>
+            </div>
+            <div class="gnode src">
+              <div class="gnode-h">
+                <span class="gnode-ic">L</span>
+                <span class="gnode-name">lever.candidates</span>
+              </div>
+              <div class="gnode-meta">OAuth · 9m ago</div>
+            </div>
+            <div class="gnode src">
+              <div class="gnode-h">
+                <span class="gnode-ic">S</span>
+                <span class="gnode-name">snowflake.comp_bands</span>
+              </div>
+              <div class="gnode-meta">query · 24m ago</div>
+            </div>
+          </div>
+
+          <!-- Logic -->
+          <div class="g-col col-logic">
+            <div class="gnode lgc hot">
+              <div class="gnode-h">
+                <span class="gnode-kind tx">transform</span>
+                <span class="gnode-name">level_band_lookup</span>
+              </div>
+              <div class="gnode-io">
+                <span class="chip">Employee</span>
+                <span class="arr">→</span>
+                <span class="chip out">BandRange</span>
+              </div>
+            </div>
+            <div class="gnode lgc">
+              <div class="gnode-h">
+                <span class="gnode-kind tx">transform</span>
+                <span class="gnode-name">geo_adjust</span>
+              </div>
+              <div class="gnode-io">
+                <span class="chip">BandRange</span>
+                <span class="arr">→</span>
+                <span class="chip out">Adjusted</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy -->
+          <div class="g-col col-policy">
+            <div class="gnode pol">
+              <div class="gnode-h">
+                <span class="gnode-kind pl">policy</span>
+                <span class="gnode-name">pii_redact</span>
+              </div>
+              <div class="gnode-meta">SSN, DOB, addr · stripped at edge</div>
+            </div>
+            <div class="gnode pol">
+              <div class="gnode-h">
+                <span class="gnode-kind pl">policy</span>
+                <span class="gnode-name">rbac_gate</span>
+              </div>
+              <div class="gnode-meta">hr.recruiter · hr.manager only</div>
+            </div>
+          </div>
+
+          <!-- Surface -->
+          <div class="g-col col-surface">
+            <div class="gnode srf">
+              <div class="gnode-h">
+                <span class="gnode-ic dark">/</span>
+                <span class="gnode-name">slack /comp</span>
+              </div>
+              <div class="gnode-meta">37 reviewers · audited</div>
+            </div>
+            <div class="gnode srf">
+              <div class="gnode-h">
+                <span class="gnode-ic dark">▢</span>
+                <span class="gnode-name">web /bands</span>
+              </div>
+              <div class="gnode-meta">SSO · 14 BUs</div>
+            </div>
+            <div class="gnode srf">
+              <div class="gnode-h">
+                <span class="gnode-ic dark">{}</span>
+                <span class="gnode-name">REST /v1/bands</span>
+              </div>
+              <div class="gnode-meta">OAuth · 100% audited</div>
+            </div>
+            <div class="gnode srf">
+              <div class="gnode-h">
+                <span class="gnode-ic dark">@</span>
+                <span class="gnode-name">email digest</span>
+              </div>
+              <div class="gnode-meta">weekly · band drift</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend strip -->
+      <figcaption class="g-legend">
+        <div class="leg">
+          <span class="leg-sw sw-line"></span>
+          <span class="leg-l">Typed edge</span>
+          <span class="leg-r">Every connection carries a known schema. Mismatches break the build, not production.</span>
+        </div>
+        <div class="leg">
+          <span class="leg-sw sw-hot"></span>
+          <span class="leg-l">Live trace</span>
+          <span class="leg-r">A single request, traced left-to-right. Replayable, with the actor and timestamp.</span>
+        </div>
+        <div class="leg">
+          <span class="leg-sw sw-policy"></span>
+          <span class="leg-l">Policy node</span>
+          <span class="leg-r">RBAC + PII enforcement, declared per-app. Inherits tenant defaults.</span>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .anat {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    background: #fff;
+  }
+
+  .anat-head {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: end;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 900px) {
+    .anat-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .anat-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .anat-head .right p {
+    color: var(--color-ink-500);
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: 540px;
+  }
+  .anat-head .right code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    background: var(--color-ink-50);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--color-ink-950);
+  }
+
+  .graph {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+  .graph::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none;
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  /* Chrome */
+  .g-chrome {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 16px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .g-dots { display: flex; gap: 6px; }
+  .g-dots span {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--color-ink-200);
+    border: 1px solid var(--color-ink-300);
+  }
+  .g-dots span:nth-child(1) { background: #ffbd44; border-color: #e5a939; }
+  .g-dots span:nth-child(2) { background: #fed636; border-color: #e2bd1b; }
+  .g-dots span:nth-child(3) { background: #28ca41; border-color: #1bac35; }
+  .g-title {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    color: var(--color-ink-500); letter-spacing: 0.01em;
+  }
+  .g-title .sep { color: var(--color-ink-300); }
+  .g-title .name { color: var(--color-ink-950); font-weight: 600; }
+  .g-title .dim  { color: var(--color-ink-400); }
+  .g-state {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--color-sage-fg); letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .g-state-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--color-sage-fg);
+    box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.18);
+    animation: gPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes gPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.18); }
+    50% { box-shadow: 0 0 0 6px rgba(47, 107, 64, 0.06); }
+  }
+
+  /* Body */
+  .g-body {
+    position: relative;
+    padding: 20px 24px 28px;
+    background:
+      linear-gradient(180deg, #fff 0%, #fafbfd 100%);
+  }
+  .g-edges {
+    position: absolute;
+    inset: 56px 24px 28px 24px;
+    width: calc(100% - 48px);
+    height: calc(100% - 84px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .g-edges .edge {
+    fill: none;
+    stroke: var(--color-ink-300);
+    stroke-width: 1.25;
+  }
+  .g-edges .edge.hot {
+    stroke: var(--color-indigo-500);
+    stroke-width: 1.5;
+    stroke-dasharray: 3 4;
+    animation: edgeDash 6s linear infinite;
+  }
+  @keyframes edgeDash {
+    to { stroke-dashoffset: -42; }
+  }
+
+  .g-collabels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 2;
+  }
+  .g-cl {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .g-cl .num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-400);
+    letter-spacing: 0.14em;
+  }
+  .g-cl .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+
+  .g-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .g-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .gnode {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 1px 0 rgba(15,17,42,.03);
+  }
+  .gnode.hot {
+    border-color: var(--color-indigo-500);
+    box-shadow: 0 0 0 3px rgba(107, 98, 234, 0.08);
+  }
+  .gnode-h {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gnode-ic {
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .gnode-ic.dark {
+    background: var(--color-ink-950);
+    color: #fff;
+  }
+  .gnode-name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    letter-spacing: -0.01em;
+  }
+  .gnode-kind {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .gnode-kind.tx {
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+  }
+  .gnode-kind.pl {
+    color: var(--color-amber-fg);
+    background: var(--color-amber-bg);
+  }
+  .gnode-io {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .gnode-io .chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: var(--color-ink-50);
+    color: var(--color-ink-700);
+    border: 1px solid var(--color-ink-200);
+  }
+  .gnode-io .chip.out {
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+    border-color: transparent;
+  }
+  .gnode-io .arr {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-400);
+  }
+  .gnode-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.01em;
+  }
+
+  /* Legend */
+  .g-legend {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--color-ink-200);
+    background: var(--color-ink-50);
+    margin: 0;
+  }
+  .leg {
+    padding: 16px 20px;
+    border-right: 1px solid var(--color-ink-100);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px 10px;
+    align-items: center;
+  }
+  .leg:last-child { border-right: 0; }
+  .leg-sw {
+    grid-row: 1 / span 2;
+    width: 24px; height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .leg-sw.sw-line::before {
+    content: "";
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--color-ink-300);
+  }
+  .leg-sw.sw-hot::before {
+    content: "";
+    display: block;
+    width: 22px; height: 1.5px;
+    background: repeating-linear-gradient(
+      to right,
+      var(--color-indigo-500) 0 3px,
+      transparent 3px 7px
+    );
+  }
+  .leg-sw.sw-policy::before {
+    content: "";
+    display: block;
+    width: 14px; height: 14px;
+    border-radius: 4px;
+    background: var(--color-amber-bg);
+    border: 1px solid var(--color-amber-fg);
+  }
+  .leg-l {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .leg-r {
+    grid-column: 2;
+    font-size: 12.5px;
+    color: var(--color-ink-500);
+    line-height: 1.45;
+  }
+
+  @media (max-width: 980px) {
+    .g-edges { display: none; }
+    .g-collabels,
+    .g-cols { grid-template-columns: 1fr 1fr; }
+    .g-legend { grid-template-columns: 1fr; }
+    .leg { border-right: 0; border-bottom: 1px solid var(--color-ink-100); }
+    .leg:last-child { border-bottom: 0; }
+  }
+  @media (max-width: 560px) {
+    .g-collabels,
+    .g-cols { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .g-state-dot,
+    .g-edges .edge.hot { animation: none !important; }
+  }
+</style>

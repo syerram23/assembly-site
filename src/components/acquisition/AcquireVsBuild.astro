@@ -1,0 +1,365 @@
+---
+/*
+ * Acquire vs Build — the no-brainer side-by-side comparison.
+ *
+ * Two columns, head-to-head:
+ *   ACQUIRE ASSEMBLY     BUILD IT IN-HOUSE FROM SCRATCH
+ *   ─────────────────    ──────────────────────────────
+ *   Day 0 ARR            Year 3 revenue (best case)
+ *   $X transaction       $YYY in build cost
+ *   ...                  ...
+ *
+ * Each row is a dimension. Acquire side is indigo/positive; Build side
+ * is amber/scary. Closing: TCO math.
+ */
+
+const rows = [
+  {
+    dim: "Time to first dollar",
+    acquire: "Day 0 · ARR continues, customer revenue book transfers",
+    build:   "<b>~3 years</b> · cold-start before any external revenue",
+  },
+  {
+    dim: "Platform IP",
+    acquire: "21 capabilities + orchestration runtime, production-tested, customer-validated",
+    build:   "Build all 21 from scratch · ~18 months engineering, $15–25M direct cost",
+  },
+  {
+    dim: "Pre-built vertical agents",
+    acquire: "8 named agents shipping in production across banking, insurance, staffing, logistics, HR, finance, procurement, legal",
+    build:   "0 · build one vertical agent at a time · ~6 months each · then iterate",
+  },
+  {
+    dim: "Forward-deployed engineering org",
+    acquire: "Existing FDE/QA/TPM team with shipping muscle on the platform",
+    build:   "Hire from a labor pool with <b>5,230% YoY demand</b> · ~12–18 months to assemble · retention risk acute",
+  },
+  {
+    dim: "Anthropic / Temporal positioning",
+    acquire: "Operational depth with both ecosystems on day one",
+    build:   "Build the relationship from cold · two years behind firms already inside Anthropic and OpenAI Deployment Co",
+  },
+  {
+    dim: "Customer base",
+    acquire: "Live engagements across banking, staffing, insurance, logistics &mdash; references included",
+    build:   "Net-new GTM motion · no proof points · first reference customer ~year 2",
+  },
+  {
+    dim: "Risk during build",
+    acquire: "Asset is operating before close; no execution risk on the platform itself",
+    build:   "<b>Foundation-model companies finish their delivery orgs before you ship v1</b> · category may close",
+  },
+  {
+    dim: "Capital required",
+    acquire: "One transaction · headline price",
+    build:   "Capex + opex over 3 years · then GTM cost · then customer-acquisition cost",
+  },
+  {
+    dim: "Equity story for talent",
+    acquire: "Existing equity refresh tied to platform ARR · clean retention design",
+    build:   "Compete with model-company FDE comp from inside an SI org chart · structural disadvantage",
+  },
+  {
+    dim: "Opportunity cost",
+    acquire: "Existing services revenue keeps flowing during transition; platform compounds",
+    build:   "Existing services revenue shrinks as the SI is forced to choose between billing labor and investing in platform &mdash; with no platform to fund it",
+  },
+];
+
+const summary = [
+  { k: "ACQUIRE", v: "~12 weeks", k2: "to close · ARR from day 0" },
+  { k: "BUILD",   v: "~36 months", k2: "to feature-parity · zero certainty of category-fit" },
+  { k: "DELTA",   v: "~$0", k2: "platform IP build cost saved vs ~$15–25M build · plus 3 years" },
+];
+---
+
+<section class="avb" id="acquire-vs-build">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 10 &middot; The no-brainer comparison</span>
+      <h2>
+        Acquire Assembly.<br/>
+        Or <em>build the same thing from scratch</em>.
+      </h2>
+      <p class="lede">
+        The honest alternative analysis. An SI's two paths into the AI-native category are acquire or build &mdash; partnering with a model company is no longer an option (the partners just became competitors). <b>The math doesn't favor build.</b>
+      </p>
+    </div>
+
+    <div class="vs">
+      <header class="vs-head">
+        <span class="vs-th vs-th-dim">Dimension</span>
+        <span class="vs-th vs-th-a">
+          <span class="vs-th-tag a">Acquire Assembly</span>
+        </span>
+        <span class="vs-th vs-th-b">
+          <span class="vs-th-tag b">Build from scratch</span>
+        </span>
+      </header>
+
+      {
+        rows.map(({ dim, acquire, build }) => (
+          <div class="vs-row">
+            <span class="vs-cell vs-dim">{dim}</span>
+            <span class="vs-cell vs-a" set:html={acquire} />
+            <span class="vs-cell vs-b" set:html={build} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="vs-summary">
+      {
+        summary.map(({ k, v, k2 }) => (
+          <div class={"vss " + (k === "ACQUIRE" ? "on" : k === "BUILD" ? "warn" : "delta")}>
+            <span class="vss-k">{k}</span>
+            <span class="vss-v">{v}</span>
+            <span class="vss-k2">{k2}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="closing-note">
+      <span class="cn-tag">The pattern</span>
+      McKinsey, Bain, and Capgemini already ran the same comparison. They chose to <b>invest in OpenAI's Deployment Company rather than build</b>. Acquiring Assembly is the same trade &mdash; with platform IP, FDE talent, and customer base you actually own.
+    </p>
+  </div>
+</section>
+
+<style>
+  .avb {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head { max-width: 880px; margin-bottom: 48px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 780px;
+  }
+  .s-head .lede b { color: var(--color-ink-950); font-weight: 600; }
+
+  /* ── Table ────────────────────────────────────────────── */
+  .vs {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-ink-950);
+  }
+  .vs-head {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    background: var(--color-ink-950);
+  }
+  .vs-th {
+    padding: 16px 22px;
+    background: var(--color-ink-950);
+  }
+  .vs-th-dim {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .vs-th-a, .vs-th-b {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .vs-th-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.012em;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+  .vs-th-tag.a {
+    color: #fff;
+    background: var(--color-indigo-600);
+  }
+  .vs-th-tag.b {
+    color: #fff;
+    background: var(--color-amber-fg);
+  }
+
+  .vs-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    border-top: 1px solid var(--color-ink-100);
+  }
+  .vs-row:first-of-type { border-top: 0; }
+  .vs-cell {
+    padding: 18px 22px;
+    background: #fff;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .vs-dim {
+    background: var(--color-ink-50);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+  }
+  .vs-a {
+    background: rgba(214, 235, 219, 0.32);
+    color: #2a4e35;
+    border-left: 1px solid var(--color-ink-100);
+    border-bottom: 1px solid var(--color-ink-100);
+    position: relative;
+  }
+  .vs-a::before {
+    content: "✓";
+    position: absolute;
+    left: 8px;
+    top: 18px;
+    color: var(--color-sage-fg);
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .vs-a {
+    padding-left: 26px;
+  }
+  .vs-b {
+    background: rgba(252, 230, 194, 0.32);
+    color: var(--color-amber-fg);
+    border-left: 1px solid var(--color-ink-100);
+    border-bottom: 1px solid var(--color-ink-100);
+    position: relative;
+    padding-left: 26px;
+  }
+  .vs-b::before {
+    content: "✗";
+    position: absolute;
+    left: 8px;
+    top: 18px;
+    color: var(--color-amber-fg);
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .vs-a :global(b),
+  .vs-b :global(b) {
+    color: var(--color-ink-950);
+    font-weight: 700;
+  }
+
+  @media (max-width: 820px) {
+    .vs-head { grid-template-columns: 1fr; }
+    .vs-row { grid-template-columns: 1fr; }
+    .vs-th-a, .vs-th-b, .vs-a, .vs-b { border-left: 0; }
+    .vs-dim { background: var(--color-ink-950); color: #fff; padding-bottom: 8px; }
+    .vs-cell { padding-left: 26px; }
+  }
+
+  /* ── Summary row ──────────────────────────────────────── */
+  .vs-summary {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 720px) { .vs-summary { grid-template-columns: 1fr; } }
+
+  .vss {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .vss.on {
+    border-color: var(--color-sage-fg);
+    background: rgba(214, 235, 219, 0.4);
+  }
+  .vss.warn {
+    border-color: var(--color-amber-fg);
+    background: rgba(252, 230, 194, 0.36);
+  }
+  .vss.delta {
+    background: var(--color-ink-950);
+    border-color: transparent;
+  }
+  .vss-k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .vss.on .vss-k { color: var(--color-sage-fg); }
+  .vss.warn .vss-k { color: var(--color-amber-fg); }
+  .vss.delta .vss-k { color: var(--color-lavender-300); }
+  .vss-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+    color: var(--color-ink-950);
+  }
+  .vss.delta .vss-v { color: #fff; }
+  .vss-k2 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+  }
+  .vss.delta .vss-k2 { color: rgba(255, 255, 255, 0.7); }
+
+  /* ── Closing note ─────────────────────────────────────── */
+  .closing-note {
+    margin-top: 28px;
+    padding: 22px 26px;
+    background: var(--color-lavender-50);
+    border: 1px solid var(--color-lavender-200);
+    border-radius: var(--radius-md);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: start;
+    color: var(--color-ink-700);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  @media (max-width: 720px) {
+    .closing-note { grid-template-columns: 1fr; gap: 10px; }
+  }
+  .cn-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: #fff;
+    border: 1px solid var(--color-indigo-100);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    align-self: start;
+    padding-top: 6px;
+  }
+  .closing-note b { color: var(--color-ink-950); font-weight: 600; }
+</style>

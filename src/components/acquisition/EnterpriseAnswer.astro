@@ -1,0 +1,405 @@
+---
+/*
+ * Illustration 1 — Answering the call from enterprises.
+ *
+ * Three-stage visual diagram:
+ *   1. The board's questions (left column · what enterprises are asking)
+ *   2. The four failed options (middle · what's broken)
+ *   3. Assembly (right · the answer)
+ *
+ * Real DOM, no PNGs.
+ */
+---
+
+<section class="ea" id="enterprise-demand">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 02 &middot; The demand</span>
+      <h2>What the enterprise is asking for &mdash; and what's between them and getting it.</h2>
+      <p class="lede">
+        The buyer hasn't changed: every CIO, CISO, COO, and CFO is being asked the same question by their board. <b>What has changed is that none of the four obvious answers ship</b> &mdash; and now the foundation-model companies are walking in to answer it themselves. <a href="#the-clock">See "the clock"</a> below.
+      </p>
+    </div>
+
+    <div class="diagram">
+
+      <!-- Column 01 · the board's questions -->
+      <div class="lane lane-demand">
+        <header>
+          <span class="lane-num">01</span>
+          <span class="lane-lbl">The board's question</span>
+        </header>
+        <div class="bubbles">
+          <div class="bubble">
+            <span class="b-from">CIO</span>
+            <span class="b-q">What's our AI roadmap, in production, by next quarter?</span>
+          </div>
+          <div class="bubble">
+            <span class="b-from">CISO</span>
+            <span class="b-q">Where's our data going? Who has logs of every prompt?</span>
+          </div>
+          <div class="bubble">
+            <span class="b-from">CFO</span>
+            <span class="b-q">What's the contractable deliverable? Per unit of work, not headcount?</span>
+          </div>
+          <div class="bubble">
+            <span class="b-from">COO</span>
+            <span class="b-q">Which workflow ships AI-augmented this year?</span>
+          </div>
+        </div>
+        <div class="lane-foot">
+          Every board meeting. Every quarter. Same questions.
+        </div>
+      </div>
+
+      <!-- Connector -->
+      <div class="connector">
+        <span class="conn-arr">→</span>
+      </div>
+
+      <!-- Column 02 · the four failed options -->
+      <div class="lane lane-fail">
+        <header>
+          <span class="lane-num">02</span>
+          <span class="lane-lbl">The four obvious answers &mdash; none ship</span>
+        </header>
+        <div class="fail-grid">
+          <div class="fail-cell">
+            <div class="fc-label">AI coding tools</div>
+            <div class="fc-issue">Generate code, not applications. No identity, no audit, no HITL.</div>
+            <div class="fc-status">prototype only</div>
+          </div>
+          <div class="fail-cell">
+            <div class="fc-label">Build in-house</div>
+            <div class="fc-issue">Hire AI engineers. Six months to break even on tooling.</div>
+            <div class="fc-status">stalled</div>
+          </div>
+          <div class="fail-cell">
+            <div class="fc-label">Strategy consultancy</div>
+            <div class="fc-issue">200-page deck, steering committee. No software in production.</div>
+            <div class="fc-status">strategy only</div>
+          </div>
+          <div class="fail-cell">
+            <div class="fc-label">Vertical SaaS</div>
+            <div class="fc-issue">Configures the 80% standard, breaks at the 20% edge cases.</div>
+            <div class="fc-status">edge-case fail</div>
+          </div>
+        </div>
+        <div class="lane-foot fail">
+          Each fails on a specific, predictable dimension. <b>Shadow AI fills the vacuum.</b>
+        </div>
+      </div>
+
+      <!-- Connector -->
+      <div class="connector">
+        <span class="conn-arr">→</span>
+      </div>
+
+      <!-- Column 03 · Assembly -->
+      <div class="lane lane-answer">
+        <header>
+          <span class="lane-num">03</span>
+          <span class="lane-lbl">Assembly answers</span>
+          <span class="lane-state">
+            <span class="lane-state-dot"></span>
+            live
+          </span>
+        </header>
+        <div class="answer-stack">
+          <div class="ans-row">
+            <span class="ans-ic">①</span>
+            <div>
+              <b>Orchestration platform</b>
+              <small>Workflows · Agents · Tools on Temporal &mdash; the substrate between models / data and the apps.</small>
+            </div>
+          </div>
+          <div class="ans-row">
+            <span class="ans-ic">②</span>
+            <div>
+              <b>Twenty-one capabilities included</b>
+              <small>Identity, audit, HITL, hosting, comms, search, docgen, connectors &mdash; on day one.</small>
+            </div>
+          </div>
+          <div class="ans-row">
+            <span class="ans-ic">③</span>
+            <div>
+              <b>Eight pre-built vertical agents</b>
+              <small>Reg-E · FNOL · post-placement · vendor-onboard · contract-redline · AR follow-up · comp-band · claims-triage.</small>
+            </div>
+          </div>
+          <div class="ans-row">
+            <span class="ans-ic">④</span>
+            <div>
+              <b>Single-tenant deploy</b>
+              <small>In your VPC. Customer-isolated inference. SOC 2 Type II.</small>
+            </div>
+          </div>
+        </div>
+        <div class="lane-foot answer">
+          <b>Production apps in ~10 days.</b> Audited end-to-end. Vibe-coded by your team.
+        </div>
+      </div>
+    </div>
+
+    <div class="diagram-mobile-note">
+      Read left → right: the demand, the gap, the answer.
+    </div>
+  </div>
+</section>
+
+<style>
+  .ea {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head {
+    max-width: 880px;
+    margin-bottom: 56px;
+  }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    color: var(--color-ink-500);
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 760px;
+  }
+  .s-head .lede b { color: var(--color-ink-950); font-weight: 600; }
+  .s-head .lede a {
+    color: var(--color-indigo-600);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── Diagram ──────────────────────────────────────────────── */
+  .diagram {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr 32px 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  @media (max-width: 980px) {
+    .diagram {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .connector { display: none; }
+  }
+
+  .lane {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .lane-answer {
+    border-color: var(--color-indigo-600);
+    box-shadow:
+      0 1px 0 rgba(15,17,42,.04),
+      0 16px 40px -20px rgba(79, 70, 229, 0.35);
+  }
+  .lane-fail { background: var(--color-ink-50); }
+
+  .lane header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .lane-num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-400);
+  }
+  .lane-lbl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    flex: 1;
+    line-height: 1.25;
+  }
+  .lane-answer .lane-lbl { color: var(--color-indigo-700); }
+  .lane-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-sage-fg);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .lane-state-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+    box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.18);
+  }
+
+  .lane-foot {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px dashed var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+  }
+  .lane-foot b { color: var(--color-ink-950); font-weight: 600; }
+  .lane-foot.fail b { color: var(--color-ink-950); }
+  .lane-foot.answer { color: var(--color-indigo-700); }
+  .lane-foot.answer b { color: var(--color-ink-950); }
+
+  /* ── Demand bubbles ──────────────────────────────────────── */
+  .bubbles { display: flex; flex-direction: column; gap: 8px; }
+  .bubble {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-100);
+    border-radius: 8px;
+  }
+  .b-from {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-ink-700);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+  .b-q {
+    font-size: 13px;
+    color: var(--color-ink-700);
+    line-height: 1.45;
+  }
+
+  /* ── Fail grid ──────────────────────────────────────────── */
+  .fail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .fail-cell {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+  .fc-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-ink-300);
+  }
+  .fc-issue {
+    font-size: 12px;
+    color: var(--color-ink-500);
+    line-height: 1.4;
+  }
+  .fc-status {
+    margin-top: 4px;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-amber-fg);
+    background: var(--color-amber-bg);
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+
+  /* ── Answer stack ───────────────────────────────────────── */
+  .answer-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ans-row {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--color-indigo-50);
+    border: 1px solid var(--color-indigo-100);
+    border-radius: 8px;
+  }
+  .ans-ic {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-indigo-600);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .ans-row b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+  }
+  .ans-row small {
+    display: block;
+    font-size: 11.5px;
+    color: var(--color-ink-500);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  /* ── Connector ─────────────────────────────────────────── */
+  .connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .conn-arr {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    color: var(--color-ink-300);
+    font-weight: 300;
+  }
+
+  .diagram-mobile-note {
+    display: none;
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  @media (max-width: 980px) {
+    .diagram-mobile-note { display: block; }
+  }
+</style>

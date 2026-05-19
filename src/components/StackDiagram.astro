@@ -1,0 +1,592 @@
+---
+/*
+ * The cornerstone architecture visual — three-layer stack.
+ *
+ *   ┌─ Apps your team ships (top) ──────────────────────────┐
+ *   │                                                       │
+ *   ├─ Assembly Orchestration Platform (middle, prominent) ─┤
+ *   │   Workflows · Agents · Tools                          │
+ *   │   Runtime: Identity · Audit · HITL · Hosting · SLA    │
+ *   │                                                       │
+ *   └─ Your foundation (bottom) ────────────────────────────┘
+ *      Models · Data · Identity · Systems of record
+ *
+ * Used as cornerstone on /platform, embedded smaller on homepage.
+ * Pass `variant="compact"` for the homepage size.
+ */
+interface Props {
+  variant?: "full" | "compact";
+}
+const { variant = "full" } = Astro.props;
+
+const apps = [
+  { name: "comp-band-bot",        tag: "HR",         live: true },
+  { name: "claims-triage-v2",     tag: "Insurance",  live: true },
+  { name: "vendor-onboarding",    tag: "Procurement",live: true },
+  { name: "contract-redline",     tag: "Legal",      live: true },
+  { name: "ar-followup",          tag: "Finance",    live: true },
+  { name: "+ 37 more",            tag: "",           live: false },
+];
+
+const foundation = [
+  {
+    head: "Models",
+    items: ["Anthropic", "OpenAI", "Vertex AI", "in-house"],
+  },
+  {
+    head: "Data",
+    items: ["Snowflake", "Databricks", "Postgres", "data warehouse"],
+  },
+  {
+    head: "Identity",
+    items: ["Okta", "Entra ID", "Active Directory", "SCIM"],
+  },
+  {
+    head: "Systems of Record",
+    items: ["Workday", "Salesforce", "SAP", "Guidewire"],
+  },
+];
+---
+
+<figure class={"stack stack-" + variant} aria-label="Where Assembly sits in your enterprise AI stack">
+
+  <!-- ───── LAYER 03 · YOUR APPS ───── -->
+  <section class="layer apps">
+    <header class="layer-head">
+      <span class="lh-num">03</span>
+      <span class="lh-lbl">Your apps · what your team ships</span>
+      <span class="lh-meta">production · audited · yours</span>
+    </header>
+    <div class="apps-row">
+      {
+        apps.map(({ name, tag, live }) => (
+          <div class={"app-chip" + (live ? " live" : " more")}>
+            <span class="ac-dot"></span>
+            <span class="ac-name">{name}</span>
+            {tag && <span class="ac-tag">{tag}</span>}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- connector down -->
+  <div class="conn">
+    <span class="conn-lbl">orchestrated by</span>
+    <span class="conn-arr">↓</span>
+  </div>
+
+  <!-- ───── LAYER 02 · ASSEMBLY ORCHESTRATION PLATFORM ───── -->
+  <section class="layer assembly">
+    <header class="layer-head assembly-head">
+      <span class="lh-num assembly-num">02</span>
+      <span class="lh-lbl assembly-lbl">Assembly orchestration platform</span>
+      <span class="lh-meta assembly-meta">
+        <span class="assembly-state-dot"></span>
+        the orchestration layer
+      </span>
+    </header>
+
+    <!-- The three primitives -->
+    <div class="primitives">
+      <div class="prim">
+        <div class="prim-head">
+          <span class="prim-num">01</span>
+          <span class="prim-name">Data &middot; audit &middot; provisioning</span>
+        </div>
+        <div class="prim-sub">governed substrate · sources, lineage, identity</div>
+        <div class="prim-vis prim-vis-data">
+          <span class="data-src"></span>
+          <span class="data-src"></span>
+          <span class="data-src ok"></span>
+          <span class="data-arr">→</span>
+          <span class="data-aud"></span>
+        </div>
+      </div>
+      <div class="prim">
+        <div class="prim-head">
+          <span class="prim-num">02</span>
+          <span class="prim-name">Workflows</span>
+        </div>
+        <div class="prim-sub">durable orchestration · HITL · audit-lineaged</div>
+        <div class="prim-vis prim-vis-wf">
+          <span class="wf-node"></span>
+          <span class="wf-edge"></span>
+          <span class="wf-node hitl"></span>
+          <span class="wf-edge"></span>
+          <span class="wf-node done"></span>
+        </div>
+      </div>
+      <div class="prim">
+        <div class="prim-head">
+          <span class="prim-num">03</span>
+          <span class="prim-name">Tools &amp; Agents</span>
+        </div>
+        <div class="prim-sub">6 atomic tools · 8 pre-built vertical agents</div>
+        <div class="prim-vis prim-vis-tl">
+          <span class="tl-cell"></span><span class="tl-cell"></span><span class="tl-cell"></span>
+          <span class="tl-cell"></span><span class="tl-cell"></span><span class="tl-cell"></span>
+          <span class="ag-pill">HR</span>
+          <span class="ag-pill">Banking</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Runtime sub-bar -->
+    <div class="runtime">
+      <span class="rt-lbl">Runtime</span>
+      <span class="rt-pill">Hosting</span>
+      <span class="rt-pill">HITL queue</span>
+      <span class="rt-pill">Observability</span>
+      <span class="rt-pill">99.9% SLA</span>
+      <span class="rt-pill">Single-tenant VPC</span>
+    </div>
+  </section>
+
+  <!-- connector down -->
+  <div class="conn">
+    <span class="conn-lbl">runs on</span>
+    <span class="conn-arr">↓</span>
+  </div>
+
+  <!-- ───── LAYER 01 · YOUR FOUNDATION ───── -->
+  <section class="layer foundation">
+    <header class="layer-head">
+      <span class="lh-num">01</span>
+      <span class="lh-lbl">Your foundation · what your stack already has</span>
+      <span class="lh-meta">customer-isolated · no copies leave</span>
+    </header>
+    <div class="found-grid">
+      {
+        foundation.map(({ head, items }) => (
+          <div class="found-col">
+            <div class="found-head">{head}</div>
+            <ul>
+              {items.map((it) => <li>{it}</li>)}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</figure>
+
+<style>
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    isolation: isolate;
+  }
+
+  /* ── Generic layer ──────────────────────────────────────────── */
+  .layer {
+    padding: 24px 28px;
+    background: #fff;
+  }
+  .layer-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-ink-100);
+    margin-bottom: 18px;
+  }
+  .lh-num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-400);
+  }
+  .lh-lbl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    flex: 1;
+  }
+  .lh-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+
+  /* ── Layer 03 · Apps ───────────────────────────────────────── */
+  .apps {
+    background:
+      linear-gradient(180deg, #fff 0%, var(--color-ink-50) 100%);
+  }
+  .apps-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .app-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px 7px 10px;
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--color-ink-950);
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .app-chip.live:hover {
+    border-color: var(--color-indigo-300, var(--color-indigo-500));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -4px rgba(79, 70, 229, 0.18);
+  }
+  .app-chip.more {
+    background: transparent;
+    border-style: dashed;
+    color: var(--color-ink-500);
+  }
+  .ac-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+  }
+  .app-chip.more .ac-dot {
+    background: var(--color-ink-300);
+  }
+  .ac-name {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .ac-tag {
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* ── Connector ─────────────────────────────────────────────── */
+  .conn {
+    background: var(--color-ink-50);
+    border-top: 1px solid var(--color-ink-200);
+    border-bottom: 1px solid var(--color-ink-200);
+    padding: 10px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .conn-lbl {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .conn-arr {
+    font-family: var(--font-mono);
+    color: var(--color-indigo-600);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* ── Layer 02 · Assembly (the prominent one) ──────────────── */
+  .assembly {
+    background:
+      radial-gradient(900px 280px at 50% 0%, rgba(79, 70, 229, 0.06) 0%, transparent 70%),
+      #fff;
+    padding: 28px;
+    border-left: 4px solid var(--color-indigo-600);
+    position: relative;
+  }
+  .assembly-head {
+    border-bottom-color: var(--color-indigo-100);
+  }
+  .assembly-num {
+    color: var(--color-indigo-600);
+  }
+  .assembly-lbl {
+    font-size: 18px;
+    color: var(--color-ink-950);
+  }
+  .assembly-meta {
+    color: var(--color-indigo-700);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .assembly-state-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-indigo-600);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  }
+
+  .primitives {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) {
+    .primitives { grid-template-columns: 1fr; }
+  }
+  .prim {
+    border: 1px solid var(--color-ink-200);
+    border-top: 3px solid var(--color-indigo-600);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .prim-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .prim-num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    color: var(--color-indigo-600);
+    font-weight: 500;
+  }
+  .prim-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--color-ink-950);
+    letter-spacing: -0.012em;
+  }
+  .prim-sub {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  /* Primitive visuals (tiny, distinctive per primitive) */
+  .prim-vis {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--color-ink-200);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 28px;
+  }
+
+  /* data substrate: sources flowing to audit */
+  .prim-vis-data {
+    align-items: center;
+  }
+  .data-src {
+    width: 14px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--color-ink-100);
+    border: 1.5px solid var(--color-indigo-600);
+    flex-shrink: 0;
+  }
+  .data-src.ok {
+    background: var(--color-indigo-600);
+  }
+  .data-arr {
+    color: var(--color-ink-400);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    margin: 0 2px;
+  }
+  .data-aud {
+    flex: 1;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-sage-fg) 0%, var(--color-sage-fg) 60%, transparent 100%);
+    border-radius: 2px;
+  }
+
+  /* workflows: nodes + edges */
+  .prim-vis-wf .wf-node {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--color-indigo-100);
+    border: 1.5px solid var(--color-indigo-600);
+    flex-shrink: 0;
+  }
+  .prim-vis-wf .wf-node.done {
+    background: var(--color-indigo-600);
+  }
+  .prim-vis-wf .wf-node.hitl {
+    background: var(--color-amber-bg);
+    border-color: var(--color-amber-fg);
+  }
+  .prim-vis-wf .wf-edge {
+    flex: 1;
+    height: 1.5px;
+    background: var(--color-indigo-100);
+    position: relative;
+  }
+  .prim-vis-wf .wf-edge::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 5px solid var(--color-indigo-600);
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+  /* agents: vertical pills */
+  .prim-vis-ag {
+    flex-wrap: wrap;
+  }
+  .ag-pill {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-50);
+    border: 1px solid var(--color-indigo-100);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .ag-pill.more {
+    background: transparent;
+    border-style: dashed;
+    color: var(--color-ink-500);
+  }
+
+  /* tools + agents: a compact compound visual — small cells (tools) + 2 vertical pills (agents) */
+  .prim-vis-tl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    align-items: center;
+  }
+  .tl-cell {
+    width: 10px;
+    height: 10px;
+    background: var(--color-indigo-600);
+    border-radius: 2px;
+  }
+  .prim-vis-tl .ag-pill {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-50);
+    border: 1px solid var(--color-indigo-100);
+    padding: 1px 6px;
+    border-radius: 999px;
+    margin-left: 2px;
+  }
+
+  /* Runtime bar */
+  .runtime {
+    padding: 12px 16px;
+    background: var(--color-ink-950);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .rt-lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+  }
+  .rt-pill {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Layer 01 · Foundation ────────────────────────────────── */
+  .foundation {
+    background: var(--color-ink-50);
+  }
+  .found-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 780px) {
+    .found-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .found-col {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    background: #fff;
+  }
+  .found-head {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-950);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .found-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .found-col li {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-700);
+    letter-spacing: -0.005em;
+    line-height: 1.5;
+  }
+
+  /* ── Compact variant (homepage) ───────────────────────────── */
+  .stack-compact .layer { padding: 18px 20px; }
+  .stack-compact .layer-head { padding-bottom: 12px; margin-bottom: 12px; }
+  .stack-compact .conn { padding: 8px 20px; }
+  .stack-compact .assembly { padding: 22px 20px; }
+  .stack-compact .primitives { gap: 10px; }
+  .stack-compact .prim { padding: 12px; gap: 6px; }
+  .stack-compact .prim-name { font-size: 16px; }
+  .stack-compact .runtime { padding: 10px 14px; gap: 6px; }
+  .stack-compact .rt-pill { font-size: 9.5px; padding: 2px 8px; }
+  .stack-compact .foundation .found-grid { gap: 10px; }
+  .stack-compact .found-col { padding: 11px 13px; }
+  .stack-compact .found-col li { font-size: 10.5px; }
+</style>

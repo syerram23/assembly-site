@@ -1,0 +1,683 @@
+---
+/*
+ * Three primitives, deep dive — the substrate of the orchestration platform.
+ *
+ * Read bottom-up:
+ *   01 · Data ingest, auditability & provisioning  (the substrate)
+ *   02 · Workflows                                  (the orchestration engine)
+ *   03 · Tools & Agents                             (the capabilities library)
+ *
+ * Sits below the StackDiagram on /platform; can also stand alone on the
+ * homepage as the substantive "what's in the box" section.
+ */
+interface Props {
+  variant?: "full" | "compact";
+  showHeader?: boolean;
+}
+const { variant = "full", showHeader = true } = Astro.props;
+---
+
+<section class={"primtv primtv-" + variant}>
+  <div class="wrap">
+    {
+      showHeader && (
+        <div class="s-head">
+          <div class="left">
+            <span class="eyebrow"><span class="dot"></span>The three primitives</span>
+            <h2>
+              Data substrate. Workflows. Tools &amp; agents.<br />
+              <em>That's the whole platform.</em>
+            </h2>
+          </div>
+          <div class="right">
+            <p>
+              Every app your team ships on Assembly composes from three primitives, read bottom-up: <b>data is ingested, audited, and provisioned</b>; <b>workflows orchestrate</b> against it; <b>tools and agents</b> are the typed capabilities workflows call. Each is mission-critical infrastructure with production-grade SLAs, audit lineage, and customer-isolated inference on by default.
+            </p>
+          </div>
+        </div>
+      )
+    }
+
+    <div class="cards">
+      <!-- ─── 01 · Data ingest, auditability & provisioning ─── -->
+      <article class="prim-card data">
+        <header>
+          <span class="num">01</span>
+          <span class="lbl">Data ingest, audit &amp; provisioning</span>
+          <span class="impl">
+            <span class="impl-k">substrate</span>
+            <span class="impl-v">47 connectors</span>
+          </span>
+        </header>
+
+        <h3>The governed substrate.<br/>Sources in. Lineage on. VPC-isolated.</h3>
+        <p class="lede">
+          Connectors pull from your systems of record on schedule, write back through typed contracts, and record every read and write in a tamper-evident audit log. Identity, secrets, and tenancy are provisioned by the platform &mdash; never wired by the app.
+        </p>
+
+        <!-- substrate artifact: source rows + audit log -->
+        <div class="art art-data">
+          <div class="art-chrome">
+            <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
+            <span class="ct">platform &middot; <b>tenant.governance</b></span>
+          </div>
+          <div class="art-body data-body">
+            <div class="data-sub">
+              <span class="data-sub-k">Sources</span>
+              <ul>
+                <li><span class="dot-sage"></span><code>workday.employees</code><span>12s ago</span></li>
+                <li><span class="dot-sage"></span><code>salesforce.accounts</code><span>32s ago</span></li>
+                <li><span class="dot-sage"></span><code>snowflake.warehouse</code><span>4m ago</span></li>
+              </ul>
+            </div>
+            <div class="data-sub">
+              <span class="data-sub-k">Audit log &middot; last 90s</span>
+              <div class="audit-rows">
+                <div class="aud"><span class="aud-t">14:02</span><span class="aud-e">read workday.bands · maria@</span><span class="aud-s ok">ok</span></div>
+                <div class="aud"><span class="aud-t">14:02</span><span class="aud-e">policy.pii_redact · pass</span><span class="aud-s ok">ok</span></div>
+                <div class="aud"><span class="aud-t">14:02</span><span class="aud-e">slack.send /comp · 1 user</span><span class="aud-s ok">ok</span></div>
+              </div>
+            </div>
+            <div class="data-sub">
+              <span class="data-sub-k">Provisioning</span>
+              <div class="provision">
+                <span class="prov-pill">SSO · Okta</span>
+                <span class="prov-pill">SCIM · 3 groups</span>
+                <span class="prov-pill">VPC · single-tenant</span>
+                <span class="prov-pill">Secrets · KMS</span>
+              </div>
+            </div>
+          </div>
+          <div class="art-foot">
+            <span><b>47 connectors</b> · OAuth · read &amp; write · audit on every call</span>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li><span class="b-k">Governed</span><span class="b-v">Source schemas validated; PII tagged at ingest; policy gates enforced on every read.</span></li>
+          <li><span class="b-k">Audit-lineaged</span><span class="b-v">Tamper-evident log of every action: source row · rule fired · model call · reviewer.</span></li>
+          <li><span class="b-k">Single-tenant</span><span class="b-v">VPC-isolated deploy in your environment. Customer-isolated inference. No data leaves.</span></li>
+        </ul>
+      </article>
+
+      <!-- ─── 02 · Workflows ─── -->
+      <article class="prim-card workflows">
+        <header>
+          <span class="num">02</span>
+          <span class="lbl">Workflows</span>
+          <span class="impl">
+            <span class="impl-k">runtime</span>
+            <span class="impl-v">Temporal</span>
+          </span>
+        </header>
+
+        <h3>Durable orchestration.<br/>Multi-step. HITL-gated.</h3>
+        <p class="lede">
+          The engine on top of the substrate. Multi-step, long-running, retry-safe orchestration with explicit human-in-the-loop gates. Every step writes a row to the audit log &mdash; replayable end-to-end.
+        </p>
+
+        <!-- workflow state-machine artifact -->
+        <div class="art art-wf">
+          <div class="art-chrome">
+            <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
+            <span class="ct">workflow &middot; <b>reg-e-quarterly-run</b></span>
+          </div>
+          <div class="art-body">
+            <ol class="wf-steps">
+              <li class="done">
+                <span class="bullet"></span>
+                <span class="step-name">sample.population</span>
+                <span class="step-meta">5,855 claims &middot; 42ms</span>
+              </li>
+              <li class="done">
+                <span class="bullet"></span>
+                <span class="step-name">controls.evaluate</span>
+                <span class="step-meta">11 controls &middot; CFPB pack v2.1</span>
+              </li>
+              <li class="hitl">
+                <span class="bullet"></span>
+                <span class="step-name">hitl.disposition</span>
+                <span class="step-meta">maria@compliance &middot; 7 pending</span>
+              </li>
+              <li>
+                <span class="bullet"></span>
+                <span class="step-name">report.cmp_generate</span>
+                <span class="step-meta">queued</span>
+              </li>
+              <li>
+                <span class="bullet"></span>
+                <span class="step-name">notify.audit_committee</span>
+                <span class="step-meta">queued</span>
+              </li>
+            </ol>
+            <div class="art-foot inner">
+              <span><b>5 steps</b> · 1 HITL gate · audit lineage on · p95 11s</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li><span class="b-k">Durable</span><span class="b-v">Survives infra failure, retries automatically, replays on demand &mdash; not vibe-codeable.</span></li>
+          <li><span class="b-k">HITL gates</span><span class="b-v">Any step routes to a named reviewer queue with SLA. No silent autonomous decisioning.</span></li>
+          <li><span class="b-k">Audit lineage</span><span class="b-v">Source record · rule fired · model call · reviewer &mdash; all linked, replayable.</span></li>
+        </ul>
+      </article>
+
+      <!-- ─── 03 · Tools & Agents (merged) ─── -->
+      <article class="prim-card tools">
+        <header>
+          <span class="num">03</span>
+          <span class="lbl">Tools &amp; Agents</span>
+          <span class="impl">
+            <span class="impl-k">library</span>
+            <span class="impl-v">6 tools · 8 agents</span>
+          </span>
+        </header>
+
+        <h3>The capabilities library.<br/>Atomic tools. Pre-built agents.</h3>
+        <p class="lede">
+          What workflows compose from. <b>Tools</b> are the atomic capabilities &mdash; conversational, search, browser, API, docgen, workflows themselves. <b>Agents</b> are pre-built, vertical-tuned compositions of those tools that ship in days, not quarters.
+        </p>
+
+        <!-- tools + agents artifact -->
+        <div class="art art-ta">
+          <div class="art-chrome">
+            <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
+            <span class="ct">library &middot; <b>tools + agents</b></span>
+          </div>
+          <div class="art-body ta-body">
+            <!-- Tools row -->
+            <div class="ta-sub">
+              <div class="ta-sub-head">
+                <span class="ta-sub-k">Tools &middot; 6 atomic</span>
+                <span class="ta-sub-meta">typed I/O · audit on every call</span>
+              </div>
+              <div class="tl-grid">
+                <div class="tl-card"><span class="tl-code">CV</span><span class="tl-name">Conversational</span></div>
+                <div class="tl-card"><span class="tl-code">SR</span><span class="tl-name">Search · RAG</span></div>
+                <div class="tl-card"><span class="tl-code">BA</span><span class="tl-name">Browser</span></div>
+                <div class="tl-card"><span class="tl-code">AI</span><span class="tl-name">API</span></div>
+                <div class="tl-card"><span class="tl-code">DG</span><span class="tl-name">Doc gen</span></div>
+                <div class="tl-card"><span class="tl-code">WF</span><span class="tl-name">Workflows</span></div>
+              </div>
+            </div>
+
+            <!-- Agents row -->
+            <div class="ta-sub">
+              <div class="ta-sub-head">
+                <span class="ta-sub-k">Agents &middot; 8 pre-built</span>
+                <span class="ta-sub-meta">vertical-tuned · composable</span>
+              </div>
+              <div class="ag-list">
+                <div class="ag-pill on">reg-e-compliance · banking</div>
+                <div class="ag-pill on">fnol-intake · insurance</div>
+                <div class="ag-pill on">post-placement · staffing</div>
+                <div class="ag-pill">carrier-exception · logistics</div>
+                <div class="ag-pill">comp-band-bot · HR</div>
+                <div class="ag-pill">ar-followup · finance</div>
+                <div class="ag-pill">vendor-onboarding · procurement</div>
+                <div class="ag-pill">contract-redline · legal</div>
+              </div>
+            </div>
+          </div>
+          <div class="art-foot">
+            <span><b>Workflows compose freely</b> · use one tool, ten tools, or a pre-built agent &mdash; same audit, same governance.</span>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li><span class="b-k">Atomic</span><span class="b-v">Each tool is single-purpose, deterministic where possible, deeply tested.</span></li>
+          <li><span class="b-k">Pre-built</span><span class="b-v">Eight named vertical agents ship Day 1: Reg-E · FNOL · post-placement · carrier exception · comp-band · AR · vendor onboard · contract redline.</span></li>
+          <li><span class="b-k">Composable</span><span class="b-v">Agents compose tools; workflows compose agents and tools. Same audit on every call.</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .primtv {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .primtv-compact { padding: 80px 0; }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; line-height: 1.55; }
+  .s-head .right p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 1080px) { .cards { grid-template-columns: 1fr; gap: 20px; } }
+
+  .prim-card {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-xl);
+    border-top: 3px solid var(--color-indigo-600);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.18s, transform 0.18s;
+  }
+  .prim-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Header */
+  .prim-card header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .prim-card .num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-400);
+  }
+  .prim-card .lbl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    flex: 1;
+    line-height: 1.2;
+  }
+  .prim-card .impl {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-500);
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-200);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .impl-k {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    color: var(--color-ink-400);
+  }
+  .impl-v {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .prim-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.018em;
+    line-height: 1.2;
+    color: var(--color-ink-950);
+  }
+  .prim-card .lede {
+    color: var(--color-ink-500);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .prim-card .lede :global(b) { color: var(--color-ink-950); font-weight: 600; }
+
+  /* ── Artifact (shared chrome) ───────────────────────────────── */
+  .art {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #fff;
+    margin-top: 4px;
+  }
+  .art-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .cd {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .cd.a { background: #ff5f57; }
+  .cd.b { background: #febc2e; }
+  .cd.c { background: #28c840; }
+  .ct {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+  }
+  .ct b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+  .art-body {
+    padding: 14px;
+    background: #fff;
+  }
+  .art-foot {
+    padding: 9px 14px;
+    background: var(--color-ink-50);
+    border-top: 1px solid var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+  }
+  .art-foot.inner {
+    border-top: 1px dashed var(--color-ink-200);
+    background: transparent;
+    padding: 8px 0 0;
+    margin-top: 8px;
+  }
+  .art-foot b { color: var(--color-ink-950); font-weight: 600; }
+
+  /* ── Data substrate artifact ─────────────────────────── */
+  .data-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .data-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .data-sub-k {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .data-sub ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .data-sub ul li {
+    display: grid;
+    grid-template-columns: 12px 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 5px 8px;
+    background: var(--color-ink-50);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .data-sub ul li code {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+  .data-sub ul li span:last-child {
+    color: var(--color-sage-fg);
+    font-size: 9.5px;
+    font-weight: 600;
+  }
+  .dot-sage {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+  }
+  .audit-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .aud {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 8px;
+    padding: 3px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-700);
+  }
+  .aud-t { color: var(--color-ink-400); }
+  .aud-s {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .aud-s.ok {
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+  }
+  .provision {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .prov-pill {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-50);
+    border: 1px solid var(--color-indigo-100);
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+
+  /* ── Workflows artifact ────────────────────────────────── */
+  .wf-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .wf-steps li {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 8px;
+    border-radius: 6px;
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-100);
+  }
+  .wf-steps li .bullet {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1.5px solid var(--color-ink-300);
+    margin-left: 4px;
+  }
+  .wf-steps li.done .bullet {
+    background: var(--color-indigo-600);
+    border-color: var(--color-indigo-600);
+  }
+  .wf-steps li.hitl .bullet {
+    background: var(--color-amber-bg);
+    border-color: var(--color-amber-fg);
+    animation: hitlPulse 2s ease-in-out infinite;
+  }
+  @keyframes hitlPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(122, 81, 26, 0.25); }
+    50%      { box-shadow: 0 0 0 4px rgba(122, 81, 26, 0); }
+  }
+  .step-name {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    letter-spacing: -0.005em;
+  }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+  }
+  .wf-steps li.hitl {
+    background: rgba(252, 230, 194, 0.3);
+    border-color: var(--color-amber-bg);
+  }
+  .wf-steps li.hitl .step-meta {
+    color: var(--color-amber-fg);
+    font-weight: 500;
+  }
+
+  /* ── Tools & Agents artifact ───────────────────────────── */
+  .ta-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ta-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ta-sub-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-ink-200);
+  }
+  .ta-sub-k {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-950);
+  }
+  .ta-sub-meta {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-500);
+  }
+  .tl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+  }
+  .tl-card {
+    border: 1px solid var(--color-ink-200);
+    border-radius: 6px;
+    padding: 7px 6px;
+    background: var(--color-ink-50);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    align-items: center;
+  }
+  .tl-code {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background: var(--color-indigo-600);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 10.5px;
+  }
+  .tl-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--color-ink-950);
+  }
+
+  .ag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .ag-pill {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    padding: 5px 9px;
+    border-radius: 4px;
+    background: var(--color-ink-50);
+    color: var(--color-ink-700);
+    border: 1px solid var(--color-ink-100);
+  }
+  .ag-pill.on {
+    background: var(--color-indigo-50);
+    color: var(--color-indigo-700);
+    border-color: var(--color-indigo-100);
+    font-weight: 600;
+  }
+
+  /* ── Bullets at the bottom of each card ────────────────────── */
+  .bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--color-ink-200);
+  }
+  .bullets li {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 14px;
+    font-size: 13.5px;
+    color: var(--color-ink-700);
+    line-height: 1.45;
+  }
+  .b-k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    padding-top: 2px;
+  }
+
+  /* ── Compact variant ───────────────────────────────────────── */
+  .primtv-compact .cards { gap: 14px; }
+  .primtv-compact .prim-card { padding: 22px; gap: 12px; }
+  .primtv-compact .prim-card h3 { font-size: 18px; }
+  .primtv-compact .prim-card .lede { font-size: 13.5px; }
+  .primtv-compact .bullets { gap: 8px; padding-top: 10px; }
+  .primtv-compact .bullets li { font-size: 12.5px; grid-template-columns: 72px 1fr; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wf-steps li.hitl .bullet { animation: none; }
+  }
+</style>

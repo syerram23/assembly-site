@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import StackSection from "../components/StackSection.astro";
+import Problem from "../components/Problem.astro";
+import OrchestrationPrimitives from "../components/OrchestrationPrimitives.astro";
+import PlatformInfrastructure from "../components/PlatformInfrastructure.astro";
+import TwoDoors from "../components/TwoDoors.astro";
+import Speed from "../components/Speed.astro";
+import Proof from "../components/Proof.astro";
+import ClosingCTA from "../components/ClosingCTA.astro";
+---
+
+<Layout
+  title="Assembly Industries — The orchestration platform for enterprise AI"
+  description="Workflows, agents, and tools — between your foundation models, your data, and the apps your team needs to ship. Production-grade orchestration with identity, audit, HITL, and customer-isolated inference on day one."
+>
+  <Hero />
+  <StackSection />
+  <Problem />
+  <OrchestrationPrimitives variant="compact" />
+  <PlatformInfrastructure variant="teaser" />
+  <TwoDoors />
+  <Speed />
+  <Proof />
+  <ClosingCTA />
+</Layout>

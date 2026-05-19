@@ -1,0 +1,172 @@
+---
+const apps = [
+  { name: "hr-comp-band-bot",   team: "HR ops · 2 people", vertical: "Regional bank", days: "11 days", surfaces: ["slack","web","rest"] },
+  { name: "vendor-onboarding-v3", team: "Procurement · 3 people", vertical: "F200 enterprise", days: "14 days", surfaces: ["web","email","rest"] },
+  { name: "claims-triage-v2",  team: "Claims · 2 people", vertical: "Regional auto carrier", days: "9 days", surfaces: ["voice","slack","rest"] },
+  { name: "redeployment-followup", team: "Talent ops · 1 person", vertical: "National staffing firm", days: "6 days", surfaces: ["sms","slack","rest"] },
+];
+---
+
+<section class="built" id="built-on">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Built on Assembly</span>
+        <h2>Apps your team would actually <em>name</em>.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Four apps, shipped by their own teams &mdash; not Assembly engineers &mdash; in under three weeks each. Different verticals, different sources, same governance posture. <span class="dim">Names are anonymized while contracts settle; metadata is real.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="grid">
+      {
+        apps.map(({ name, team, vertical, days, surfaces }) => (
+          <article class="app lift">
+            <div class="app-chrome">
+              <span class="cd"></span><span class="cd"></span><span class="cd"></span>
+              <span class="ct">{name}</span>
+            </div>
+            <div class="app-body">
+              <div class="meta">
+                <div>
+                  <span class="lbl">Team</span>
+                  <span class="val">{team}</span>
+                </div>
+                <div>
+                  <span class="lbl">Vertical</span>
+                  <span class="val">{vertical}</span>
+                </div>
+                <div>
+                  <span class="lbl">Cutover</span>
+                  <span class="val">{days}</span>
+                </div>
+              </div>
+              <div class="surf-pills">
+                {surfaces.map((s) => <span class="sp">{s}</span>)}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .built {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+  .s-head .right p .dim {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-ink-400);
+    letter-spacing: 0.02em;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .app {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  .app-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .cd {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-ink-200);
+  }
+  .cd:nth-of-type(1) { background: #ffbd44; }
+  .cd:nth-of-type(2) { background: #fed636; }
+  .cd:nth-of-type(3) { background: #28ca41; }
+  .ct {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+  }
+  .app-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .meta > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta .lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-400);
+  }
+  .meta .val {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-ink-700);
+    line-height: 1.4;
+  }
+  .surf-pills {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px dashed var(--color-ink-200);
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .sp {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-50);
+    border: 1px solid var(--color-indigo-100);
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+</style>

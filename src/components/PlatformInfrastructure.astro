@@ -1,0 +1,346 @@
+---
+/*
+ * What's actually in the box.
+ *
+ * The full 21-capability infrastructure list, grouped into 5 categories.
+ * This is the "we provide everything except your business logic" pitch —
+ * the lopsidedness that justifies the platform cost.
+ *
+ * Per user direction: it's not just governance / safety — it's identity,
+ * data, comms, build-tooling, and run-with-confidence. Twenty-one
+ * concrete capabilities, day-one, included.
+ */
+interface Props {
+  variant?: "full" | "teaser";
+  showHeader?: boolean;
+}
+const { variant = "full", showHeader = true } = Astro.props;
+
+const groups = [
+  {
+    n: "01",
+    title: "Sign in & stay secure",
+    icon: "⌂",
+    items: [
+      { k: "Single sign-on",        v: "Your team signs in with the company login they already use." },
+      { k: "Roles & permissions",   v: "Every app respects who can see what &mdash; down to the individual field." },
+      { k: "User & team management", v: "Apps know your teams, roles, and structure automatically." },
+      { k: "Audit trail",           v: "A complete record of who did what &mdash; ready for any security review." },
+    ],
+  },
+  {
+    n: "02",
+    title: "Your data, ready to use",
+    icon: "⌒",
+    items: [
+      { k: "Governed data plane",    v: "All your data unified in one safe place your apps can draw from." },
+      { k: "Live connectors",        v: "Your SaaS tools and databases stay in sync &mdash; apps always see current data." },
+      { k: "Search across everything", v: "Ask in plain language, get answers from every connected source." },
+      { k: "Files & documents",      v: "Upload a PDF or spreadsheet and your app can read and use it." },
+      { k: "Secure storage",         v: "Encrypted, backed up, and kept inside your own environment." },
+    ],
+  },
+  {
+    n: "03",
+    title: "Reach people",
+    icon: "✉",
+    items: [
+      { k: "Email",                v: "Apps send confirmations, reports, and follow-ups &mdash; no provider to set up." },
+      { k: "SMS & phone",          v: "Reach people by text or call from inside any app." },
+      { k: "Comms conversations",  v: "Your app talks to people directly &mdash; collects, verifies, follows up until done." },
+      { k: "In-app notifications", v: '"Ready for review," "your report is done" &mdash; keep users informed.' },
+    ],
+  },
+  {
+    n: "04",
+    title: "Build faster",
+    icon: "▤",
+    items: [
+      { k: "Ready-made components", v: "Tables, forms, dashboards, and review screens &mdash; ready to drop in." },
+      { k: "Scheduled jobs",        v: "Set work to run on its own &mdash; every morning, overnight, any schedule." },
+      { k: "Document generation",   v: "Turn your data into polished reports and summaries automatically." },
+      { k: "Secrets handling",      v: "API keys and credentials stored safely &mdash; never exposed, never in code." },
+    ],
+  },
+  {
+    n: "05",
+    title: "Run with confidence",
+    icon: "◎",
+    items: [
+      { k: "Hosting & backups",     v: "Your apps run reliably &mdash; nothing to manage or maintain." },
+      { k: "Error monitoring",      v: "When something breaks, you see exactly what and why." },
+      { k: "Production workflows",  v: "Retries, approvals, and versioning for the apps that go live for real." },
+      { k: "Admin & governance",    v: "Manage data access, users, and secrets from one place." },
+    ],
+  },
+];
+
+const totalCapabilities = groups.reduce((acc, g) => acc + g.items.length, 0);
+---
+
+<section class={"infra infra-" + variant} id="infrastructure">
+  <div class="wrap">
+    {
+      showHeader && (
+        <div class="s-head">
+          <div class="left">
+            <span class="eyebrow"><span class="dot"></span>Included out of the box</span>
+            <h2>
+              Everything your team builds with.<br />
+              <em>Twenty-one capabilities. Day one.</em>
+            </h2>
+          </div>
+          <div class="right">
+            <p>
+              Set up once during onboarding. From then on, every app your team creates inherits these &mdash; <b>no wiring, no extra accounts, no setup</b>. You bring your business logic and your AI model key; everything below is provided by the platform.
+            </p>
+          </div>
+        </div>
+      )
+    }
+
+    <div class="groups">
+      {
+        groups.map(({ n, title, icon, items }) => (
+          <article class="group lift">
+            <header>
+              <span class="group-num">{n}</span>
+              <span class="group-icon">{icon}</span>
+              <h3>{title}</h3>
+              <span class="group-count">{items.length} capabilities</span>
+            </header>
+            <ul class="items">
+              {
+                items.map(({ k, v }) => (
+                  <li>
+                    <span class="check" aria-hidden>
+                      <svg viewBox="0 0 14 14" width="12" height="12" aria-hidden="true">
+                        <path d="M3 7l3 3 5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <span class="item-body">
+                      <b>{k}</b>
+                      <span set:html={v}></span>
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+
+    <footer class="infra-foot">
+      <div class="foot-l">
+        <span class="foot-stat">
+          <span class="stat-v">{totalCapabilities}</span>
+          <span class="stat-k">capabilities · included</span>
+        </span>
+        <span class="foot-stat">
+          <span class="stat-v">1</span>
+          <span class="stat-k">thing you build · your app logic</span>
+        </span>
+      </div>
+      <div class="foot-r">
+        <span>
+          <b>Day one with Assembly</b>: all {totalCapabilities}, included.
+          <span class="dim">Day one without it: {totalCapabilities} separate things to evaluate, sign up for, wire in, secure, and maintain &mdash; none of which is the app you actually wanted to build.</span>
+        </span>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .infra {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+  .infra-teaser { padding: 80px 0; }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; line-height: 1.55; }
+  .s-head .right p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 880px) { .groups { grid-template-columns: 1fr; } }
+
+  .group {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px 26px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 3px solid var(--color-indigo-600);
+  }
+
+  .group header {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--color-ink-200);
+  }
+  .group-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-400);
+  }
+  .group-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .group h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    line-height: 1.2;
+  }
+  .group-count {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+
+  .items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .items li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .check {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    color: var(--color-ink-500);
+    line-height: 1.5;
+  }
+  .item-body b {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+    line-height: 1.3;
+  }
+
+  /* Bottom summary band */
+  .infra-foot {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 920px) {
+    .infra-foot {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+  .foot-l {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .foot-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 36px;
+    letter-spacing: -0.022em;
+    line-height: 1;
+    color: #fff;
+  }
+  .stat-k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+    margin-top: 4px;
+  }
+  .foot-r {
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .foot-r b {
+    color: #fff;
+    font-weight: 600;
+  }
+  .foot-r .dim {
+    display: block;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 6px;
+  }
+
+  /* ── Teaser variant ────────────────────────────────────────── */
+  .infra-teaser .groups { gap: 12px; }
+  .infra-teaser .group { padding: 18px 20px; gap: 12px; }
+  .infra-teaser .items { gap: 10px; }
+  .infra-teaser .items li { grid-template-columns: 18px 1fr; gap: 10px; }
+  .infra-teaser .check { width: 18px; height: 18px; }
+  .infra-teaser .item-body { font-size: 13px; }
+  .infra-teaser .item-body b { font-size: 14px; }
+</style>

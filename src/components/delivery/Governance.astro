@@ -1,0 +1,187 @@
+---
+const rows = [
+  { k: "Deployment", v: "Runs inside your environment. <b>Compute on Assembly AWS</b>, customer data stays in your systems &mdash; or fully single-tenant managed in your VPC." },
+  { k: "Identity & access", v: "SSO via Okta or Entra. SCIM provisioning. Role-scoped reviewer access on every HITL gate. No shared accounts." },
+  { k: "Human-in-the-loop", v: "Every judgment call surfaces in a named reviewer's queue with SLA. <b>No silent autonomous decisioning, ever.</b>" },
+  { k: "Audit lineage", v: "Every action traces back: source record, rule that fired, model call, reviewer who approved. The trail an examiner would ask for &mdash; already there." },
+  { k: "Compliance posture", v: "SOC 2 Type II &middot; ISO 27001 (in progress) &middot; HIPAA &amp; GLBA-aligned data handling." },
+  { k: "Model isolation", v: "Customer-isolated inference. <b>No training on your data.</b> Model audit log retained for the life of the engagement." },
+];
+---
+
+<section class="gov" id="governance">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Enterprise governance, by default</span>
+        <h2>The plumbing your AI tooling <em>doesn't ship with</em>.</h2>
+      </div>
+      <div class="right">
+        <p>
+          This is the dimension on which AI coding tooling and in-house prototypes break down. In regulated environments &mdash; or any environment with an auditor &mdash; the governance posture is the product. We ship it on day one, not as a phase two.
+        </p>
+      </div>
+    </div>
+
+    <div class="gov-grid">
+      <div class="gov-card">
+        <h3>Built in, not bolted on</h3>
+        <p class="sub">Six properties the buyer's security and compliance team will ask about. Each one is the thing an off-the-shelf AI tool leaves to you.</p>
+        <div class="gov-rows">
+          {
+            rows.map(({ k, v }) => (
+              <div class="r">
+                <span class="k">{k}</span>
+                <span class="v" set:html={v} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="gov-side">
+        <div class="side-card lift">
+          <span class="side-eyebrow">Pricing</span>
+          <h4>Priced on the work we ship.</h4>
+          <p>Usage-based on the unit of work the application does &mdash; not on seats, hours, or developer count. Annual commit available.</p>
+          <a href="/pricing" class="side-link">
+            See pricing <span class="arr">→</span>
+          </a>
+        </div>
+        <div class="side-card alt">
+          <span class="side-eyebrow">Deployment</span>
+          <h4>Your environment, your sign-on.</h4>
+          <p>Single-tenant in your VPC or managed on Assembly AWS. Customer data never leaves your systems.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gov {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+
+  .gov-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 1000px) { .gov-grid { grid-template-columns: 1fr; } }
+
+  .gov-card {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+  }
+  .gov-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.018em;
+    margin-bottom: 6px;
+  }
+  .gov-card .sub {
+    color: var(--color-ink-500);
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+  .gov-rows { display: grid; }
+  .gov-rows .r {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-ink-100);
+    align-items: start;
+  }
+  .gov-rows .r:first-child { border-top: 0; }
+  .gov-rows .r .k {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    padding-top: 4px;
+  }
+  .gov-rows .r .v {
+    font-size: 14.5px;
+    color: var(--color-ink-700);
+    line-height: 1.55;
+  }
+  .gov-rows .r .v :global(b) { color: var(--color-ink-950); font-weight: 600; }
+
+  .gov-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .side-card {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    background: var(--color-ink-50);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .side-card.alt {
+    background: var(--color-ink-950);
+    border-color: transparent;
+    color: #fff;
+  }
+  .side-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .side-card.alt .side-eyebrow { color: var(--color-lavender-300); }
+  .side-card h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    line-height: 1.25;
+  }
+  .side-card.alt h4 { color: #fff; }
+  .side-card p {
+    color: var(--color-ink-500);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .side-card.alt p { color: rgba(255,255,255,.7); }
+  .side-link {
+    margin-top: 8px;
+    display: inline-flex;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--color-indigo-600);
+    text-decoration: none;
+    align-self: flex-start;
+  }
+  .side-link:hover .arr { transform: translateX(3px); }
+  .side-link .arr { transition: transform 0.2s; }
+</style>

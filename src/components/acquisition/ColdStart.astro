@@ -1,0 +1,326 @@
+---
+/*
+ * Illustration 2 — Cold-start compression.
+ *
+ * Two lanes side-by-side:
+ *   - Body-shop SI delivery (12+ weeks, mostly never ships)
+ *   - Assembly-platform delivery (10 days, everything already on)
+ *
+ * Same engagement shape, radically different operating cost.
+ */
+
+const oldLane = [
+  { d: "W01", e: "Engagement signed", s: "fixed-bid SOW · 4-page work plan" },
+  { d: "W02", e: "Provision dev environment", s: "client procurement, security review" },
+  { d: "W03", e: "Wire SSO + roles", s: "every project · from scratch" },
+  { d: "W04", e: "Build data connectors", s: "OAuth, rate limits, schema mapping" },
+  { d: "W06", e: "Build audit + HITL queue", s: "or skip — usually skipped" },
+  { d: "W08", e: "First working prototype", s: "demo-only · staging" },
+  { d: "W12+", e: "Security + compliance review", s: "delivery slips, scope creep" },
+  { d: "—",  e: "Production deploy", s: "~40% of engagements never reach this row" },
+];
+
+const newLane = [
+  { d: "D00", e: "Engagement scoped via Studio", s: "60 min · signable SOW · live demo" },
+  { d: "D01", e: "Platform already on", s: "sign-on · audit · 21 capabilities · ready" },
+  { d: "D02", e: "Sources connected", s: "Workday · Salesforce · Snowflake · via OAuth catalog" },
+  { d: "D04", e: "First working app on real data", s: "composed from agents + tools library" },
+  { d: "D07", e: "HITL queue + audit live", s: "named reviewers · SLAs assigned" },
+  { d: "D10", e: "Production deploy", s: "usage-based billing starts · audit on" },
+  { d: "D14", e: "Customer team taking changes", s: "FDE in advisory mode · platform leverage" },
+  { d: "D90", e: "Adjacent app shipped on same platform", s: "~1 week incremental · zero new plumbing" },
+];
+---
+
+<section class="cs" id="cold-start">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 04 &middot; The cold-start problem</span>
+      <h2>The body-shop trap is mostly cold-start cost.<br/><em>Assembly compresses twelve weeks to ten days.</em></h2>
+      <p class="lede">
+        Every project an SI quotes starts at zero: identity, audit, data plumbing, HITL queue, hosting, monitoring. Twelve weeks of cold start before anyone touches the actual business logic the customer asked for &mdash; and somewhere around 40% of engagements never make it past prototype because cold-start cost eats the budget. <b>The same engagement on Assembly skips all of it, because all of it is already on.</b>
+      </p>
+    </div>
+
+    <div class="lanes">
+      <!-- OLD -->
+      <article class="lane lane-old">
+        <header>
+          <span class="lane-num">Without Assembly</span>
+          <span class="lane-foot-tag old">Body-shop SI delivery</span>
+        </header>
+        <ol class="rows">
+          {
+            oldLane.map(({ d, e, s }) => (
+              <li>
+                <span class="r-d">{d}</span>
+                <span class="r-e">{e}</span>
+                <span class="r-s">{s}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <footer>
+          <div class="f-stat">
+            <span class="fs-v">12+ weeks</span>
+            <span class="fs-k">to a prototype</span>
+          </div>
+          <div class="f-stat">
+            <span class="fs-v">~40%</span>
+            <span class="fs-k">never reach production</span>
+          </div>
+          <div class="f-stat">
+            <span class="fs-v">25&ndash;30%</span>
+            <span class="fs-k">gross margin · T&amp;M</span>
+          </div>
+        </footer>
+      </article>
+
+      <!-- NEW -->
+      <article class="lane lane-new">
+        <header>
+          <span class="lane-num on">With Assembly</span>
+          <span class="lane-foot-tag new">Platform delivery</span>
+        </header>
+        <ol class="rows">
+          {
+            newLane.map(({ d, e, s }) => (
+              <li class="row-on">
+                <span class="r-d on">{d}</span>
+                <span class="r-e on">{e}</span>
+                <span class="r-s on">{s}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <footer class="new-foot">
+          <div class="f-stat">
+            <span class="fs-v on">~10 days</span>
+            <span class="fs-k">to production</span>
+          </div>
+          <div class="f-stat">
+            <span class="fs-v on">100%</span>
+            <span class="fs-k">reach production · platform-leveraged</span>
+          </div>
+          <div class="f-stat">
+            <span class="fs-v on">70&ndash;80%</span>
+            <span class="fs-k">gross margin · usage-based</span>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <p class="leverage-note">
+      <span class="ln-tag">Compound effect</span>
+      Cold-start cost amortizes across every engagement on the platform. <b>Project two costs less than project one. Project ten costs marginally nothing.</b> An SI on the body-shop model can never get this leverage; the cost re-accrues on every new client.
+    </p>
+  </div>
+</section>
+
+<style>
+  .cs {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+  }
+  .s-head { max-width: 880px; margin-bottom: 48px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 780px;
+  }
+  .s-head .lede b { color: var(--color-ink-950); font-weight: 600; }
+
+  .lanes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 980px) { .lanes { grid-template-columns: 1fr; } }
+
+  .lane {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .lane-new {
+    border-color: var(--color-indigo-600);
+    box-shadow: 0 1px 0 rgba(15,17,42,.04), 0 18px 48px -24px rgba(79, 70, 229, 0.32);
+    position: relative;
+  }
+  .lane-new::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--color-indigo-600);
+  }
+
+  .lane header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    background: var(--color-ink-50);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .lane-new header {
+    background: var(--color-indigo-50);
+    border-bottom-color: var(--color-indigo-100);
+  }
+  .lane-num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+  }
+  .lane-num.on { color: var(--color-indigo-700); }
+  .lane-foot-tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--color-ink-100);
+    color: var(--color-ink-500);
+  }
+  .lane-foot-tag.new {
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+  }
+
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+  }
+  .rows li {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 22px;
+    border-top: 1px solid var(--color-ink-100);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .rows li:first-child { border-top: 0; }
+  .r-d {
+    color: var(--color-ink-400);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 10.5px;
+  }
+  .r-e {
+    color: var(--color-ink-700);
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    text-decoration: line-through;
+    text-decoration-color: var(--color-ink-300);
+  }
+  .r-s {
+    color: var(--color-ink-500);
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+  }
+
+  .row-on .r-d.on { color: var(--color-indigo-600); }
+  .row-on .r-e.on {
+    color: var(--color-ink-950);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .row-on .r-s.on {
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .lane footer {
+    margin-top: auto;
+    padding: 16px 22px;
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.65);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .f-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .fs-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.012em;
+    color: #fff;
+  }
+  .fs-v.on { color: #fff; }
+  .fs-k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* compound-effect note */
+  .leverage-note {
+    margin-top: 28px;
+    padding: 22px 26px;
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: center;
+    color: var(--color-ink-700);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  @media (max-width: 720px) {
+    .leverage-note { grid-template-columns: 1fr; gap: 12px; }
+  }
+  .ln-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-50);
+    padding: 5px 12px;
+    border: 1px solid var(--color-indigo-100);
+    border-radius: 999px;
+    white-space: nowrap;
+    align-self: start;
+  }
+  .leverage-note b { color: var(--color-ink-950); font-weight: 600; }
+</style>

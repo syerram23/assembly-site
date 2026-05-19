@@ -1,0 +1,124 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const links = [
+  { href: "/platform", label: "Platform" },
+  { href: "/delivery", label: "Delivery" },
+];
+---
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="Assembly Industries">
+      <img src="/logo-mark.png" alt="" />
+      <span class="wordmark"
+        >Assembly<small>INDUSTRIES</small></span
+      >
+    </a>
+    <nav>
+      <ul>
+        {
+          links.map(({ href, label }) => (
+            <li>
+              <a href={href} class={pathname === href ? "on" : ""}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="cta">
+          <a href="#cta" class="btn btn-primary">
+            Book a scoping call <span class="arr">→</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(140%) blur(12px);
+    background: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-size: 18px;
+    color: var(--color-ink-950);
+    line-height: 1;
+  }
+  .wordmark small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--color-ink-500);
+    margin-top: 2px;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    color: var(--color-ink-700);
+    font-size: 14.5px;
+    font-weight: 500;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  nav a:hover,
+  nav a.on {
+    color: var(--color-indigo-600);
+  }
+  /* Primary CTA in the nav: keep text white in all states */
+  nav a.btn-primary,
+  nav a.btn-primary:hover {
+    color: #fff;
+  }
+  nav a.on {
+    position: relative;
+  }
+  nav a.on::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -22px;
+    height: 2px;
+    background: var(--color-indigo-600);
+    border-radius: 2px;
+  }
+  @media (max-width: 860px) {
+    nav ul li:not(.cta) {
+      display: none;
+    }
+  }
+</style>

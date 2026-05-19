@@ -1,0 +1,362 @@
+---
+/*
+ * Our "in" — how Assembly gets in the door.
+ *
+ * Enterprise customers have hundreds of small AI requests that the
+ * traditional SI motion can't justify: too small for a 6-month engagement,
+ * too important to ignore. Assembly's entry is enabling vibe-code projects —
+ * a single, named, scoped app delivered on the platform in days. The first
+ * agent is the foothold. The next ten are the platform.
+ *
+ * Three examples drawn from the homepage / platform agents library.
+ */
+
+const projects = [
+  {
+    code: "comp-band-bot",
+    role: "VP, People Ops",
+    request: "I need a Slack command that answers compensation-band questions for hiring managers &mdash; without me getting Slacked the same question forty times a week.",
+    composed: ["workday", "greenhouse", "slack"],
+    tools: ["search", "policy", "conv"],
+    days: "11 days",
+    metric: "92 questions/wk auto-answered",
+    next: "Then: comp-letter-gen, offer-redline, exit-survey-bot — same platform, same audit.",
+  },
+  {
+    code: "ar-followup",
+    role: "Controller",
+    request: "Build me an agent that follows up on outstanding invoices &mdash; with the right tone for the customer and the right escalation when they ghost us.",
+    composed: ["netsuite", "outlook", "twilio"],
+    tools: ["conv", "workflow", "docgen"],
+    days: "7 days",
+    metric: "+$2.4M cash collected in Q1",
+    next: "Then: vendor-payment-reconcile, expense-policy-check, month-end-narrative.",
+  },
+  {
+    code: "carrier-exception",
+    role: "Director, Logistics Ops",
+    request: "Most shipments are quiet. The 8% that aren't &mdash; missed pickups, dimensional re-rates, damage claims &mdash; that's where margin leaks. Triage them.",
+    composed: ["EDI 214", "EDI 990", "carrier portals", "slack"],
+    tools: ["browse", "workflow", "conv"],
+    days: "14 days",
+    metric: "72% auto-resolved · $118 avg recovery",
+    next: "Then: lane-bid-analyzer, accessorial-audit, dock-scheduling-bot.",
+  },
+];
+---
+
+<section class="oi" id="our-in">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 04 &middot; Our "in"</span>
+      <h2>
+        How Assembly gets in the door.<br />
+        <em>Vibe-code projects.</em>
+      </h2>
+      <p class="lede">
+        Every enterprise has hundreds of small AI requests that the traditional SI motion can't justify &mdash; too small for a six-month engagement, too important to ignore. <b>Assembly's entry is enabling vibe-code projects</b>: a single, named, scoped application that ships on the platform in days. Studio scopes the request in sixty minutes, the FDE composes it from the agents-and-tools library, and the customer's operator owns the result. <b>The first agent is the foothold. The next ten are the platform.</b>
+      </p>
+    </div>
+
+    <ol class="cases">
+      {
+        projects.map(({ code, role, request, composed, tools, days, metric, next }) => (
+          <li>
+            <article class="case">
+              <header class="case-head">
+                <div class="case-chrome">
+                  <span class="cd a"></span><span class="cd b"></span><span class="cd c"></span>
+                  <span class="case-title">app &middot; <b>{code}</b></span>
+                </div>
+              </header>
+
+              <div class="case-body">
+                <div class="ask-row">
+                  <span class="ask-from">{role}</span>
+                  <p class="ask-q">&ldquo;{request}&rdquo;</p>
+                </div>
+
+                <div class="ship-row">
+                  <span class="ship-k">Composed from</span>
+                  <div class="ship-pills">
+                    {composed.map((c) => <span class="ship-pill data">{c}</span>)}
+                    <span class="ship-arr">+</span>
+                    {tools.map((t) => <span class="ship-pill tool">{t}</span>)}
+                  </div>
+                </div>
+
+                <div class="result-row">
+                  <div class="result-stat">
+                    <span class="rs-v">{days}</span>
+                    <span class="rs-k">to production</span>
+                  </div>
+                  <div class="result-stat">
+                    <span class="rs-v on">{metric}</span>
+                    <span class="rs-k">after 90 days</span>
+                  </div>
+                </div>
+
+                <div class="expand-row">
+                  <span class="er-tag">Then</span>
+                  <span class="er-text">{next}</span>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="leverage-note">
+      <span class="ln-tag">The wedge</span>
+      <p>
+        Each project is a self-contained win: one named app, one team, one production deploy, one usage-based contract. <b>What's actually happening underneath</b> &mdash; the data plane provisioned, the audit log wired, the identity gates federated, the connectors tested &mdash; persists. Project two reuses everything. By project four, the customer's own team is building on the platform. <b>That's the wedge an SI cannot replicate with people-in-seats.</b>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .oi {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head { max-width: 880px; margin-bottom: 48px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 800px;
+  }
+  .s-head .lede b { color: var(--color-ink-950); font-weight: 600; }
+
+  /* ── Cases ─────────────────────────────────────────────── */
+  .cases {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 1100px) { .cases { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 720px) { .cases { grid-template-columns: 1fr; } }
+
+  .case {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .case-head { background: #fff; }
+  .case-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .cd {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .cd.a { background: #ff5f57; }
+  .cd.b { background: #febc2e; }
+  .cd.c { background: #28c840; }
+  .case-title {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+  }
+  .case-title b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .case-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  /* Ask */
+  .ask-row { display: flex; flex-direction: column; gap: 6px; }
+  .ask-from {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .ask-q {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 14.5px;
+    letter-spacing: -0.005em;
+    line-height: 1.5;
+    color: var(--color-ink-950);
+    margin: 0;
+  }
+
+  /* Ship */
+  .ship-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--color-ink-200);
+  }
+  .ship-k {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .ship-pills {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .ship-pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .ship-pill.data {
+    background: var(--color-ink-50);
+    color: var(--color-ink-700);
+    border: 1px solid var(--color-ink-200);
+  }
+  .ship-pill.tool {
+    background: var(--color-indigo-50);
+    color: var(--color-indigo-700);
+    border: 1px solid var(--color-indigo-100);
+  }
+  .ship-arr {
+    color: var(--color-ink-400);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin: 0 3px;
+  }
+
+  /* Result */
+  .result-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-ink-100);
+  }
+  .result-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .rs-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    line-height: 1.2;
+  }
+  .rs-v.on { color: var(--color-indigo-600); }
+  .rs-k {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.04em;
+  }
+
+  /* Expand */
+  .expand-row {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-ink-100);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .er-tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-indigo-600);
+    background: var(--color-indigo-50);
+    border: 1px solid var(--color-indigo-100);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .er-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-700);
+    line-height: 1.5;
+  }
+
+  /* ── Leverage note ────────────────────────────────────── */
+  .leverage-note {
+    margin-top: 28px;
+    padding: 24px 28px;
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .leverage-note { grid-template-columns: 1fr; gap: 12px; }
+  }
+  .ln-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-lavender-300);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    align-self: start;
+    padding-top: 6px;
+  }
+  .leverage-note p {
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .leverage-note p b { color: #fff; font-weight: 600; }
+</style>

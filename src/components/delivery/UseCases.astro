@@ -1,0 +1,577 @@
+---
+/*
+ * Use cases · the shape of the problem.
+ *
+ * Four tabs: Recruiting, Finance & Compliance, Logistics, Insurance Ops.
+ * Same product-screenshot card layout as v1. Tabs swap via a small inline
+ * script at the bottom of the file — same .on-class pattern as v1.
+ */
+---
+
+<section class="uc-sec" id="use-cases">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>The shape of problem we solve</span>
+        <h2>Not four industries.<br />One <em>problem shape</em>.</h2>
+      </div>
+      <div class="right">
+        <p>Each engagement below is a different vertical &mdash; but they're the same problem: long-tail operational work that's too custom for SaaS, too operational for a consultancy, and too plumbing-heavy for AI coding tools. That's the surface the delivery door covers.</p>
+      </div>
+    </div>
+
+    <div class="shape-frame">
+      <b>The pattern, in plain words</b>
+      Per-record judgment work. Driven by rules and conversation. Audited end-to-end. Routed to a named human when the call isn't black and white. Generates a report at the end. That shape shows up across recruiting, banking, logistics, and insurance &mdash; under different names.
+    </div>
+
+    <div class="uc-tabs" role="tablist">
+      <button class="on" data-uc="recruiting" type="button">Recruiting</button>
+      <button data-uc="finance" type="button">Finance &amp; Compliance</button>
+      <button data-uc="logistics" type="button">Logistics</button>
+      <button data-uc="ops" type="button">Insurance Ops</button>
+    </div>
+
+    <!-- ── Recruiting ────────────────────────────────────────────── -->
+    <div class="uc-panel on" data-panel="recruiting">
+      <div>
+        <span class="eyebrow">High-volume staffing</span>
+        <h3>Conversational follow-up at the scale of every placement.</h3>
+        <p class="lede">
+          Mid-market staffing firms place thousands of contractors a year. The work after placement &mdash; check-ins, engagement calls, redeployment &mdash; is conversational and per-person. Recruiters never get to it. Assembly does.
+        </p>
+        <div class="uc-stats">
+          <div>
+            <div class="k">Contractors</div>
+            <div class="v">10,000<small>placed per year</small></div>
+          </div>
+          <div>
+            <div class="k">Redeployment lift</div>
+            <div class="v">+5%<small>vs. baseline</small></div>
+          </div>
+          <div>
+            <div class="k">Annual gross profit</div>
+            <div class="v">$2.0M<small>at $4K margin / redeploy</small></div>
+          </div>
+        </div>
+        <ul class="uc-list">
+          <li>Week-1 check-in calls &mdash; conversational, contextual to assignment</li>
+          <li>Monthly engagement &amp; satisfaction conversations</li>
+          <li>End-of-assignment redeployment outreach</li>
+          <li>Time-card nudges and dispute resolution flow</li>
+        </ul>
+      </div>
+      <div>
+        <div class="uc-art lift">
+          <img src="/dashboard-agents.png" alt="Assembly Studio — capabilities" />
+          <div class="cap">
+            <b>Studio &middot; Agents</b>
+            <span>Live customer environment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Finance & Compliance ──────────────────────────────────── -->
+    <div class="uc-panel" data-panel="finance">
+      <div>
+        <span class="eyebrow">Regulated banking</span>
+        <h3>Continuous compliance testing with auditor-grade lineage.</h3>
+        <p class="lede">
+          Regional banks run programs for Reg E, supervisory trade controls, AML. Assembly automates the deterministic portions and routes judgment to named reviewers &mdash; every finding traceable to its source record.
+        </p>
+        <div class="uc-stats">
+          <div>
+            <div class="k">Controls tested</div>
+            <div class="v">11<small>per quarterly run</small></div>
+          </div>
+          <div>
+            <div class="k">Sample population</div>
+            <div class="v">5,855<small>claims, quarterly</small></div>
+          </div>
+          <div>
+            <div class="k">Audit lineage</div>
+            <div class="v">100%<small>findings traceable</small></div>
+          </div>
+        </div>
+        <ul class="uc-list">
+          <li>Sampling, threshold math, business-day arithmetic</li>
+          <li>Federal Reserve calendar &amp; CFPB rule pack evaluation</li>
+          <li>HITL disposition routed to named compliance reviewer</li>
+          <li>CMP report generation in customer's audit format</li>
+        </ul>
+      </div>
+      <div>
+        <div class="uc-art lift">
+          <img src="/dashboard-console.png" alt="Assembly Console — Reg E run" />
+          <div class="cap">
+            <b>Console &middot; Reg E Run</b>
+            <span>Axos Bank &middot; live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Logistics ─────────────────────────────────────────────── -->
+    <div class="uc-panel" data-panel="logistics">
+      <div>
+        <span class="eyebrow">Mid-market logistics</span>
+        <h3>Carrier exceptions, resolved before they become claims.</h3>
+        <p class="lede">
+          Most shipments are quiet. The 8% that aren't &mdash; missed pickups, dimensional re-rates, accessorial disputes &mdash; are where margin leaks. Assembly reads the EDI, talks to the carrier, drafts the dispute, and routes judgment calls to your team.
+        </p>
+        <div class="uc-stats">
+          <div>
+            <div class="k">Exceptions / month</div>
+            <div class="v">~14k<small>typical mid-market book</small></div>
+          </div>
+          <div>
+            <div class="k">Auto-resolved</div>
+            <div class="v">72%<small>conversational + rules</small></div>
+          </div>
+          <div>
+            <div class="k">Avg recovery</div>
+            <div class="v">$118<small>per disputed shipment</small></div>
+          </div>
+        </div>
+        <ul class="uc-list">
+          <li>EDI 214 / 990 ingestion &middot; exception classification</li>
+          <li>Carrier portal browser automation for dispute filing</li>
+          <li>Re-rate and accessorial review with HITL above threshold</li>
+          <li>Weekly recovery report &amp; carrier scorecard</li>
+        </ul>
+      </div>
+      <div>
+        <div class="uc-art lift">
+          <div class="exq">
+            <div class="exq-h">
+              <span class="eyebrow">Exception queue &middot; today</span>
+              <span class="eyebrow accent">14 routed</span>
+            </div>
+            <div class="exq-rows">
+              <div class="exq-row alt">
+                <b>SHP-49102</b>
+                <span>Accessorial &middot; liftgate &middot; re-rate pending</span>
+                <span class="badge auto">AUTO</span>
+              </div>
+              <div class="exq-row">
+                <b>SHP-49114</b>
+                <span>Missed pickup &middot; driver no-show 2026-04-29</span>
+                <span class="badge hitl">HITL</span>
+              </div>
+              <div class="exq-row alt">
+                <b>SHP-49118</b>
+                <span>Dim re-rate &middot; 48&times;40&times;52 contested</span>
+                <span class="badge auto">AUTO</span>
+              </div>
+              <div class="exq-row">
+                <b>SHP-49121</b>
+                <span>Damage claim &middot; photo evidence required</span>
+                <span class="badge hitl">HITL</span>
+              </div>
+            </div>
+          </div>
+          <div class="cap">
+            <b>Console &middot; Exception queue</b>
+            <span>Mid-market logistics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Insurance Ops ─────────────────────────────────────────── -->
+    <div class="uc-panel" data-panel="ops">
+      <div>
+        <span class="eyebrow">Insurance operations</span>
+        <h3>First-notice-of-loss to file open, without the queue.</h3>
+        <p class="lede">
+          FNOL is a conversation: listen, classify, collect what's missing, open the file. Assembly handles it on voice and text, populates the system of record, and only escalates the calls that need a human adjuster.
+        </p>
+        <div class="uc-stats">
+          <div>
+            <div class="k">FNOLs / day</div>
+            <div class="v">~3,200<small>regional carrier</small></div>
+          </div>
+          <div>
+            <div class="k">Time-to-file</div>
+            <div class="v">&minus;68%<small>median, vs. call center</small></div>
+          </div>
+          <div>
+            <div class="k">CSAT</div>
+            <div class="v">4.7/5<small>post-conversation</small></div>
+          </div>
+        </div>
+        <ul class="uc-list">
+          <li>Voice + text intake with state-by-state required-field rules</li>
+          <li>Coverage check &amp; classification against policy data</li>
+          <li>Open file in Guidewire / Duck Creek with full transcript</li>
+          <li>Escalation to adjuster only when judgment is required</li>
+        </ul>
+      </div>
+      <div>
+        <div class="uc-art lift">
+          <div class="fnol">
+            <div class="fnol-h">
+              <span class="eyebrow">FNOL &middot; live transcript</span>
+              <span class="eyebrow sage">&#9679; connected</span>
+            </div>
+            <div class="fnol-body">
+              <div class="fnol-turn">
+                <span class="t-who">CALLER</span>
+                <span class="t-text">Hi, I need to report a fender bender from yesterday afternoon&hellip;</span>
+              </div>
+              <div class="fnol-turn">
+                <span class="t-who t-bot">ASSEMBLY</span>
+                <span class="t-text t-bot-text">Sorry to hear that. I'll get you opened up. Do you have your policy number, or want me to look you up by name and ZIP?</span>
+              </div>
+              <div class="fnol-turn">
+                <span class="t-who">CALLER</span>
+                <span class="t-text">Name and ZIP. It's Maria Davenport, 92708.</span>
+              </div>
+              <div class="fnol-match">
+                <div class="m-row"><span>POLICY MATCH</span><b>CA-OTOA-44192</b></div>
+                <div class="m-row"><span>COVERAGE</span><b class="ok">collision &middot; in-force</b></div>
+                <div class="m-row"><span>FILE</span><b class="ind">CL-2026-008341 &middot; opened</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="cap">
+            <b>Conversational &middot; FNOL</b>
+            <span>Regional auto carrier</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".uc-tabs button");
+  const panels = document.querySelectorAll<HTMLElement>(".uc-panel");
+  tabs.forEach((b) =>
+    b.addEventListener("click", () => {
+      const k = b.dataset.uc;
+      tabs.forEach((x) => x.classList.toggle("on", x === b));
+      panels.forEach((p) => p.classList.toggle("on", p.dataset.panel === k));
+    }),
+  );
+</script>
+
+<style>
+  .uc-sec {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head .left h2 { margin-top: 18px; }
+  .s-head .left h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .right p {
+    color: var(--color-ink-500);
+    font-size: 18px;
+    max-width: 680px;
+  }
+
+  .shape-frame {
+    margin-bottom: 28px;
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--color-ink-300);
+    background: var(--color-ink-50);
+    font-size: 14.5px;
+    color: var(--color-ink-700);
+    max-width: 780px;
+  }
+  .shape-frame b {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-ink-950);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .uc-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .uc-tabs button {
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--color-ink-200);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink-700);
+    background: #fff;
+    transition: all 0.15s;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .uc-tabs button:hover {
+    border-color: var(--color-ink-400);
+  }
+  .uc-tabs button.on {
+    background: var(--color-ink-950);
+    color: #fff;
+    border-color: var(--color-ink-950);
+  }
+
+  .uc-panel {
+    display: none;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .uc-panel.on { display: grid; }
+  @media (max-width: 1000px) {
+    .uc-panel.on { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .uc-panel h3 {
+    font-size: 36px;
+    letter-spacing: -0.022em;
+    margin-top: 14px;
+    margin-bottom: 18px;
+  }
+  .uc-panel .lede {
+    color: var(--color-ink-500);
+    font-size: 17px;
+    margin-bottom: 28px;
+    max-width: 60ch;
+  }
+
+  .uc-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #fff;
+  }
+  .uc-stats > div {
+    padding: 20px;
+    border-right: 1px solid var(--color-ink-200);
+  }
+  .uc-stats > div:last-child { border-right: 0; }
+  .uc-stats .k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-ink-500);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .uc-stats .v {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-ink-950);
+  }
+  .uc-stats .v small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-ink-500);
+    letter-spacing: 0;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .uc-list {
+    margin-top: 24px;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    padding: 0;
+  }
+  .uc-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--color-ink-700);
+  }
+  .uc-list li::before {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-indigo-100);
+    border: 3px solid var(--color-indigo-600);
+    margin-top: 4px;
+  }
+
+  /* ── Product artifact card (used for image + custom mocks) ──── */
+  .uc-art {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+  }
+  .uc-art img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .uc-art .cap {
+    padding: 14px 18px;
+    border-top: 1px solid var(--color-ink-100);
+    background: var(--color-ink-50);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .uc-art .cap b {
+    color: var(--color-ink-950);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: -0.005em;
+    text-transform: none;
+  }
+
+  /* ── Exception queue mock (logistics) ──────────────────────── */
+  .exq {
+    background: #fff;
+    padding: 28px;
+    display: grid;
+    gap: 16px;
+  }
+  .exq-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .exq-h .accent { color: var(--color-indigo-600); }
+  .exq-rows {
+    display: grid;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .exq-row {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 14px;
+    padding: 12px;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 8px;
+    align-items: center;
+  }
+  .exq-row.alt { background: var(--color-ink-50); }
+  .exq-row b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+  .exq-row span:not(.badge) {
+    color: var(--color-ink-500);
+  }
+  .badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .badge.auto {
+    color: var(--color-sage-fg);
+    background: var(--color-sage-bg);
+  }
+  .badge.hitl {
+    color: var(--color-amber-fg);
+    background: var(--color-amber-bg);
+  }
+
+  /* ── FNOL transcript mock (insurance ops) ──────────────────── */
+  .fnol {
+    background: #fff;
+    padding: 28px;
+    display: grid;
+    gap: 16px;
+  }
+  .fnol-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .fnol-h .sage { color: var(--color-sage-fg); }
+  .fnol-body {
+    font-family: var(--font-body);
+    font-size: 14px;
+    display: grid;
+    gap: 12px;
+  }
+  .fnol-turn {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 12px;
+  }
+  .t-who {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .t-who.t-bot { color: var(--color-indigo-600); }
+  .t-text {
+    color: var(--color-ink-700);
+  }
+  .t-text.t-bot-text { color: var(--color-ink-950); }
+  .fnol-match {
+    margin-top: 6px;
+    padding: 14px;
+    border: 1px dashed var(--color-ink-200);
+    border-radius: 8px;
+    display: grid;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+  }
+  .m-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .m-row span {
+    color: var(--color-ink-500);
+  }
+  .m-row b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+  .m-row b.ok { color: var(--color-sage-fg); }
+  .m-row b.ind { color: var(--color-indigo-600); }
+
+  .lift {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+</style>

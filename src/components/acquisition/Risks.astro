@@ -1,0 +1,167 @@
+---
+const risks = [
+  {
+    n: "01",
+    risk: "Cultural integration",
+    detail: "IT-services firms are utilization-driven; platform companies are usage-driven. Forced-march integration can kill the platform thesis by re-introducing billable-hours pressure on the FDE org.",
+    mitigation: "Maintain Assembly as a separately-incentivized BU for 18&ndash;24 months. Acquirer's existing clients route through Assembly via internal SOW; usage-based pricing internally. Preserve FDE equity participation through earn-out tied to platform ARR, not services revenue."
+  },
+  {
+    n: "02",
+    risk: "Talent retention",
+    detail: "Forward-deployed engineers are the scarce input. The 5,230% surge in FDE demand makes our team poachable by every model company and Palantir. Acquisition closings are when key engineers quietly take other offers.",
+    mitigation: "Negotiate retention with the FDE core <b>before</b> close, not after. Equity refresh tied to multi-year platform ARR milestones. Career-path commitment that doesn't dead-end them inside an SI org chart."
+  },
+  {
+    n: "03",
+    risk: "Anthropic concentration",
+    detail: "Production runs on Anthropic's open-source Claude. Anthropic is simultaneously a partner and a competitor (via their own Applied AI / enterprise services firm). A pricing or licensing change could disrupt unit economics.",
+    mitigation: "Model-agnostic abstraction layer is part of the platform IP. Pre-close diligence on Anthropic ToS and pricing schedule. Multi-model support (Anthropic + OpenAI + open-source) on the roadmap; demonstrate substitutability in due diligence."
+  },
+  {
+    n: "04",
+    risk: "Customer concentration",
+    detail: "Assembly's current customer base is sub-scale relative to an acquirer's existing book. Top customers are a meaningful share of current revenue.",
+    mitigation: "Treat acquirer's existing client base as the primary post-close GTM channel. Top-of-funnel for re-platforming existing engagements is the larger near-term opportunity than net-new logos. <b>The acquirer's customer base is the asset; Assembly is the engine.</b>"
+  },
+  {
+    n: "05",
+    risk: "Tech-stack integration",
+    detail: "Acquirer's existing tooling (project management, security, identity) needs to integrate with Assembly's platform. Force-migrating either way risks deprecating working systems.",
+    mitigation: "Assembly's connector library already supports the major systems (Workday, Okta, SF, ServiceNow). 90-day technical-integration sprint as a planned post-close workstream. Federation, not migration."
+  },
+  {
+    n: "06",
+    risk: "Brand cannibalization",
+    detail: "Existing services revenue lines may shrink as platform-delivered engagements ramp. Sales teams compensated on T&amp;M may resist.",
+    mitigation: "<b>This is a feature, not a bug.</b> The transformation thesis requires substituting T&amp;M revenue with platform-leveraged ARR. Compensation plans, GTM motion, and analyst narrative aligned to the new model from day 0. The shrink-then-grow trajectory is the deal."
+  },
+];
+---
+
+<section class="risks" id="risks">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 07 &middot; Risks &amp; mitigations</span>
+      <h2>The six risks <em>worth raising</em>.<br/>And what we'd do about each.</h2>
+      <p class="lede">
+        Honest framing of what could go wrong, paired with the specific mitigation we'd commit to in diligence. We are not interested in a transaction that ends with the platform shelved &mdash; the integration design is the deal.
+      </p>
+    </div>
+
+    <ol class="risk-list">
+      {
+        risks.map(({ n, risk, detail, mitigation }) => (
+          <li>
+            <div class="r-num">{n}</div>
+            <div class="r-body">
+              <h3>{risk}</h3>
+              <p class="r-detail" set:html={detail} />
+              <div class="r-mit">
+                <span class="r-mit-k">Mitigation</span>
+                <span class="r-mit-v" set:html={mitigation} />
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .risks {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head { max-width: 880px; margin-bottom: 48px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 760px;
+  }
+
+  .risk-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-ink-200);
+  }
+  .risk-list li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-ink-100);
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .risk-list li { grid-template-columns: 1fr; gap: 10px; }
+  }
+  .r-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--color-amber-fg);
+    padding-top: 6px;
+  }
+  .r-body h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .r-detail {
+    font-size: 14.5px;
+    color: var(--color-ink-700);
+    line-height: 1.55;
+    max-width: 780px;
+  }
+  .r-detail :global(b) { color: var(--color-ink-950); font-weight: 600; }
+  .r-mit {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 14px 18px;
+    background: var(--color-sage-bg);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-sage-fg);
+  }
+  @media (max-width: 720px) {
+    .r-mit { grid-template-columns: 1fr; gap: 6px; }
+  }
+  .r-mit-k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-sage-fg);
+    padding-top: 2px;
+  }
+  .r-mit-v {
+    font-size: 13.5px;
+    color: #2a4e35;
+    line-height: 1.55;
+  }
+  .r-mit-v :global(b) { color: #1d3825; font-weight: 600; }
+</style>

@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PlatformHero from "../components/platform/PlatformHero.astro";
+import StackSection from "../components/StackSection.astro";
+import OrchestrationPrimitives from "../components/OrchestrationPrimitives.astro";
+import PlatformInfrastructure from "../components/PlatformInfrastructure.astro";
+import VsClaudeCode from "../components/VsClaudeCode.astro";
+import AppAnatomy from "../components/platform/AppAnatomy.astro";
+import Governance from "../components/platform/Governance.astro";
+import BuiltOn from "../components/platform/BuiltOn.astro";
+import PlatformCTA from "../components/platform/PlatformCTA.astro";
+---
+
+<Layout
+  title="Assembly Industries — Platform"
+  description="The orchestration platform for enterprise AI. Workflows, agents, and tools — with twenty-one infrastructure capabilities included on day one. Single-tenant deploy, customer-isolated inference, SOC 2 Type II."
+>
+  <PlatformHero />
+  <StackSection />
+  <OrchestrationPrimitives />
+  <PlatformInfrastructure />
+  <VsClaudeCode />
+  <AppAnatomy />
+  <Governance />
+  <BuiltOn />
+  <PlatformCTA />
+</Layout>

@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* ====================================================================
+   ASSEMBLY INDUSTRIES — Design tokens (Tailwind v4 @theme)
+   Ported from the v1 design handoff. Indigo + ink + lavender palette,
+   Space Grotesk display, Inter body, JetBrains Mono mono caps.
+   ==================================================================== */
+
+@theme {
+  /* Brand · indigo */
+  --color-indigo-50:   #F2F2FC;
+  --color-indigo-100:  #E6E7FB;
+  --color-indigo-500:  #6B62EA;
+  --color-indigo-600:  #4F46E5;
+  --color-indigo-700:  #3F37B8;
+
+  /* Brand · lavender */
+  --color-lavender-50:  #F4F5FB;
+  --color-lavender-100: #E8EAF5;
+  --color-lavender-200: #D8DAEF;
+  --color-lavender-300: #C5C8E8;
+
+  /* Ink (neutrals) */
+  --color-ink-50:  #F6F7FB;
+  --color-ink-100: #EEF0F6;
+  --color-ink-200: #E3E5EE;
+  --color-ink-300: #C7CAD8;
+  --color-ink-400: #8388A0;
+  --color-ink-500: #5B6079;
+  --color-ink-700: #2A2E45;
+  --color-ink-900: #15172A;
+  --color-ink-950: #0A0B14;
+
+  /* Status (product chrome only, NOT for marketing surfaces) */
+  --color-sage-bg:  #D6EBDB;
+  --color-sage-fg:  #2F6B40;
+  --color-amber-bg: #FCE6C2;
+  --color-amber-fg: #7A511A;
+
+  /* Type families */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Radii (token names match v1: r-sm/md/lg/xl) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Shadows */
+  --shadow-card:  0 1px 0 rgba(15,17,42,.04), 0 12px 32px -16px rgba(15,17,42,.12);
+  --shadow-hover: 0 1px 0 rgba(15,17,42,.06), 0 24px 56px -24px rgba(15,17,42,.18);
+}
+
+/* ====================================================================
+   Base
+   ==================================================================== */
+
+html, body {
+  background: #FFFFFF;
+  color: var(--color-ink-950);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--color-indigo-600); color: #fff; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  color: var(--color-ink-950);
+  line-height: 1.06;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(34px, 3.4vw, 52px); letter-spacing: -0.024em; line-height: 1.08; }
+h2 { font-size: clamp(28px, 3.4vw, 46px); letter-spacing: -0.022em; line-height: 1.1; }
+h3 { font-size: clamp(20px, 1.8vw, 26px); }
+h4 { font-size: 18px; font-family: var(--font-body); letter-spacing: -0.005em; }
+p  { text-wrap: pretty; }
+
+/* ====================================================================
+   Reusable primitives
+   ==================================================================== */
+
+.wrap {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+@media (max-width: 720px) {
+  .wrap { padding-inline: 20px; }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+.eyebrow .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--color-indigo-600);
+  border-radius: 50%;
+  margin-right: 8px;
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition: transform .12s ease, background .15s, color .15s, box-shadow .15s, border-color .15s;
+  cursor: pointer;
+}
+.btn .arr { display: inline-block; transition: transform .2s; }
+.btn:hover .arr { transform: translateX(3px); }
+
+.btn-primary {
+  background: var(--color-indigo-600);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 0 rgba(15, 17, 42, 0.06),
+    0 10px 28px -12px rgba(79, 70, 229, 0.5);
+}
+.btn-primary:hover {
+  background: var(--color-indigo-700);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 0 rgba(15, 17, 42, 0.08),
+    0 16px 32px -14px rgba(79, 70, 229, 0.55);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink-950);
+  border: 1px solid var(--color-ink-200);
+}
+.btn-secondary:hover {
+  border-color: var(--color-ink-950);
+  background: var(--color-ink-50);
+}
+
+/* "New" / category badge — pill in front of the hero headline */
+.cat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 8px;
+  background: #fff;
+  border: 1px solid var(--color-ink-200);
+  border-radius: 999px;
+  box-shadow: var(--shadow-card);
+}
+.cat-badge .new {
+  background: var(--color-indigo-600);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 4px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+.cat-badge .lbl {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-700);
+}
+
+/* Hover lift used on cards / artifacts */
+.lift {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}

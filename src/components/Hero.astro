@@ -1,0 +1,183 @@
+---
+import BuilderArtifact from "./BuilderArtifact.astro";
+---
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="cat-badge">
+        <span class="new">New</span>
+        <span class="lbl">The orchestration platform for enterprise AI</span>
+      </div>
+
+      <h1>
+        Anyone on your team can vibe-code.<br/>
+        We make it <em>production-grade</em>.
+      </h1>
+
+      <p class="lede">
+        Your designer, your finance analyst, your ops lead &mdash; <b>prompt the app they need, ship it on real data, in front of real users.</b> The orchestration platform underneath enforces sign-on, governed data, durable workflows, audit lineage, HITL gates, and customer-isolated inference on day one. They build. Your security team signs off.
+      </p>
+
+      <div class="cta-row">
+        <a href="/platform" class="btn btn-primary">
+          See the platform <span class="arr">→</span>
+        </a>
+        <a href="#stack" class="btn btn-secondary">
+          Where it sits in your stack
+        </a>
+      </div>
+
+      <div class="meta-row">
+        <span><b>Anyone</b> &middot; designer, finance, ops</span>
+        <span><b>Production-grade</b> &middot; audit, HITL, 99.9% SLA</span>
+        <span><b>On Temporal</b> &middot; single-tenant &middot; SOC 2 Type II</span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="art-tag">
+        <span class="art-tag-dot"></span>
+        Vibe-coded &middot; running in production
+      </div>
+      <BuilderArtifact />
+      <div class="art-caption">
+        <span class="cap-l">
+          <b>hr-comp-band-bot</b> &middot; vibe-coded by a 2-person HR ops team in 11 days &middot; one of forty-one apps live on Assembly
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 540px at 85% -10%, var(--color-indigo-50) 0%, transparent 60%),
+      radial-gradient(700px 420px at -5% 30%, var(--color-lavender-50) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 56px;
+    align-items: start;
+    padding-top: 16px;
+  }
+  @media (max-width: 1080px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  .hero h1 {
+    margin-top: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 em::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.04em;
+    height: 0.14em;
+    background: var(--color-indigo-600);
+    opacity: 0.18;
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  .hero .lede {
+    margin-top: 28px;
+    font-size: clamp(17px, 1.4vw, 21px);
+    color: var(--color-ink-500);
+    max-width: 580px;
+    line-height: 1.55;
+  }
+  .hero .lede b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .cta-row {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .meta-row {
+    margin-top: 48px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    color: var(--color-ink-500);
+    font-size: 13.5px;
+  }
+  .meta-row b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+    font-family: var(--font-display);
+  }
+
+  /* ── Hero art frame ───────────────────────────────────────────── */
+  .hero-art {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .art-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .art-tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+    box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.15);
+  }
+  .art-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    background: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.01em;
+  }
+  .art-caption b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+</style>

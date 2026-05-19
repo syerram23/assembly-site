@@ -1,0 +1,174 @@
+---
+const inventory = [
+  {
+    n: "01",
+    name: "The orchestration platform",
+    detail: "Production-grade substrate: durable workflows on <b>Temporal</b>, agents/tools library, 21 infrastructure capabilities (identity, audit, HITL, hosting, comms, search, docgen, connectors). Single-tenant deploy in customer VPCs.",
+    valued: "The platform IP. Replaces what every SI rebuilds per client.",
+  },
+  {
+    n: "02",
+    name: "Eight pre-built vertical agents",
+    detail: "Production-tuned compositions covering regulated banking (Reg E), insurance (FNOL), staffing (post-placement), logistics (carrier exception), HR (comp-band), finance (AR follow-up), procurement (vendor onboarding), legal (contract redline).",
+    valued: "Day-one differentiation in seven verticals.",
+  },
+  {
+    n: "03",
+    name: "Studio &mdash; the sales tool",
+    detail: "AI partner that scopes engagements in <b>~60 minutes</b>: turns plain-language input into a PRD with explicit AI/human work split, live demo on the prospect's data shape, and a signable SOW. Replaces the discovery-phase loss leader.",
+    valued: "Net-new pipeline efficiency. Closes deals current SI motion can't.",
+  },
+  {
+    n: "04",
+    name: "Forward-deployed engineering org",
+    detail: "AI-native delivery team: <b>FDE + QA + TPM</b> structure, three-person teams ship what fifteen used to. <b>90% AI-generated code</b> against a constrained framework; 10% expert humans on edge cases, data migrations, compliance edges.",
+    valued: "The talent moat. FDE roles are scarce; you inherit a working org.",
+  },
+  {
+    n: "05",
+    name: "Anthropic + Temporal stack",
+    detail: "Production on Anthropic's open-source Claude + Temporal. Operational depth with both ecosystems &mdash; not a paper partnership.",
+    valued: "Technical credibility in the room with Anthropic Applied AI and OpenAI Deployment.",
+  },
+  {
+    n: "06",
+    name: "Customer base + reference network",
+    detail: "Live customer engagements across banking, staffing, logistics, insurance. Audit-grade case studies (Reg E quarterly runs, FNOL intake, redeployment cohorts). Each customer is a usage-based ARR contract, not a fixed-bid engagement.",
+    valued: "Proof points that prove time-to-value, not headcount-to-value.",
+  },
+  {
+    n: "07",
+    name: "Productized engagement model",
+    detail: "Sixty-minute scoping → signable SOW → 90-day delivery → live in customer environment. Repeatable across verticals. No discovery phase, no T&amp;M pricing, no per-developer line items.",
+    valued: "A delivery operating model an SI can systematize across 100+ engagements per year.",
+  },
+];
+---
+
+<section class="wya" id="what-you-acquire">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="dot"></span>Section 03 &middot; What you acquire</span>
+      <h2>Seven inventory items.<br/><em>Three of which</em> are not rebuildable by an SI in under five years.</h2>
+      <p class="lede">
+        We hand you a working AI-native delivery firm in one transaction: the platform, the agents, the GTM tool, the FDE org, the ecosystem positioning, the proof, and the operating model. The substrate every IT-services firm needs to compete with what Anthropic and OpenAI are now building directly &mdash; without the build-cost or the two-year head start they have on you.
+      </p>
+    </div>
+
+    <ol class="inv">
+      {
+        inventory.map(({ n, name, detail, valued }) => (
+          <li>
+            <div class="i-num">{n}</div>
+            <div class="i-body">
+              <h3>{name}</h3>
+              <p class="i-detail" set:html={detail} />
+              <div class="i-value">
+                <span class="i-value-k">What it really is</span>
+                <span class="i-value-v">{valued}</span>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .wya {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .s-head { max-width: 880px; margin-bottom: 48px; }
+  .s-head .eyebrow { display: block; margin-bottom: 14px; }
+  .s-head h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-ink-950);
+  }
+  .s-head h2 em {
+    font-style: normal;
+    color: var(--color-indigo-600);
+  }
+  .s-head .lede {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 760px;
+  }
+  .s-head .lede b { color: var(--color-ink-950); font-weight: 600; }
+
+  .inv {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-ink-200);
+    max-width: 1080px;
+  }
+  .inv li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-ink-100);
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .inv li { grid-template-columns: 1fr; gap: 10px; }
+  }
+  .i-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--color-indigo-600);
+    padding-top: 6px;
+  }
+  .i-body h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .i-detail {
+    font-size: 15px;
+    color: var(--color-ink-700);
+    line-height: 1.6;
+    max-width: 780px;
+  }
+  .i-detail :global(b) { color: var(--color-ink-950); font-weight: 600; }
+  .i-value {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--color-ink-50);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-indigo-600);
+  }
+  .i-value-k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    padding-top: 2px;
+  }
+  .i-value-v {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+    line-height: 1.4;
+  }
+</style>

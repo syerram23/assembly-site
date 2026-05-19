@@ -1,0 +1,292 @@
+---
+---
+
+<section class="dhero">
+  <div class="wrap dhero-grid">
+    <div>
+      <div class="cat-badge">
+        <span class="new">Door 02</span>
+        <span class="lbl">Delivery &middot; AI-native IT services</span>
+      </div>
+      <h1>
+        Prefer we build it?<br />
+        <em>We deliver the whole thing.</em>
+      </h1>
+      <p class="lede">
+        For teams who'd rather not build it themselves: a productized engagement that takes one operational use case from idea to a working, production-grade application &mdash; in your environment, with enterprise governance, in about ninety days. Built on the same governed platform your team would use directly.
+      </p>
+      <div class="cta-row">
+        <a href="#cta" class="btn btn-primary">
+          Talk to Studio <span class="arr">→</span>
+        </a>
+        <a href="/platform" class="btn btn-secondary">
+          Or build it yourself
+        </a>
+      </div>
+      <div class="meta-row">
+        <span><b>~60 min</b> to a signable SOW</span>
+        <span><b>~90 days</b> to live software</span>
+        <span><b>3-person team</b>, not fifteen</span>
+      </div>
+    </div>
+
+    <aside class="dhero-art">
+      <div class="art-tag">
+        <span class="art-tag-dot"></span>
+        How a delivery engagement looks
+      </div>
+      <div class="phase-card lift">
+        <div class="phase-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-title">engagement &middot; <b>q3 / acme-claims-triage</b></span>
+        </div>
+        <ol class="phases">
+          <li>
+            <span class="ph-day">Day 0</span>
+            <div>
+              <b>60-minute scoping</b>
+              <small>PRD &middot; live demo &middot; signable SOW</small>
+            </div>
+            <span class="ph-state done">done</span>
+          </li>
+          <li>
+            <span class="ph-day">Day 7</span>
+            <div>
+              <b>Team in your stack</b>
+              <small>FDE &middot; QA &middot; TPM &middot; project board live</small>
+            </div>
+            <span class="ph-state done">done</span>
+          </li>
+          <li>
+            <span class="ph-day">Day 30</span>
+            <div>
+              <b>Staging on your data</b>
+              <small>Reviews open · your engineers join</small>
+            </div>
+            <span class="ph-state on">in&nbsp;flight</span>
+          </li>
+          <li>
+            <span class="ph-day">Day 60</span>
+            <div>
+              <b>UAT with real users</b>
+              <small>Operators driving · edge cases logged</small>
+            </div>
+            <span class="ph-state">queued</span>
+          </li>
+          <li>
+            <span class="ph-day">Day 90</span>
+            <div>
+              <b>Live in production</b>
+              <small>Usage-based invoicing · audit on</small>
+            </div>
+            <span class="ph-state">queued</span>
+          </li>
+        </ol>
+        <div class="phase-foot">
+          <span>
+            <b>3 humans</b> &middot; FDE, QA, TPM &middot; 90% AI generation against framework
+          </span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .dhero {
+    padding-top: 80px;
+    padding-bottom: 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dhero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 540px at 85% -10%, var(--color-indigo-50) 0%, transparent 60%),
+      radial-gradient(700px 420px at -5% 30%, var(--color-lavender-50) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .dhero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 1080px) {
+    .dhero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .dhero h1 { margin-top: 24px; }
+  .dhero h1 em { font-style: normal; color: var(--color-indigo-600); }
+  .dhero .lede {
+    margin-top: 28px;
+    font-size: clamp(17px, 1.4vw, 21px);
+    color: var(--color-ink-500);
+    max-width: 580px;
+    line-height: 1.55;
+  }
+  .cta-row {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .meta-row {
+    margin-top: 48px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    color: var(--color-ink-500);
+    font-size: 13.5px;
+  }
+  .meta-row b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+    font-family: var(--font-display);
+  }
+
+  /* art frame */
+  .dhero-art {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .art-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+  .art-tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--color-indigo-600);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  }
+
+  /* phase card */
+  .phase-card {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .phase-chrome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .chrome-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--color-ink-200);
+  }
+  .chrome-dot:nth-of-type(1) { background: #ffbd44; }
+  .chrome-dot:nth-of-type(2) { background: #fed636; }
+  .chrome-dot:nth-of-type(3) { background: #28ca41; }
+  .chrome-title {
+    margin-left: 12px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0;
+  }
+  .chrome-title b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .phases {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .phases li {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 14px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--color-ink-100);
+    align-items: center;
+  }
+  .phases li:first-child { border-top: 0; }
+  .ph-day {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-indigo-600);
+  }
+  .phases li > div b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-950);
+  }
+  .phases li > div small {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+  }
+  .ph-state {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--color-ink-100);
+    color: var(--color-ink-500);
+  }
+  .ph-state.done {
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+  }
+  .ph-state.on {
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    animation: pulse-ind 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-ind {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.25); }
+    50%      { box-shadow: 0 0 0 6px rgba(79, 70, 229, 0); }
+  }
+
+  .phase-foot {
+    padding: 12px 18px;
+    background: var(--color-ink-950);
+    color: rgba(255,255,255,.7);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.01em;
+  }
+  .phase-foot b {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ph-state.on { animation: none; }
+  }
+</style>

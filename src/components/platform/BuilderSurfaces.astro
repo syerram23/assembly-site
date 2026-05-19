@@ -1,0 +1,551 @@
+---
+---
+
+<section class="surfaces" id="surfaces">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>The builder, up close</span>
+        <h2>Three surfaces.<br /><em>That's the whole product.</em></h2>
+      </div>
+      <div class="right">
+        <p>
+          The builder is intentionally small: one place to connect <b>Sources</b>, one place to author <b>Logic and Policy</b>, one place to publish <b>Surfaces</b>. Most apps your team will build &mdash; chatbots, internal tools, reviewer queues, scheduled reports &mdash; compose from these three.
+        </p>
+      </div>
+    </div>
+
+    <div class="surf-grid">
+      <!-- 01 · Sources -->
+      <article class="surf lift">
+        <header>
+          <span class="num">01</span>
+          <h3>Sources</h3>
+          <span class="tag">Connectors</span>
+        </header>
+        <div class="art">
+          <div class="art-chrome">
+            <span class="d"></span><span class="d"></span><span class="d"></span>
+            <span class="t">assembly &middot; sources &middot; <b>workspace</b></span>
+          </div>
+          <div class="art-body">
+            <div class="search">
+              <span class="ic">⌕</span>
+              <span class="ph">search 47 connectors</span>
+            </div>
+            <ul>
+              <li class="on">
+                <span class="ico">W</span>
+                <div>
+                  <b>workday.employees</b>
+                  <small>OAuth · 12s ago</small>
+                </div>
+                <span class="badge ok">live</span>
+              </li>
+              <li class="on">
+                <span class="ico">G</span>
+                <div>
+                  <b>greenhouse.offers</b>
+                  <small>OAuth · 4m ago</small>
+                </div>
+                <span class="badge ok">live</span>
+              </li>
+              <li>
+                <span class="ico">$</span>
+                <div>
+                  <b>snowflake.warehouse</b>
+                  <small>credentials · 11m ago</small>
+                </div>
+                <span class="badge ok">live</span>
+              </li>
+              <li class="dim">
+                <span class="ico">S</span>
+                <div>
+                  <b>salesforce.opportunities</b>
+                  <small>not connected</small>
+                </div>
+                <span class="badge">add</span>
+              </li>
+            </ul>
+          </div>
+          <div class="art-foot">
+            <span><b>3 of 47</b> connected · all OAuth · read-only by default</span>
+          </div>
+        </div>
+        <p class="caption">
+          One catalog. Every connector is OAuth or short-lived credentials, scoped by RBAC, audit-logged on every read. <b>No raw API keys floating around in someone's notes.</b>
+        </p>
+      </article>
+
+      <!-- 02 · Logic -->
+      <article class="surf lift">
+        <header>
+          <span class="num">02</span>
+          <h3>Logic &amp; Policy</h3>
+          <span class="tag">Typed nodes</span>
+        </header>
+        <div class="art">
+          <div class="art-chrome">
+            <span class="d"></span><span class="d"></span><span class="d"></span>
+            <span class="t">assembly &middot; logic &middot; <b>level_band_lookup</b></span>
+          </div>
+          <div class="art-body logic-body">
+            <div class="node">
+              <div class="node-head">
+                <span class="kind">input</span>
+                <code>Employee</code>
+              </div>
+              <div class="field">
+                <span class="fk">where</span>
+                <code>level ∈ [L4..L7]</code>
+              </div>
+              <div class="field">
+                <span class="fk">join</span>
+                <code>compensation.bands(role, loc)</code>
+              </div>
+            </div>
+            <div class="arr-down">↓</div>
+            <div class="node policy">
+              <div class="node-head">
+                <span class="kind policy-kind">policy</span>
+                <code>pii_redact</code>
+              </div>
+              <div class="field">
+                <span class="fk">strip</span>
+                <code>name, dob, email</code>
+              </div>
+            </div>
+            <div class="arr-down">↓</div>
+            <div class="output">
+              <span class="kind">output</span>
+              <code>BandRange</code>
+              <span class="badge ok">audit ✓</span>
+            </div>
+          </div>
+          <div class="art-foot">
+            <span><b>p95 38ms</b> · 2 nodes · audit on · 0 errors / 30d</span>
+          </div>
+        </div>
+        <p class="caption">
+          Logic is typed end-to-end: every node has input and output types, every policy gate emits an audit row, every run is replayable. <b>The auditor's questions answer themselves.</b>
+        </p>
+      </article>
+
+      <!-- 03 · Surface -->
+      <article class="surf lift">
+        <header>
+          <span class="num">03</span>
+          <h3>Surfaces</h3>
+          <span class="tag">Endpoints</span>
+        </header>
+        <div class="art">
+          <div class="art-chrome">
+            <span class="d"></span><span class="d"></span><span class="d"></span>
+            <span class="t">assembly &middot; surface &middot; <b>slack /comp</b></span>
+          </div>
+          <div class="art-body slack-body">
+            <div class="slack-line">
+              <span class="who">@maria</span>
+              /comp 1099-it L4 SF
+            </div>
+            <div class="slack-line reply">
+              <span class="who bot">@assembly</span>
+              L4 &middot; SF &middot; <b>$148k–$182k</b> base
+              <small>band v3.4 · audit_id b41d…</small>
+            </div>
+            <div class="endpoints">
+              <div class="ep on">
+                <span class="ep-ic">/</span>
+                <span class="ep-nm">slack</span>
+                <span class="ep-tag">/comp</span>
+              </div>
+              <div class="ep on">
+                <span class="ep-ic">▢</span>
+                <span class="ep-nm">web view</span>
+                <span class="ep-tag">/bands</span>
+              </div>
+              <div class="ep on">
+                <span class="ep-ic">{ }</span>
+                <span class="ep-nm">REST</span>
+                <span class="ep-tag">/v1/bands</span>
+              </div>
+            </div>
+          </div>
+          <div class="art-foot">
+            <span><b>3 endpoints</b> · same logic · same policy · same audit</span>
+          </div>
+        </div>
+        <p class="caption">
+          Publish once, surface anywhere. The same logic runs behind Slack, web, and REST &mdash; with one shared audit log. <b>One thing to verify, three places to use it.</b>
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .surfaces {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .s-head { grid-template-columns: 1fr; gap: 24px; } }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+  .s-head .right p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .surf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 1100px) { .surf-grid { grid-template-columns: 1fr; } }
+
+  .surf {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 3px solid var(--color-indigo-600);
+  }
+  .surf header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .surf header .num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-400);
+  }
+  .surf header h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.012em;
+    flex: 1;
+  }
+  .surf header .tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  /* ── Inner artifact frame ───────────────────────────────────── */
+  .art {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .art-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .art-chrome .d {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-ink-200);
+  }
+  .art-chrome .d:nth-of-type(1) { background: #ffbd44; }
+  .art-chrome .d:nth-of-type(2) { background: #fed636; }
+  .art-chrome .d:nth-of-type(3) { background: #28ca41; }
+  .art-chrome .t {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+  }
+  .art-chrome .t b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .art-body {
+    padding: 14px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* sources */
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-400);
+  }
+  .search .ic { color: var(--color-ink-500); }
+  .art ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .art ul li {
+    display: grid;
+    grid-template-columns: 26px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    background: #fff;
+  }
+  .art ul li.on {
+    background: var(--color-indigo-50);
+    border-color: var(--color-indigo-100);
+  }
+  .art ul li.dim { opacity: 0.6; }
+  .art ul li .ico {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .art ul li b {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+    display: block;
+    letter-spacing: -0.01em;
+  }
+  .art ul li small {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-500);
+  }
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: var(--color-ink-100);
+    color: var(--color-ink-500);
+  }
+  .badge.ok {
+    background: var(--color-sage-bg);
+    color: var(--color-sage-fg);
+  }
+
+  /* logic */
+  .logic-body { gap: 4px; }
+  .node {
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .node.policy {
+    border-color: var(--color-amber-bg);
+    background: rgba(252, 230, 194, 0.18);
+  }
+  .node-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .kind {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .policy-kind {
+    color: var(--color-amber-fg);
+    background: var(--color-amber-bg);
+  }
+  .node-head code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+  }
+  .field {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .fk {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    min-width: 40px;
+  }
+  .field code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-700);
+  }
+  .arr-down {
+    text-align: center;
+    color: var(--color-ink-300);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 0;
+  }
+  .output {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--color-ink-950);
+    color: #fff;
+    border-radius: var(--radius-md);
+  }
+  .output .kind {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .output code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    flex: 1;
+  }
+  .output .badge.ok {
+    background: rgba(155, 212, 169, 0.18);
+    color: #9bd4a9;
+  }
+
+  /* slack */
+  .slack-body { gap: 6px; }
+  .slack-line {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--color-ink-700);
+    line-height: 1.5;
+  }
+  .slack-line .who {
+    color: var(--color-indigo-700);
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .slack-line .who.bot { color: var(--color-sage-fg); }
+  .slack-line.reply b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+  .slack-line.reply small {
+    display: block;
+    font-size: 9.5px;
+    color: var(--color-ink-400);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+  .endpoints {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--color-ink-200);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ep {
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 10px;
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+  }
+  .ep-ic {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: var(--color-ink-950);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ep-nm {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+  }
+  .ep-tag {
+    font-size: 10px;
+    color: var(--color-ink-500);
+  }
+
+  .art-foot {
+    padding: 9px 14px;
+    background: var(--color-ink-50);
+    border-top: 1px solid var(--color-ink-200);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-ink-500);
+  }
+  .art-foot b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .caption {
+    color: var(--color-ink-500);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .caption b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+</style>

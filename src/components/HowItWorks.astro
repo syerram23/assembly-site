@@ -1,0 +1,390 @@
+---
+const steps = [
+  {
+    n: "01",
+    title: "Get set up",
+    body: "We make your data AI-ready and stand up the governed builder &mdash; in your environment, with your sign-on, with your audit trail.",
+    artifact: "stage-set-up",
+  },
+  {
+    n: "02",
+    title: "Your team builds",
+    body: "Operators describe the app they need. The builder composes it from sources, logic, and surfaces. Real data, no scaffolding.",
+    artifact: "stage-build",
+  },
+  {
+    n: "03",
+    title: "We keep it running",
+    body: "Hosting, monitoring, updates, support. Apps your team built keep running &mdash; reliably, with the audit posture an examiner would ask for.",
+    artifact: "stage-run",
+  },
+];
+---
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>What we do</span>
+        <h2>We make your data ready for AI &mdash;<br />so your team can <em>actually build on it</em>.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Most of the work in any AI project isn't the app &mdash; it's getting scattered, locked-up company data into one safe, governed place a tool can use. We do that. Then your team builds the apps they need on top of it, and we keep the whole thing running. <b>Your data stays in your environment the entire time.</b>
+        </p>
+      </div>
+    </div>
+
+    <div class="flow">
+      {
+        steps.map(({ n, title, body, artifact }, i) => (
+          <div class="stage">
+            <div class="stage-head">
+              <span class="num">{n}</span>
+              <span class="ttl">{title}</span>
+            </div>
+            <p>{body}</p>
+            <div class={"art " + artifact}>
+              {artifact === "stage-set-up" && (
+                <>
+                  <div class="row">
+                    <span class="ic">W</span>
+                    <span>workday.employees</span>
+                    <span class="ok">✓</span>
+                  </div>
+                  <div class="row">
+                    <span class="ic">S</span>
+                    <span>salesforce.accounts</span>
+                    <span class="ok">✓</span>
+                  </div>
+                  <div class="row">
+                    <span class="ic">$</span>
+                    <span>snowflake.warehouse</span>
+                    <span class="ok">✓</span>
+                  </div>
+                  <div class="row sync">
+                    <span class="ic">G</span>
+                    <span>greenhouse.offers</span>
+                    <span class="syncing">syncing</span>
+                  </div>
+                </>
+              )}
+              {artifact === "stage-build" && (
+                <>
+                  <div class="composer">
+                    <div class="comp-head">
+                      <span class="cmd">/build</span>
+                      <span class="ctype">comp-band-bot</span>
+                    </div>
+                    <div class="comp-rows">
+                      <div class="cmp-row">
+                        <span class="cmp-l">source</span>
+                        <span class="cmp-r">workday + greenhouse</span>
+                      </div>
+                      <div class="cmp-row">
+                        <span class="cmp-l">logic</span>
+                        <span class="cmp-r">level_band_lookup</span>
+                      </div>
+                      <div class="cmp-row">
+                        <span class="cmp-l">policy</span>
+                        <span class="cmp-r">pii_redact</span>
+                      </div>
+                      <div class="cmp-row">
+                        <span class="cmp-l">surface</span>
+                        <span class="cmp-r">slack + web + rest</span>
+                      </div>
+                    </div>
+                    <div class="comp-foot">
+                      <span class="ok-dot"></span>
+                      ready &middot; 0 errors
+                    </div>
+                  </div>
+                </>
+              )}
+              {artifact === "stage-run" && (
+                <>
+                  <div class="kpis">
+                    <div class="kpi">
+                      <div class="kv">99.97%</div>
+                      <div class="kk">uptime · 90d</div>
+                    </div>
+                    <div class="kpi">
+                      <div class="kv">42</div>
+                      <div class="kk">apps · running</div>
+                    </div>
+                    <div class="kpi">
+                      <div class="kv">100%</div>
+                      <div class="kk">audited · all calls</div>
+                    </div>
+                  </div>
+                  <div class="log">
+                    <div class="log-row"><span class="t">14:02</span><span>policy.pii_redact · pass</span></div>
+                    <div class="log-row"><span class="t">14:02</span><span>logic.level_band · 38ms</span></div>
+                    <div class="log-row"><span class="t">14:02</span><span>surface.slack · ok</span></div>
+                  </div>
+                </>
+              )}
+            </div>
+            {i < steps.length - 1 && <span class="arrow" aria-hidden>→</span>}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    padding: 120px 0;
+    border-top: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+
+  .s-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .s-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .s-head .left .eyebrow { margin-bottom: 14px; display: block; }
+  .s-head h2 em { font-style: normal; color: var(--color-indigo-600); }
+  .s-head .right p { color: var(--color-ink-500); font-size: 18px; max-width: 680px; }
+  .s-head .right p b { color: var(--color-ink-950); font-weight: 600; }
+
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    position: relative;
+  }
+  @media (max-width: 1000px) {
+    .flow { grid-template-columns: 1fr; gap: 28px; }
+    .flow .arrow { display: none; }
+  }
+
+  .stage {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    min-height: 320px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .stage-head .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--color-indigo-600);
+  }
+  .stage-head .ttl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.012em;
+    color: var(--color-ink-950);
+  }
+
+  .stage > p {
+    color: var(--color-ink-500);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    color: var(--color-ink-300);
+    font-size: 18px;
+    background: #fff;
+    padding: 2px 4px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  /* ── Artifact: set-up ─────────────────────────────────────────── */
+  .art {
+    margin-top: auto;
+    padding: 14px;
+    background: var(--color-ink-50);
+    border: 1px solid var(--color-ink-100);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-700);
+    padding: 6px 8px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid var(--color-ink-200);
+  }
+  .row .ic {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: var(--color-indigo-100);
+    color: var(--color-indigo-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 10px;
+  }
+  .row .ok {
+    color: var(--color-sage-fg);
+    font-weight: 600;
+  }
+  .row .syncing {
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-amber-fg);
+    background: var(--color-amber-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .row.sync { animation: setupSync 4s ease-in-out infinite; }
+  @keyframes setupSync {
+    0%, 70%, 100% { border-color: var(--color-ink-200); }
+    20%, 50% { border-color: var(--color-amber-bg); }
+  }
+
+  /* ── Artifact: build ──────────────────────────────────────────── */
+  .composer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .comp-head {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .cmd {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-indigo-700);
+    background: var(--color-indigo-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .ctype {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink-950);
+  }
+  .comp-rows { display: flex; flex-direction: column; gap: 4px; }
+  .cmp-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 3px 0;
+  }
+  .cmp-l {
+    color: var(--color-ink-400);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding-top: 1px;
+  }
+  .cmp-r { color: var(--color-ink-950); }
+  .comp-foot {
+    padding-top: 8px;
+    border-top: 1px dashed var(--color-ink-200);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-sage-fg);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ok-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sage-fg);
+  }
+
+  /* ── Artifact: run ────────────────────────────────────────────── */
+  .kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .kpi {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 6px;
+    padding: 8px 6px;
+    text-align: center;
+  }
+  .kv {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.015em;
+    color: var(--color-ink-950);
+  }
+  .kk {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+    margin-top: 2px;
+  }
+  .log {
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--color-ink-200);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .log-row {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-ink-700);
+  }
+  .log-row .t {
+    color: var(--color-ink-400);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row.sync { animation: none; }
+  }
+</style>

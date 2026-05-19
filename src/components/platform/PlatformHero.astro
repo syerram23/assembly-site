@@ -1,0 +1,366 @@
+---
+/*
+ * Platform hero.
+ *
+ * Eyebrow: Platform · the first door
+ * H1: A governed place for your team to build on AI.
+ * Sub-lede: Shadow AI → governed apps.
+ * CTAs: Talk to a platform engineer · See the delivery door
+ * Small hero artifact: metric stack
+ *   1,847 governed apps · 100% audited · 0 PII leaks
+ */
+---
+
+<section class="phero">
+  <div class="wrap phero-grid">
+    <div class="phero-copy">
+      <span class="eyebrow"><span class="dot"></span>Platform · the first door</span>
+
+      <h1>
+        A governed place for your team<br />
+        to build on AI.
+      </h1>
+
+      <p class="lede">
+        Inside every enterprise, employees are wiring AI into their work
+        with whatever they can reach &mdash; consumer chatbots, raw API
+        keys, prompts pasted into shared docs. Assembly turns that
+        shadow surface into <b>governed apps your team builds and IT
+        owns</b>: identity, audit, hosting, data, messaging,
+        document generation &mdash; all of the infrastructure underneath
+        an AI application, handled.
+      </p>
+
+      <div class="cta-row">
+        <a href="#cta" class="btn btn-primary">
+          Talk to a platform engineer <span class="arr">→</span>
+        </a>
+        <a href="/delivery" class="btn btn-secondary">
+          See the delivery door
+        </a>
+      </div>
+
+      <div class="meta-row">
+        <span><b>SSO, SCIM, RBAC</b> on day one</span>
+        <span><b>Single-tenant</b> deploy option</span>
+        <span><b>No training</b> on your data</span>
+      </div>
+    </div>
+
+    <aside class="phero-art" aria-label="Platform metric stack">
+      <div class="metric-stack lift">
+        <div class="ms-chrome">
+          <div class="ms-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="ms-title">
+            <span class="seg">assembly</span>
+            <span class="sep">·</span>
+            <span class="seg">platform</span>
+            <span class="sep">·</span>
+            <span class="seg name">tenant.metrics</span>
+          </div>
+          <div class="ms-state">
+            <span class="ms-state-dot"></span>
+            live
+          </div>
+        </div>
+
+        <ol class="ms-rows">
+          <li>
+            <div class="ms-k">
+              <span class="ms-num">01</span>
+              <span class="ms-lbl">governed apps</span>
+            </div>
+            <div class="ms-v">
+              <span class="ms-figure">1,847</span>
+              <span class="ms-delta">+ 23 this week</span>
+            </div>
+            <div class="ms-foot">across 9 business units · all SSO-gated</div>
+          </li>
+          <li>
+            <div class="ms-k">
+              <span class="ms-num">02</span>
+              <span class="ms-lbl">actions audited</span>
+            </div>
+            <div class="ms-v">
+              <span class="ms-figure">100<span class="pct">%</span></span>
+              <span class="ms-delta ok">examiner-ready</span>
+            </div>
+            <div class="ms-foot">14.2M traced calls · 90-day retention</div>
+          </li>
+          <li>
+            <div class="ms-k">
+              <span class="ms-num">03</span>
+              <span class="ms-lbl">PII leaks</span>
+            </div>
+            <div class="ms-v">
+              <span class="ms-figure">0</span>
+              <span class="ms-delta ok">since GA</span>
+            </div>
+            <div class="ms-foot">redaction policies enforced at the edge</div>
+          </li>
+        </ol>
+
+        <div class="ms-statusbar">
+          <span class="ms-sb-l">
+            <span class="ms-sb-tag">tenant</span>
+            acme-corp · region us-east-1 · v0.42
+          </span>
+          <span class="ms-sb-r">
+            <span class="ms-sb-pill ok">SOC 2</span>
+            <span class="ms-sb-pill ok">ISO</span>
+            <span class="ms-sb-pill ok">HIPAA</span>
+          </span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .phero {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 540px at 85% -10%, var(--color-indigo-50) 0%, transparent 60%),
+      radial-gradient(700px 420px at -5% 30%, var(--color-lavender-50) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .phero-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.92fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 1080px) {
+    .phero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  .phero h1 { margin-top: 24px; }
+
+  .phero .lede {
+    margin-top: 28px;
+    font-size: clamp(17px, 1.4vw, 21px);
+    color: var(--color-ink-500);
+    max-width: 580px;
+    line-height: 1.55;
+  }
+  .phero .lede b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+  }
+
+  .cta-row {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .meta-row {
+    margin-top: 44px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    color: var(--color-ink-500);
+    font-size: 13.5px;
+  }
+  .meta-row b {
+    color: var(--color-ink-950);
+    font-weight: 600;
+    font-family: var(--font-display);
+  }
+
+  /* ── Metric stack artifact ──────────────────────────────────── */
+  .phero-art { display: flex; }
+  .metric-stack {
+    background: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    isolation: isolate;
+  }
+  .metric-stack::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .ms-chrome {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 16px;
+    background: linear-gradient(180deg, #fafbfd 0%, #f4f5f9 100%);
+    border-bottom: 1px solid var(--color-ink-200);
+  }
+  .ms-dots { display: flex; gap: 6px; }
+  .ms-dots span {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--color-ink-200);
+    border: 1px solid var(--color-ink-300);
+  }
+  .ms-dots span:nth-child(1) { background: #ffbd44; border-color: #e5a939; }
+  .ms-dots span:nth-child(2) { background: #fed636; border-color: #e2bd1b; }
+  .ms-dots span:nth-child(3) { background: #28ca41; border-color: #1bac35; }
+  .ms-title {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    color: var(--color-ink-500); letter-spacing: 0.01em;
+  }
+  .ms-title .sep { color: var(--color-ink-300); }
+  .ms-title .name { color: var(--color-ink-950); font-weight: 600; }
+  .ms-state {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--color-sage-fg); letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ms-state-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--color-sage-fg);
+    box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.18);
+    animation: msPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes msPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(47, 107, 64, 0.18); }
+    50% { box-shadow: 0 0 0 6px rgba(47, 107, 64, 0.06); }
+  }
+
+  .ms-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .ms-rows li {
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--color-ink-100);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 6px 18px;
+    align-items: baseline;
+  }
+  .ms-rows li:last-child { border-bottom: 0; }
+  .ms-k {
+    display: flex; align-items: baseline; gap: 8px;
+    grid-column: 1; grid-row: 1;
+  }
+  .ms-num {
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--color-ink-400); letter-spacing: 0.12em;
+  }
+  .ms-lbl {
+    font-family: var(--font-mono); font-size: 11px;
+    font-weight: 600; color: var(--color-ink-950);
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  .ms-v {
+    grid-column: 2; grid-row: 1 / span 2;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    align-self: center;
+  }
+  .ms-figure {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.6vw, 56px);
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    color: var(--color-ink-950);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .ms-figure .pct {
+    font-size: 0.55em;
+    color: var(--color-ink-400);
+    margin-left: 2px;
+  }
+  .ms-delta {
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--color-ink-500); letter-spacing: 0.04em;
+  }
+  .ms-delta.ok { color: var(--color-sage-fg); }
+  .ms-foot {
+    grid-column: 1; grid-row: 2;
+    font-size: 13px; color: var(--color-ink-500);
+    align-self: start;
+  }
+
+  .ms-statusbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 16px;
+    background: var(--color-ink-950);
+    color: rgba(255, 255, 255, 0.78);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.01em;
+  }
+  .ms-sb-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    margin-right: 8px;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .ms-sb-r { display: inline-flex; gap: 6px; }
+  .ms-sb-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .ms-sb-pill.ok {
+    background: rgba(214, 235, 219, 0.12);
+    color: #9bd4a9;
+  }
+
+  @media (max-width: 560px) {
+    .ms-rows li {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .ms-v {
+      grid-column: 1; grid-row: 2;
+      align-items: flex-start;
+    }
+    .ms-foot { grid-row: 3; }
+    .ms-statusbar { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ms-state-dot { animation: none !important; }
+  }
+</style>
